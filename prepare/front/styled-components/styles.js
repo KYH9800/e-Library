@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background-image: url("../components/pexels-photo-9543376.png");
+    background-image: url("");
   }
   // 화면이 700px 이하면 아래의 CSS 적용
   @media (max-width: 700px) {
@@ -18,8 +18,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 export const Header = styled.header`
-  background: rgba(0, 0, 0, 0.5);
-  height: 700px;
+  background-image: url('https://cdn.pixabay.com/photo/2016/01/27/15/25/space-1164579_960_720.png');
+  background-size: 1200px;
+  height: 400px;
   // 화면이 1400px 이하면 아래의 CSS 적용
   @media (max-width: 1400px) {
     height: 430px;
@@ -42,7 +43,7 @@ export const Nav = styled.nav`
   nav li {
     float: left;
   }
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(129 129 139 / 22%);
   height: 100px;
   vertical-align: top;
   // 화면이 700px 이하면 아래의 CSS 적용
@@ -67,6 +68,9 @@ export const Nav = styled.nav`
       float: left;
     }
   }
+`;
+export const Video = styled.video`
+  width: 100%;
 `;
 export const Htag = styled.h1`
   a {

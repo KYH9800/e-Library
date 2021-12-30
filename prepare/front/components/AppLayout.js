@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-import { Col } from 'antd';
-import { LoginOutlined } from '@ant-design/icons';
-
 import { GlobalStyle, Header, Nav, Htag, Ul, Li, H2 } from '../styled-components/styles';
 
 const AppLayout = ({ children }) => {
