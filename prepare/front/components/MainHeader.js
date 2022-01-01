@@ -12,7 +12,10 @@ const MainHeader = () => {
       <Position>
         <p>
           <Link href="/login">
-            <a>로그인 및 회원가입</a>
+            <a>로그인</a>
+          </Link>
+          <Link href="/signup">
+            <a> 회원가입</a>
           </Link>
         </p>
         <nav>
