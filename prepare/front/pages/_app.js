@@ -14,7 +14,7 @@ const KStyle = ({ Component }) => (
 );
 
 KStyle.propTypes = {
-  Component: PropTypes.element.isRequired,
+  Component: PropTypes.func.isRequired,
 };
 
 export default KStyle;

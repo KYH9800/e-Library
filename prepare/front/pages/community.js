@@ -1,12 +1,13 @@
 import React from 'react';
-
-import AppLayout from '../components/AppLayout';
+// import AppLayout from '../components/AppLayout';
+import MainHeader from '../components/MainHeader';
 
 const Community = () => {
   return (
-    <AppLayout>
+    <>
+      <MainHeader />
       <div>게시판 페이지</div>
-    </AppLayout>
+    </>
   );
 };
 

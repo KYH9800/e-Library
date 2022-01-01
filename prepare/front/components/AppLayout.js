@@ -1,55 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 
-import { GlobalStyle, Header, Nav, Htag, Ul, Li, H2 } from '../styled-components/styles';
+import { GlobalStyle, Header, Main, Footer } from '../styled-components/mainHeader';
+
+import MainHeader from './MainHeader';
 
 const AppLayout = ({ children }) => {
   return (
     <>
-      <GlobalStyle />
       <Header>
-        <Nav>
-          <Htag>
-            <Link href="/">
-              <a>K-Style</a>
-            </Link>
-          </Htag>
-          <Ul>
-            <Li>
-              <Link href="music">
-                <a>뮤직</a>
-              </Link>
-            </Li>
-            <Li>
-              <Link href="/community">
-                <a>커뮤니티</a>
-              </Link>
-            </Li>
-            <Li>
-              <Link href="/musicShop">
-                <a>뮤직샵</a>
-              </Link>
-            </Li>
-            <Li>
-              <Link href="/customer">
-                <a>고객문의</a>
-              </Link>
-            </Li>
-          </Ul>
-          <H2>
-            <Link href="/login">
-              <a>로그인 및 회원가입</a>
-            </Link>
-          </H2>
-        </Nav>
+        <GlobalStyle />
+        <MainHeader />
+        <h3>우리나라 사람이면 가락좀 뽑잖아? 너의 목청 속 끼와 재능을 보여줘</h3>
       </Header>
-      <main>
+      <Main>
         <div>{children}</div>
-      </main>
-      <footer>
+      </Main>
+      <Footer>
         <>Contact</>
-      </footer>
+      </Footer>
     </>
   );
 };
