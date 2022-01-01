@@ -1,13 +1,12 @@
 import React from 'react';
-// import AppLayout from '../components/AppLayout';
-import MainHeader from '../components/MainHeader';
+
+import AppLayout from '../components/AppLayout';
 
 const Customer = () => {
   return (
-    <>
-      <MainHeader />
+    <AppLayout>
       <div>고객문의 페이지</div>
-    </>
+    </AppLayout>
   );
 };
 

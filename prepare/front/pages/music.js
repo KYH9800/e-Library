@@ -1,13 +1,12 @@
 import React from 'react';
-// import AppLayout from '../components/AppLayout';
-import MainHeader from '../components/MainHeader';
+
+import AppLayout from '../components/AppLayout';
 
 const Music = () => {
   return (
-    <>
-      <MainHeader />
+    <AppLayout>
       <div>음악 페이지</div>
-    </>
+    </AppLayout>
   );
 };
 
