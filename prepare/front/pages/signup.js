@@ -13,6 +13,16 @@ const Signup = () => {
       </div>
       <div>회원가입</div>
       <div>
+        <label htmlFor="user-nickname">닉네임</label>
+        <br />
+        <input type="nickname" name="user-nickname" required />
+      </div>
+      <div>
+        <label htmlFor="user-email">이메일</label>
+        <br />
+        <input type="email" name="user-email" required />
+      </div>
+      <div>
         <label htmlFor="user-password">비밀번호</label>
         <br />
         <input type="password" name="user-password" required />
