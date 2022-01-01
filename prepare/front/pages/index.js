@@ -14,11 +14,20 @@ const Home = () => {
       </Head>
       <GlobalStyle />
       <header>
+        <video preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+          <source src="" />
+        </video>
         <HomeWrapper>
           <div>
-            <a>개발자 깃헙</a>
-            <a>개발자 블로그</a>
-            <a>연락처</a>
+            <a>
+              <span>개발자 깃헙</span>
+            </a>
+            <a>
+              <span>개발자 블로그</span>
+            </a>
+            <a>
+              <span>연락처</span>
+            </a>
           </div>
         </HomeWrapper>
       </header>
