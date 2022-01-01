@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const Login = () => {
   return (
     <form>
+      <Head>
+        <title>K-Style | Login</title>
+      </Head>
       <div>
         <div>
           <Link href="/">

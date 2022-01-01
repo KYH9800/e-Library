@@ -1,11 +1,15 @@
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
 
 const Signup = () => {
   // todo
 
   return (
     <form>
+      <Head>
+        <title>K-Style | Signup</title>
+      </Head>
       <div>
         <Link href="/">
           <a>K-Style</a>

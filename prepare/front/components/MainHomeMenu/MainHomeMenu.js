@@ -1,23 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
 
-const MainHeader = () => {
-  // todo
+import { LoginSignupMenu, NavWrapper } from '../style/MainHomeMenuSt';
 
+const MainHomeMenu = () => {
   return (
-    <>
-      <div>
-        <Link href="/login">
-          <a>로그인</a>
-        </Link>
-        <Link href="/signup">
-          <a> 회원가입</a>
-        </Link>
-      </div>
-      <nav>
+    <div>
+      <LoginSignupMenu>
+        <h3>
+          <Link href="/login">
+            <a>로그인</a>
+          </Link>
+          <Link href="/signup">
+            <a> 회원가입</a>
+          </Link>
+        </h3>
+      </LoginSignupMenu>
+      <NavWrapper>
         <h1>
           <Link href="/">
-            <a>K-Style</a>
+            <a>
+              <img src="" />
+            </a>
           </Link>
         </h1>
         <ul>
@@ -42,9 +46,9 @@ const MainHeader = () => {
             </Link>
           </li>
         </ul>
-      </nav>
-    </>
+      </NavWrapper>
+    </div>
   );
 };
 
-export default MainHeader;
+export default MainHomeMenu;
