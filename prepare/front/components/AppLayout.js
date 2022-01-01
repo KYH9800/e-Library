@@ -9,14 +9,14 @@ const AppLayout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <header>
+      <nav>
         <MainHomeMenu />
-      </header>
+      </nav>
       <main>
         <div>{children}</div>
       </main>
       <footer>
-        <>Contact</>
+        <p>Contact</p>
       </footer>
     </>
   );

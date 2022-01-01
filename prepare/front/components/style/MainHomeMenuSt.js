@@ -19,15 +19,36 @@ export const LoginSignupMenu = styled.div`
   }
 `;
 // nav wrapper
-export const NavWrapper = styled.nav`
+export const NavWrapper = styled.div`
   background-color: rgb(46 45 45 / 76%);
   height: 90px;
   h1 {
     position: fixed;
-    font-size: 35px;
-    font-family: ;
-    margin: 10px;
-    a {
+    a img {
+      width: 89%;
+      margin-left: 0px;
+      margin-top: 0px;
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0px;
+    text-align: center;
+    li {
+      display: inline-block;
+      font-size: 23px;
+      margin: 28px;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+    li a {
+      color: white;
+      padding: 32px;
+      padding-right: 35px;
+      padding-left: 35px;
+    }
+    li a:hover {
+      background: #1615157d;
     }
   }
 `;

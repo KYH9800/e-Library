@@ -20,7 +20,7 @@ const MainHomeMenu = () => {
         <h1>
           <Link href="/">
             <a>
-              <img src="" />
+              <img src="https://github.com/ko7452/K-Style/blob/master/prepare/front/imagesFile/KakaoTalk_Photo_2022-01-02-00-08-07.png?raw=true" />
             </a>
           </Link>
         </h1>
