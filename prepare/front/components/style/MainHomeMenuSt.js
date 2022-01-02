@@ -2,32 +2,36 @@ import styled from 'styled-components';
 
 // LoginSignupMenu
 export const LoginSignupMenu = styled.div`
-  background-color: rgb(42 40 40);
+  background-color: rgb(28 28 28 / 83%);
   height: 37px;
   margin-top: -8px;
-  h3 {
-    margin-right: 10px;
-  }
   h3 a {
     color: white;
     font-size: 15px;
-    margin-top: 5px;
-    margin-right: 10px;
-    padding: 3px;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 8px;
+    padding-bottom: 6px;
     float: right;
     text-decoration: none;
+  }
+  h3 a:hover {
+    background-color: black;
   }
 `;
 // nav wrapper
 export const NavWrapper = styled.div`
-  background-color: rgb(46 45 45 / 76%);
+  background-color: rgb(62 60 59 / 30%);
   height: 90px;
   h1 {
     position: fixed;
-    a img {
-      width: 89%;
-      margin-left: 0px;
-      margin-top: 0px;
+    margin: 8px;
+    margin-left: 25px;
+    a {
+      padding: 16px;
+      font-family: '궁서체';
+      font-size: 50px;
+      color: #382b2bcf;
     }
   }
   ul {
@@ -42,13 +46,13 @@ export const NavWrapper = styled.div`
       margin-right: 0px;
     }
     li a {
-      color: white;
+      color: #403737;
       padding: 32px;
       padding-right: 35px;
       padding-left: 35px;
     }
     li a:hover {
-      background: #1615157d;
+      background: rgb(62 60 59 / 35%);
     }
   }
 `;

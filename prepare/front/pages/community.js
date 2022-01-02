@@ -1,15 +1,22 @@
 import React from 'react';
 import Head from 'next/head';
 
+import { Emptyplace } from '../components/style/AppLayoutSt';
+
 import AppLayout from '../components/AppLayout';
 
 const Community = () => {
   return (
     <AppLayout>
       <Head>
-        <title>K-Style | Community</title>
+        <title>e도서관 | 독후감</title>
       </Head>
-      <div>게시판 페이지</div>
+      <Emptyplace />
+      <div>독후감 페이지</div>
+      <div>독후감 페이지</div>
+      <div>독후감 페이지</div>
+      <div>독후감 페이지</div>
+      <div>독후감 페이지</div>
     </AppLayout>
   );
 };

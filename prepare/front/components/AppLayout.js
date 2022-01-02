@@ -16,7 +16,17 @@ const AppLayout = ({ children }) => {
         <div>{children}</div>
       </main>
       <footer>
-        <p>Contact</p>
+        <div>
+          <a>
+            <span>개발자 깃헙</span>
+          </a>
+          <a>
+            <span>개발자 블로그</span>
+          </a>
+          <a>
+            <span>연락처</span>
+          </a>
+        </div>
       </footer>
     </>
   );

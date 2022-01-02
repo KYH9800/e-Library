@@ -10,28 +10,33 @@ const Home = () => {
   return (
     <AppLayout>
       <Head>
-        <title>K-Style</title>
+        <title>e도서관</title>
       </Head>
       <GlobalStyle />
       <header>
-        <video preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
-          <source src="" />
-        </video>
         <HomeWrapper>
           <div>
             <a>
-              <span>개발자 깃헙</span>
+              <span>인기도서</span>
             </a>
             <a>
-              <span>개발자 블로그</span>
+              <span>인기 독후감</span>
             </a>
             <a>
-              <span>연락처</span>
+              <span>인기 모임</span>
             </a>
           </div>
         </HomeWrapper>
       </header>
-      <div>메인 홈</div>
+      <main>
+        <div>글</div>
+        <div>글</div>
+        <div>글</div>
+        <div>글</div>
+        <div>글</div>
+        <div>글</div>
+        <div>글</div>
+      </main>
     </AppLayout>
   );
 };

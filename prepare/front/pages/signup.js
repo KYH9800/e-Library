@@ -12,7 +12,7 @@ const Signup = () => {
       </Head>
       <div>
         <Link href="/">
-          <a>K-Style</a>
+          <a>e도서관</a>
         </Link>
       </div>
       <div>회원가입</div>

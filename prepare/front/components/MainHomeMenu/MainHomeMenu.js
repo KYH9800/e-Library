@@ -8,41 +8,39 @@ const MainHomeMenu = () => {
     <div>
       <LoginSignupMenu>
         <h3>
+          <Link href="/signup">
+            <a>회원가입</a>
+          </Link>
           <Link href="/login">
             <a>로그인</a>
-          </Link>
-          <Link href="/signup">
-            <a> 회원가입</a>
           </Link>
         </h3>
       </LoginSignupMenu>
       <NavWrapper>
         <h1>
           <Link href="/">
-            <a>
-              <img src="https://github.com/ko7452/K-Style/blob/master/prepare/front/imagesFile/KakaoTalk_Photo_2022-01-02-00-08-07.png?raw=true" />
-            </a>
+            <a>e도서관</a>
           </Link>
         </h1>
         <ul>
           <li>
-            <Link href="/music">
-              <a>뮤직</a>
+            <Link href="/books">
+              <a>책추천</a>
             </Link>
           </li>
           <li>
             <Link href="/community">
-              <a>커뮤니티</a>
+              <a>독후감</a>
             </Link>
           </li>
           <li>
-            <Link href="/musicShop">
-              <a>뮤직샵</a>
+            <Link href="/bookStore">
+              <a>서 점</a>
             </Link>
           </li>
           <li>
-            <Link href="/customer">
-              <a>고객문의</a>
+            <Link href="/bookClass">
+              <a>모 임</a>
             </Link>
           </li>
         </ul>

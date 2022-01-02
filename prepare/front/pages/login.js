@@ -11,9 +11,10 @@ const Login = () => {
       <div>
         <div>
           <Link href="/">
-            <a>K-Style</a>
+            <a>e도서관</a>
           </Link>
         </div>
+        <div>로그인</div>
         <div>
           <label htmlFor="user-email">아이디</label>
           <br />

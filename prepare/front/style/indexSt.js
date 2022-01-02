@@ -9,7 +9,7 @@ export const HomeWrapper = styled.div`
   div a {
     font-family: '고딕';
     font-size: 20px;
-    color: white;
+    color: #edeaf5;
     margin: 10px;
     padding: 60px;
     padding-top: 20px;
