@@ -8,7 +8,7 @@ const Signup = () => {
   return (
     <form>
       <Head>
-        <title>K-Style | Signup</title>
+        <title>K-Style | 회원가입</title>
       </Head>
       <div>
         <Link href="/">

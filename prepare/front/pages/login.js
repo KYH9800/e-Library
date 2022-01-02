@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <form>
       <Head>
-        <title>K-Style | Login</title>
+        <title>K-Style | 로그인</title>
       </Head>
       <div>
         <div>
