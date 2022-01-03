@@ -12,7 +12,7 @@ const Login = () => {
   return (
     <AppLayout>
       <Head>
-        <title>K-Style | 로그인</title>
+        <title>e도서관 | 로그인</title>
       </Head>
       <Emptyplace />
       <Box>

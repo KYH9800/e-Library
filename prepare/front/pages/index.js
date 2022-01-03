@@ -5,8 +5,11 @@ import { GlobalStyle } from '../components/style/AppLayoutSt';
 import { HomeWrapper } from '../style/indexSt';
 
 import AppLayout from '../components/AppLayout';
+import ReadingQuotes from '../components/indexPageCompmnents/ReadingQuotes';
+import PageExplain from '../components/indexPageCompmnents/PageExplain';
 
 const Home = () => {
+  // todo
   return (
     <AppLayout>
       <Head>
@@ -29,13 +32,8 @@ const Home = () => {
         </HomeWrapper>
       </header>
       <main>
-        <div>글</div>
-        <div>글</div>
-        <div>글</div>
-        <div>글</div>
-        <div>글</div>
-        <div>글</div>
-        <div>글</div>
+        <ReadingQuotes />
+        <PageExplain />
       </main>
     </AppLayout>
   );

@@ -35,7 +35,7 @@ const Signup = () => {
     <AppLayout>
       <>
         <Head>
-          <title>K-Style | 회원가입</title>
+          <title>e도서관 | 회원가입</title>
         </Head>
         <Emptyplace />
         {!onToggle ? (
