@@ -55,4 +55,34 @@ export const NavWrapper = styled.div`
       background: rgb(62 60 59 / 35%);
     }
   }
+  @media (max-width: 1000px) {
+    h1 {
+      position: fixed;
+      margin: 18px;
+      margin-left: 25px;
+    }
+    h1 a {
+      font-size: 35px;
+    }
+  }
+  @media (max-width: 905px) {
+    h1 {
+      position: fixed;
+      margin: 29px;
+      margin-left: 25px;
+    }
+    h1 a {
+      font-size: 20px;
+    }
+  }
+  @media (max-width: 670px) {
+    h1 {
+      position: fixed;
+      margin: 29px;
+      margin-left: 0px;
+    }
+    h1 a {
+      font-size: 15px;
+    }
+  }
 `;

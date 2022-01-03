@@ -23,7 +23,7 @@ const Home = () => {
               <span>인기 독후감</span>
             </a>
             <a>
-              <span>인기 모임</span>
+              <span>실시간 모임</span>
             </a>
           </div>
         </HomeWrapper>
