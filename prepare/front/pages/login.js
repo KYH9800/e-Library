@@ -40,7 +40,7 @@ const Login = () => {
             </div>
           </CheckSaveId>
           <ButtonRapper>
-            <button type="submit" htmlType="submit">
+            <button type="submit" htmltype="submit">
               <span>로그인</span>
             </button>
           </ButtonRapper>
