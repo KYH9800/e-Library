@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import Head from 'next/head';
 
-import { Kategorie, SearchingKategorie } from '../style/booksSt';
+import { Kategorie, SearchingKategorie, PostsCard, Post } from '../style/booksSt';
 
 import AppLayout from '../components/AppLayout';
 
@@ -80,11 +80,25 @@ const Books = () => {
           <button type="submit">검색</button>
         </form>
       </SearchingKategorie>
-      <div>책추천 페이지</div>
-      <div>책추천 페이지</div>
-      <div>책추천 페이지</div>
-      <div>책추천 페이지</div>
-      <div>책추천 페이지</div>
+      <PostsCard>
+        {kategories.map((post, index) => {
+          return (
+            <>
+              <Post>
+                <div>
+                  <a>
+                    <img
+                      src="https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg"
+                      alt="책표지 이미지"
+                    />
+                  </a>
+                  <p>{post}</p>
+                </div>
+              </Post>
+            </>
+          );
+        })}
+      </PostsCard>
     </AppLayout>
   );
 };

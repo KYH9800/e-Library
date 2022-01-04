@@ -43,3 +43,20 @@ export const SearchingKategorie = styled.div`
     padding: 12px 8px 10px 8px;
   }
 `;
+export const PostsCard = styled.div`
+  margin: 0px 57px 0px 57px;
+  div {
+    text-align: center;
+    margin: 0px 4px 0px 4px;
+  }
+  img {
+    width: 155px;
+    border: 1px solid white;
+  }
+  a {
+    margin: 5px;
+  }
+`;
+export const Post = styled.div`
+  display: inline-flex;
+`;

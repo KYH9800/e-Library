@@ -23,11 +23,12 @@ export const Introduce = styled.div`
     margin-bottom: 10px;
     margin-top: 10px;
     font-size: 20px;
+    color: rgb(112 111 108);
   }
   p span {
     font-family: '궁서체';
     font-size: 30px;
-    color: rgb(167 164 158);
+    color: rgb(225 221 214);
     margin-right: 10px;
   }
 `;
