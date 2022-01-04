@@ -3,14 +3,14 @@ import styled from 'styled-components';
 // 메인페이지 posts list
 export const Wrapper = styled.div`
   margin-top: 100px;
-  margin-bottom: 120px;
+  margin-bottom: 200px;
 `;
 
 export const Introduce = styled.div`
   border: 1px solid rgb(140 130 115);
   border-radius: 10px;
   margin: auto;
-  margin-bottom: 45px;
+  margin-bottom: 20px;
   width: 650px;
   h1 {
     text-align: center;
@@ -38,6 +38,9 @@ export const BoaderBox = styled.div`
   padding-top: 30px;
   margin-bottom: 30px;
   text-align: center;
+  margin: auto;
+  width: 997px;
+  margin-bottom: 10px;
   h2 {
     font-weight: 600;
     font-size: 23px;
@@ -63,9 +66,9 @@ export const BoardListWrapper = styled.div`
     border: 3px solid rgb(84 91 94);
     list-style: none;
     padding: 17px 25px 17px 25px;
-    margin: 1px;
+    margin: 10px;
     height: 360px;
-    width: 331px;
+    width: 320px;
   }
   ul li {
     margin-bottom: 2px;
