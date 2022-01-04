@@ -5,10 +5,15 @@ export const Kategorie = styled.div`
   text-align: center;
   margin: auto;
   margin-top: 35px;
+  margin-bottom: 10px;
   a {
-    margin: 5px;
-    font-size: 15px;
+    padding: 8px 11px 3px 11px;
+    font-size: 17px;
     display: inline-flex;
+  }
+  a:hover {
+    color: skyblue;
+    background-color: #3c3c3c;
   }
 `;
 export const SearchingKategorie = styled.div`

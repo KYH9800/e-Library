@@ -80,7 +80,7 @@ export const BoardListWrapper = styled.div`
     color: rgb(200 199 196);
   }
   ul li a:hover {
-    color: rgb(247 0 21);
+    color: rgb(233 70 70);
   }
 `;
 export const ListBox = styled.div`

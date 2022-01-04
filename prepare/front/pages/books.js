@@ -54,8 +54,6 @@ const Books = () => {
 
   const onChangeSearch = useCallback((e) => {
     setSearch(e.target.value);
-    console.log('search: ', search);
-    console.log(e.target.value);
   }, []);
 
   const onSubmitClick = useCallback(
