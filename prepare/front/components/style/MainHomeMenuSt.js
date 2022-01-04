@@ -21,7 +21,7 @@ export const LoginSignupMenu = styled.div`
 `;
 // nav wrapper
 export const NavWrapper = styled.div`
-  background-color: rgb(62 60 59 / 30%);
+  background-color: rgba(46, 49, 51, 0.3);
   height: 90px;
   h1 {
     position: fixed;
@@ -31,7 +31,7 @@ export const NavWrapper = styled.div`
       padding: 16px;
       font-family: '궁서체';
       font-size: 50px;
-      color: #382b2bcf;
+      color: rgb(167 164 158);
     }
   }
   ul {
@@ -46,7 +46,7 @@ export const NavWrapper = styled.div`
       margin-right: 0px;
     }
     li a {
-      color: #403737;
+      color: rgb(233 233 233);
       padding: 32px;
       padding-right: 35px;
       padding-left: 35px;
@@ -55,34 +55,44 @@ export const NavWrapper = styled.div`
       background: rgb(62 60 59 / 35%);
     }
   }
-  @media (max-width: 1000px) {
-    h1 {
-      position: fixed;
-      margin: 18px;
-      margin-left: 25px;
-    }
-    h1 a {
-      font-size: 35px;
+`;
+export const FooterComponent = styled.div`
+  background-color: rgb(60, 65, 67);
+  margin: auto;
+  width: 1200px;
+  height: 266px;
+  header {
+    text-align: center;
+    display: flex;
+  }
+  header a {
+    font-family: '고딕';
+    font-size: 16px;
+    color: #edeaf5;
+    margin-top: 20px;
+    padding: 5px 5px 5px 7px;
+    text-align: center;
+    display: block;
+    width: 170px;
+    span {
+      color: rgb(200 199 196);
     }
   }
-  @media (max-width: 905px) {
-    h1 {
-      position: fixed;
-      margin: 29px;
-      margin-left: 25px;
+  header a:hover {
+    background: #1615157d;
+  }
+  p {
+    margin-top: 15px;
+    color: #858585;
+    a {
+      margin-left: 3px;
+      color: #858585;
     }
-    h1 a {
-      font-size: 20px;
+    a:hover {
+      color: #fffdfd;
     }
   }
-  @media (max-width: 670px) {
-    h1 {
-      position: fixed;
-      margin: 29px;
-      margin-left: 0px;
-    }
-    h1 a {
-      font-size: 15px;
-    }
+  div {
+    border-top: 1px solid white;
   }
 `;

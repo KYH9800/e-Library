@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { GlobalStyle } from './style/AppLayoutSt';
+import { GlobalStyle, LayoutHeader, LayoutMain, LayoutFooter } from './style/AppLayoutSt';
 
 import MainHomeMenu from './MainHomeMenu/MainHomeMenu';
 import MainHomeFooter from './MainHomeMenu/MainHomeFooter';
@@ -10,15 +10,17 @@ const AppLayout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <nav>
-        <MainHomeMenu />
-      </nav>
-      <main>
+      <LayoutHeader>
+        <nav>
+          <MainHomeMenu />
+        </nav>
+      </LayoutHeader>
+      <LayoutMain>
         <div>{children}</div>
-      </main>
-      <footer>
+      </LayoutMain>
+      <LayoutFooter>
         <MainHomeFooter />
-      </footer>
+      </LayoutFooter>
     </>
   );
 };

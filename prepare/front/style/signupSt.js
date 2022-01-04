@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const CheckBoxRapper = styled.div`
-  border-top: 1px solid rgb(0 0 0);
+  border-top: 1px solid rgb(200 199 196);
   padding-top: 25px;
+  p {
+    color: rgb(200 199 196);
+  }
 `;
 /* 약관동의 */
 export const Box = styled.div`
@@ -15,7 +18,7 @@ export const Ptag = styled.div`
   p {
     font-size: 12px;
     line-height: 20px;
-    color: rgb(151, 151, 151);
+    color: rgb(233 233 233);
   }
 `;
 const NextBox = styled.div`
@@ -24,13 +27,14 @@ const NextBox = styled.div`
     font-size: 30px;
     line-height: 48px;
     letter-spacing: -0.5px;
+    color: rgb(200 199 196);
   }
   h2 {
     padding: 32px 0px 48px;
-    color: rgb(34, 34, 34);
+    color: rgb(141 141 141);
     font-size: 14px;
     line-height: 24px;
-    border-top: 1px solid rgb(0, 0, 0);
+    border-top: 1px solid rgb(200 199 196);
   }
   label {
     display: inline-flex;
@@ -53,7 +57,7 @@ const NextBox = styled.div`
   button {
     width: 450px;
     height: 55px;
-    border: 1px solid #aeaec9;
+    border: 1px solid rgb(50, 108, 249);
     background: rgb(50, 108, 249);
     color: rgb(255, 255, 255);
     span {
@@ -72,9 +76,12 @@ export const Wrapper01 = styled(NextBox)`
   flex-direction: column;
   margin: 0px auto;
   padding: 55px 60px;
-  border: 1px solid rgb(0 0 0);
+  border: 1px solid rgb(200 199 196);
   label {
     padding-bottom: 10px;
+  }
+  p {
+    color: white;
   }
 `;
 /* 회원가입 정보 입력 칸 */
@@ -83,10 +90,20 @@ export const Wrapper02 = styled(NextBox)`
   flex-direction: column;
   margin: 0px auto;
   padding: 55px 60px;
-  border: 1px solid rgb(0 0 0);
+  border: 1px solid rgb(200 199 196);
   label {
-    padding-bottom: 10px;
     font-weight: 500;
+    color: white;
+    margin-top: 10px;
+  }
+  input {
+    background-color: rgb(205 205 204);
+    width: 445px;
+    height: 40px;
+    padding: 7px 14px 5px;
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
   }
   p {
     color: red;

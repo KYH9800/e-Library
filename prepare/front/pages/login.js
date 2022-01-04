@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
-import { Emptyplace } from '../components/style/AppLayoutSt';
 import { Box, EmailInputTag, PasswordInputTag, CheckSaveId, ButtonRapper } from '../style/loginSt';
 
 import AppLayout from '../components/AppLayout';
@@ -14,7 +13,6 @@ const Login = () => {
       <Head>
         <title>e도서관 | 로그인</title>
       </Head>
-      <Emptyplace />
       <Box>
         <form>
           <h1>로그인</h1>

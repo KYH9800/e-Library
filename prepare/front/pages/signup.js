@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Head from 'next/head';
 
-import { Emptyplace } from '../components/style/AppLayoutSt';
 import { Wrapper01, Wrapper02, Box, Ptag, CheckBoxRapper } from '../style/signupSt';
 
 import AppLayout from '../components/AppLayout';
@@ -37,7 +36,6 @@ const Signup = () => {
         <Head>
           <title>e도서관 | 회원가입</title>
         </Head>
-        <Emptyplace />
         {!onToggle ? (
           <Box>
             <Wrapper01>

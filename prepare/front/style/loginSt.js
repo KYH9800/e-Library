@@ -9,20 +9,22 @@ export const Box = styled.div`
     flex-direction: column;
     margin: 0px auto;
     padding: 97px 55px;
-    border: 1px solid rgb(0 0 0);
+    border: 1px solid rgb(200 199 196);
   }
   h1 {
     padding-bottom: 24px;
     font-size: 30px;
     line-height: 48px;
     letter-spacing: -0.5px;
-    border-bottom: 1px solid rgb(0 0 0);
+    border-bottom: 1px solid rgb(200 199 196);
+    color: rgb(200 199 196);
   }
   h2 {
     padding: 14px 8px 45px;
     color: rgb(34, 34, 34);
     font-size: 14px;
     line-height: 24px;
+    color: rgb(200 199 196);
   }
 `;
 export const EmailInputTag = styled.div`
@@ -36,17 +38,19 @@ export const EmailInputTag = styled.div`
     -webkit-tap-highlight-color: transparent;
     outline: none;
     touch-action: manipulation;
+    color: rgb(200 199 196);
   }
   input {
     width: 460px;
     height: 44px;
     padding: 10px 16px;
-    color: rgb(34, 34, 34);
+    color: black;
+    font-weight: 600;
     font-size: 14px;
     line-height: 24px;
-    border: 1px solid rgb(237, 237, 237);
+    border: 1px solid rgb(205 205 204);
     border-radius: 2px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(205 205 204);
     transition: all 150ms ease-out 0s;
   }
 `;
@@ -61,17 +65,18 @@ export const PasswordInputTag = styled.div`
     -webkit-tap-highlight-color: transparent;
     outline: none;
     touch-action: manipulation;
+    color: rgb(200 199 196);
   }
   input {
     width: 460px;
     height: 44px;
     padding: 10px 16px;
-    color: rgb(34, 34, 34);
-    font-size: 14px;
+    color: black;
+    font-size: 20px;
     line-height: 24px;
-    border: 1px solid rgb(237, 237, 237);
+    border: 1px solid rgb(205 205 204);
     border-radius: 2px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(205 205 204);
     transition: all 150ms ease-out 0s;
   }
 `;
@@ -96,11 +101,15 @@ export const CheckSaveId = styled.div`
   }
   label input {
     margin: 0px 6px 15px 0px;
-    border: 0px;
     border-radius: 0px;
     cursor: pointer;
     width: 24px;
     height: 24px;
+    background-color: rgb(143 142 139);
+  }
+  label p {
+    margin-top: 5px;
+    color: rgb(200 199 196);
   }
   div {
     display: flex;
@@ -117,7 +126,7 @@ export const ButtonRapper = styled.div`
   button {
     width: 450px;
     height: 55px;
-    border: 1px solid #aeaec9;
+    border: 1px solid rgb(50, 108, 249);
     background: rgb(50, 108, 249);
     color: rgb(255, 255, 255);
     span {
