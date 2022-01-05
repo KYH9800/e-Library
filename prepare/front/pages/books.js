@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { Kategorie, SearchingKategorie, PostsCard, Post } from '../style/booksSt';
 
