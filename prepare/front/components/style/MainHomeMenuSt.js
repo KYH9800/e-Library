@@ -69,11 +69,11 @@ export const FooterComponent = styled.div`
     font-family: '고딕';
     font-size: 16px;
     color: #edeaf5;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 5px 5px 5px 7px;
     text-align: center;
     display: block;
-    width: 170px;
+    width: 150px;
     span {
       color: rgb(200 199 196);
     }

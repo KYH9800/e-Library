@@ -5,7 +5,9 @@ import { Kategorie, SearchingKategorie, PostsCard, Post } from '../style/booksSt
 
 import AppLayout from '../components/AppLayout';
 
+// dummyData
 const kategories = [
+  '인기도서',
   '소설',
   '시/에세이',
   '경제/경영',
@@ -48,6 +50,58 @@ const kategories = [
   '잡지',
   '만화',
 ];
+const bookImages = [
+  {
+    id: 1,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 2,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 3,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 4,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 5,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 6,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 7,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 8,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 9,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+  {
+    id: 8,
+    image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
+    post: '어떻게 공부할 것인가',
+  },
+];
 
 const Books = () => {
   const [search, setSearch] = useState('');
@@ -81,18 +135,15 @@ const Books = () => {
         </form>
       </SearchingKategorie>
       <PostsCard>
-        {kategories.map((post, index) => {
+        {bookImages.map((bookImage, index) => {
           return (
             <>
               <Post>
                 <div>
                   <a>
-                    <img
-                      src="https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg"
-                      alt="책표지 이미지"
-                    />
+                    <img src={bookImage.image} alt="책표지 이미지" />
+                    <p>{bookImage.post}</p>
                   </a>
-                  <p>{post}</p>
                 </div>
               </Post>
             </>

@@ -44,10 +44,11 @@ export const SearchingKategorie = styled.div`
   }
 `;
 export const PostsCard = styled.div`
-  margin: 0px 57px 0px 57px;
+  margin: 55px 57px 120px 57px;
   div {
     text-align: center;
-    margin: 0px 4px 0px 4px;
+    margin: 5px 4px 5px 4px;
+    height: 280px;
   }
   img {
     width: 155px;
@@ -55,6 +56,12 @@ export const PostsCard = styled.div`
   }
   a {
     margin: 5px;
+  }
+  p {
+    width: 165px;
+    height: 50px;
+    padding: 5px 0px 5px 0px;
+    margin-bottom: 0px;
   }
 `;
 export const Post = styled.div`

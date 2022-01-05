@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 // 메인페이지 posts list
 export const Wrapper = styled.div`
-  margin-top: 100px;
-  margin-bottom: 200px;
+  margin-top: 35px;
+  margin-bottom: 100px;
 `;
 
 export const Introduce = styled.div`
@@ -30,6 +30,7 @@ export const Introduce = styled.div`
     font-size: 30px;
     color: rgb(225 221 214);
     margin-right: 10px;
+    width: 100px;
   }
 `;
 
@@ -37,10 +38,10 @@ export const BoaderBox = styled.div`
   border: 1px solid rgb(140 130 115);
   padding-bottom: 20px;
   padding-top: 30px;
-  margin-bottom: 30px;
   text-align: center;
-  margin: auto;
   width: 997px;
+  margin: auto;
+  margin-top: 95px;
   margin-bottom: 10px;
   h2 {
     font-weight: 600;
