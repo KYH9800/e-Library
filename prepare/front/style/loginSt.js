@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Box = styled.div`
   display: flex;
   align-items: center;
-  margin: 145px 0px;
+  margin: 75px 0px 100px 0px;
   form {
     display: flex;
     flex-direction: column;

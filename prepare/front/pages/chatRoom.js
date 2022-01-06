@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
 
-import { MainWrapper, Nav, CreactPostBtn, PostWrapper, Num, Title, Count, Id } from '../style/communitySt';
+import { MainWrapper, CreactPostBtn, PostWrapper, Num, Title, Count } from '../style/communitySt';
 
 import AppLayout from '../components/AppLayout';
 

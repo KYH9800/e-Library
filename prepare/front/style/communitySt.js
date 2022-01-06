@@ -52,7 +52,7 @@ export const CreactPostBtn = styled.div`
   }
 `;
 export const PostWrapper = styled.div`
-  margin: 15px 0px 80px 0px;
+  margin: 15px 0px 150px 0px;
   div {
     background-color: #222222;
     padding: 20px 200px 20px 5px;
@@ -85,6 +85,9 @@ export const Num = styled.span`
 export const Title = styled.span`
   width: 675px;
   text-align: left;
+  span {
+    color: #fb6363;
+  }
 `;
 export const Count = styled.span`
   width: 100px;

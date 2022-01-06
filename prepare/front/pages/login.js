@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -7,14 +7,21 @@ import { Box, EmailInputTag, PasswordInputTag, CheckSaveId, ButtonRapper } from 
 import AppLayout from '../components/AppLayout';
 
 const Login = () => {
-  // todo
+  const [isLogedin, setIsLogedin] = useState(false);
+  console.log(isLogedin);
+
+  const onSubmitform = useCallback((e) => {
+    e.preventDefault();
+    setIsLogedin(true);
+  }, []);
+
   return (
-    <AppLayout>
+    <AppLayout isLogedin={isLogedin} setIsLogedin={setIsLogedin}>
       <Head>
         <title>e도서관 | 로그인</title>
       </Head>
       <Box>
-        <form>
+        <form onSubmit={onSubmitform}>
           <h1>로그인</h1>
           <h2>e도서관 이용을 위해 로그인을 해주세요</h2>
           <EmailInputTag>

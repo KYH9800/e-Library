@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 // 메인페이지 posts list
 export const Wrapper = styled.div`
-  margin-top: 35px;
-  margin-bottom: 100px;
+  margin-top: 70px;
+  margin-bottom: 125px;
 `;
 
 export const Introduce = styled.div`

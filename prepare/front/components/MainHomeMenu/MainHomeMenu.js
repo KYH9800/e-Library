@@ -3,18 +3,14 @@ import Link from 'next/link';
 
 import { LoginSignupMenu, NavWrapper } from '../style/MainHomeMenuSt';
 
-const MainHomeMenu = () => {
+import LoginForm from '../LoginForm';
+import UserProfile from '../UserProfile';
+
+const MainHomeMenu = ({ isLogedin, setIsLogedin }) => {
   return (
     <div>
       <LoginSignupMenu>
-        <h3>
-          <Link href="/signup">
-            <a>회원가입</a>
-          </Link>
-          <Link href="/login">
-            <a>로그인</a>
-          </Link>
-        </h3>
+        <>{isLogedin ? <UserProfile setIsLogedin={setIsLogedin} /> : <LoginForm />}</>
       </LoginSignupMenu>
       <NavWrapper>
         <h1>
@@ -23,27 +19,27 @@ const MainHomeMenu = () => {
           </Link>
         </h1>
         <ul>
-          <li>
-            <div>
-              <Link href="/books">
-                <a>책추천 및 구매</a>
-              </Link>
-            </div>
-          </li>
-          <li>
-            <div>
-              <Link href="/community">
-                <a>커뮤니티</a>
-              </Link>
-            </div>
-          </li>
-          <li>
-            <div>
-              <Link href="/chatRoom">
-                <a>실시간 대화방</a>
-              </Link>
-            </div>
-          </li>
+          <Link href="/books">
+            <a>
+              <li>
+                <div>책추천 및 구매</div>
+              </li>
+            </a>
+          </Link>
+          <Link href="/community">
+            <a>
+              <li>
+                <div>커뮤니티</div>
+              </li>
+            </a>
+          </Link>
+          <Link href="/chatRoom">
+            <a>
+              <li>
+                <div>실시간 대화방</div>
+              </li>
+            </a>
+          </Link>
         </ul>
       </NavWrapper>
     </div>

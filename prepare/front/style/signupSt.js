@@ -11,7 +11,7 @@ export const CheckBoxRapper = styled.div`
 export const Box = styled.div`
   display: flex;
   align-items: center;
-  margin: 145px 0px;
+  margin: 75px 0px 100px 0px;
 `;
 export const Ptag = styled.div`
   margin-bottom: 32px;
