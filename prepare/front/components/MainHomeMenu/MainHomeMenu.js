@@ -30,7 +30,7 @@ const MainHomeMenu = () => {
           </li>
           <li>
             <Link href="/community">
-              <a>독후감</a>
+              <a>커뮤니티</a>
             </Link>
           </li>
           <li>

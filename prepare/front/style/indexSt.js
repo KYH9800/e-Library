@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Introduce = styled.div`
+  user-select: none;
   border: 1px solid rgb(140 130 115);
   border-radius: 10px;
   margin: auto;
@@ -84,7 +85,11 @@ export const BoardListWrapper = styled.div`
   ul li a:hover {
     color: rgb(233 70 70);
   }
+  ul li a:active {
+    color: rgb(237 192 210);
+  }
 `;
 export const ListBox = styled.div`
+  user-select: none;
   display: inline-flex;
 `;

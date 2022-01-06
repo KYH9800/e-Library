@@ -5,6 +5,7 @@ export const LoginSignupMenu = styled.div`
   background-color: rgb(28 28 28 / 83%);
   height: 37px;
   margin-top: -8px;
+  user-select: none;
   h3 a {
     color: white;
     font-size: 15px;
@@ -23,6 +24,7 @@ export const LoginSignupMenu = styled.div`
 export const NavWrapper = styled.div`
   background-color: rgba(46, 49, 51, 0.3);
   height: 90px;
+  user-select: none;
   h1 {
     position: fixed;
     margin: 8px;
