@@ -24,24 +24,25 @@ const MainHomeMenu = () => {
         </h1>
         <ul>
           <li>
-            <Link href="/books">
-              <a>책추천</a>
-            </Link>
+            <div>
+              <Link href="/books">
+                <a>책추천 및 구매</a>
+              </Link>
+            </div>
           </li>
           <li>
-            <Link href="/community">
-              <a>커뮤니티</a>
-            </Link>
+            <div>
+              <Link href="/community">
+                <a>커뮤니티</a>
+              </Link>
+            </div>
           </li>
           <li>
-            <Link href="/bookStore">
-              <a>서 점</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/bookClass">
-              <a>모 임</a>
-            </Link>
+            <div>
+              <Link href="/chatRoom">
+                <a>실시간 대화방</a>
+              </Link>
+            </div>
           </li>
         </ul>
       </NavWrapper>

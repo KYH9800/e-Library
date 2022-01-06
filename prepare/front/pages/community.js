@@ -80,16 +80,16 @@ const Community = () => {
         <Nav>
           <ul>
             <li>
-              <a>자유게시판</a>
+              <span>자유게시판</span>
             </li>
             <li>
-              <a>독후감</a>
+              <span>모임 공지</span>
             </li>
             <li>
-              <a>생활게시판</a>
+              <span>독 후 감</span>
             </li>
             <li>
-              <a>건의게시판</a>
+              <span>건의게시판</span>
             </li>
           </ul>
         </Nav>

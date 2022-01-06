@@ -38,24 +38,20 @@ export const NavWrapper = styled.div`
   }
   ul {
     list-style: none;
-    margin: 0px;
+    /* margin: 0px; */
     text-align: center;
     li {
       display: inline-block;
       font-size: 23px;
-      margin: 28px;
-      margin-left: 0px;
-      margin-right: 0px;
+      width: 200px;
+      padding: 27px 0px 27px 0px;
     }
     li a {
       color: rgb(233 233 233);
-      padding: 32px;
-      padding-right: 35px;
-      padding-left: 35px;
     }
-    li a:hover {
-      background: rgb(62 60 59 / 35%);
-    }
+  }
+  ul li:hover {
+    background: rgb(62 60 59 / 35%);
   }
 `;
 export const FooterComponent = styled.div`

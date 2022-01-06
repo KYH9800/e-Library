@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 
 import { Kategorie, SearchingKategorie, PostsCard, Post } from '../style/booksSt';
 
@@ -56,51 +55,61 @@ const bookImages = [
     id: 1,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
     id: 2,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
     id: 3,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
     id: 4,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
     id: 5,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
     id: 6,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
     id: 7,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
     id: 8,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
     id: 9,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
   {
-    id: 8,
+    id: 10,
     image: 'https://bimage.interpark.com/partner/goods_image/1/3/4/8/230951348g.jpg',
     post: '어떻게 공부할 것인가',
+    moneyValue: '12,000원',
   },
 ];
 
@@ -144,6 +153,7 @@ const Books = () => {
                   <a>
                     <img src={bookImage.image} alt="책표지 이미지" />
                     <p>{bookImage.post}</p>
+                    <p>{bookImage.moneyValue}</p>
                   </a>
                 </div>
               </Post>

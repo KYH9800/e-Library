@@ -16,23 +16,19 @@ export const Nav = styled.div`
     margin: 10px 0px 10px 0px;
     text-align: center;
     li {
+      padding: 12px 0px 12px 0px;
       display: inline-block;
       font-size: 23px;
-      margin: 10px;
-      margin-left: 0px;
-      margin-right: 0px;
+      width: 175px;
     }
-    li a {
+    li span {
       color: rgb(233 233 233);
-      padding: 13px;
-      padding-right: 35px;
-      padding-left: 35px;
       user-select: none;
     }
-    li a:hover {
+    li:hover {
       background: #383838;
     }
-    li a:active {
+    li:active {
       background: #464646;
     }
   }

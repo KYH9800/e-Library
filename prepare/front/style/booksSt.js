@@ -59,7 +59,7 @@ export const PostsCard = styled.div`
   div {
     text-align: center;
     margin: 5px 4px 5px 4px;
-    height: 280px;
+    height: 305px;
   }
   img {
     width: 155px;
@@ -80,7 +80,7 @@ export const PostsCard = styled.div`
   }
   p {
     width: 165px;
-    height: 50px;
+    height: 29px;
     padding: 5px 0px 5px 0px;
     margin-bottom: 0px;
   }
