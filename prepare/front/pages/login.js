@@ -1,22 +1,39 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import Head from 'next/head';
+import Router from 'next/router';
 
 import { Box, EmailInputTag, PasswordInputTag, CheckSaveId, ButtonRapper } from '../style/loginSt';
 
 import AppLayout from '../components/AppLayout';
+import useInput from '../hooks/useInput';
+
+import { loginAction } from '../reducers/user';
 
 const Login = () => {
-  const [isLogedin, setIsLogedin] = useState(false);
-  console.log(isLogedin);
+  const dispatch = useDispatch();
+  const { isLogedin } = useSelector((state) => state.user);
 
-  const onSubmitform = useCallback((e) => {
-    e.preventDefault();
-    setIsLogedin(true);
-  }, []);
+  const [email, onChangeEmail] = useInput('');
+  const [password, onChangePassword] = useInput('');
+
+  useEffect(() => {
+    if (isLogedin) {
+      Router.push('/');
+    }
+  });
+
+  const onSubmitform = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch(loginAction());
+    },
+    [email, password],
+  );
 
   return (
-    <AppLayout isLogedin={isLogedin} setIsLogedin={setIsLogedin}>
+    <AppLayout>
       <Head>
         <title>e도서관 | 로그인</title>
       </Head>
@@ -26,11 +43,11 @@ const Login = () => {
           <h2>e도서관 이용을 위해 로그인을 해주세요</h2>
           <EmailInputTag>
             <label htmlFor="user-email">아이디</label>
-            <input type="email" required />
+            <input type="email" required value={email} onChange={onChangeEmail} />
           </EmailInputTag>
           <PasswordInputTag>
             <label htmlFor="password">비밀번호</label>
-            <input type="password" required />
+            <input type="password" required value={password} onChange={onChangePassword} />
           </PasswordInputTag>
           <CheckSaveId>
             <label>

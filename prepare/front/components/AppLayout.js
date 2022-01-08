@@ -6,13 +6,13 @@ import { GlobalStyle, LayoutHeader, LayoutMain, LayoutFooter } from './style/App
 import MainHomeMenu from './MainHomeMenu/MainHomeMenu';
 import MainHomeFooter from './MainHomeMenu/MainHomeFooter';
 
-const AppLayout = ({ children, isLogedin, setIsLogedin }) => {
+const AppLayout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
       <LayoutHeader>
         <nav>
-          <MainHomeMenu isLogedin={isLogedin} setIsLogedin={setIsLogedin} />
+          <MainHomeMenu />
         </nav>
       </LayoutHeader>
       <LayoutMain>

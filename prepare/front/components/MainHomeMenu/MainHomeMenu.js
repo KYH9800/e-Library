@@ -1,16 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 import { LoginSignupMenu, NavWrapper } from '../style/MainHomeMenuSt';
 
 import LoginForm from '../LoginForm';
 import UserProfile from '../UserProfile';
 
-const MainHomeMenu = ({ isLogedin, setIsLogedin }) => {
+const MainHomeMenu = () => {
+  const { isLogedin } = useSelector((state) => state.user);
+
   return (
     <div>
       <LoginSignupMenu>
-        <>{isLogedin ? <UserProfile setIsLogedin={setIsLogedin} /> : <LoginForm />}</>
+        <>{isLogedin ? <UserProfile /> : <LoginForm />}</>
       </LoginSignupMenu>
       <NavWrapper>
         <h1>

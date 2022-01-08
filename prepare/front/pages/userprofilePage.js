@@ -1,17 +1,30 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
+import Router from 'next/router';
 
 import { Wrapper, Box } from '../style/userprofilePageSt';
 
 import AppLayout from '../components/AppLayout';
 
-const UserProfilePage = ({ setIsLogedin }) => {
+import { logoutAction } from '../reducers/user';
+
+const UserProfilePage = () => {
+  const dispatch = useDispatch();
+  const { isLogedin } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (!isLogedin) {
+      Router.push('/login');
+    }
+  });
+
   const onSubmitClick = useCallback((e) => {
     e.preventDefault();
   }, []);
 
   const onLogout = useCallback(() => {
-    setIsLogedin(false);
+    dispatch(logoutAction());
   }, []);
 
   return (

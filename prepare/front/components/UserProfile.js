@@ -1,9 +1,15 @@
 import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import Link from 'next/link';
 
-const UserProfile = ({ setIsLogedin }) => {
+import { logoutAction } from '../reducers/user';
+
+const UserProfile = () => {
+  const dispatch = useDispatch();
+
   const onLogout = useCallback(() => {
-    setIsLogedin(false);
+    console.log('로그아웃');
+    dispatch(logoutAction());
   }, []);
 
   return (
