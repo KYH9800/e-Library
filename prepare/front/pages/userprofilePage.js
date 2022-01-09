@@ -6,11 +6,12 @@ import Router from 'next/router';
 import { Wrapper, Box } from '../style/userprofilePageSt';
 
 import AppLayout from '../components/AppLayout';
-
-import { logoutAction } from '../reducers/user';
+import useInput from '../hooks/useInput';
+import { logoutAction, CHANGE_NICKNAME } from '../reducers/user';
 
 const UserProfilePage = () => {
   const dispatch = useDispatch();
+  const [nickname, setChangeNickname] = useInput('');
   const { isLogedin } = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -19,9 +20,17 @@ const UserProfilePage = () => {
     }
   });
 
-  const onSubmitClick = useCallback((e) => {
-    e.preventDefault();
-  }, []);
+  const onSubmitClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch({
+        type: CHANGE_NICKNAME,
+        data: nickname,
+      });
+      console.log('changeNickname: ', nickname);
+    },
+    [nickname],
+  );
 
   const onLogout = useCallback(() => {
     dispatch(logoutAction());
@@ -35,19 +44,19 @@ const UserProfilePage = () => {
       <AppLayout>
         <Wrapper>
           <h1>내 프로필</h1>
-          <form onSubmit={onSubmitClick}>
-            <Box>
+          <Box>
+            <form onSubmit={onSubmitClick}>
               <h2>닉네임 변경하기</h2>
               <div>
-                <input type="text" />
+                <input type="text" value={nickname} onChange={setChangeNickname} />
                 <button>변경하기</button>
               </div>
-              <div>
-                <button onClick={onLogout}>로그아웃</button>
-                <button>회원탈퇴</button>
-              </div>
-            </Box>
-          </form>
+            </form>
+            <div>
+              <button onClick={onLogout}>로그아웃</button>
+              <button>회원탈퇴</button>
+            </div>
+          </Box>
         </Wrapper>
       </AppLayout>
     </>

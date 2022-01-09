@@ -5,8 +5,16 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducer from '../reducers';
 
+const loggerMiddleware =
+  ({ dispatch, getState }) =>
+  (next) =>
+  (action) => {
+    console.log('loggerMiddleware(redux-thunk): ', action);
+    return next(action);
+  };
+
 const configureStore = () => {
-  const middlewares = []; // 미들웨어들을 넣으면 된다.
+  const middlewares = [loggerMiddleware]; // 미들웨어들을 넣으면 된다.
   const enhancer =
     process.env.NODE_ENV === 'production'
       ? compose(applyMiddleware(...middlewares))

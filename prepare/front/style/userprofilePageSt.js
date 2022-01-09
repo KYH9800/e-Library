@@ -3,13 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   margin: 75px 0px 250px 0px;
   text-align: center;
-  form {
-    align-items: center;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    margin: 0px auto;
-  }
   input {
     width: 250px;
     height: 40px;
@@ -38,6 +31,8 @@ export const Wrapper = styled.div`
   }
 `;
 export const Box = styled.div`
+  align-items: center;
+  margin: 0px auto;
   border: 1px solid white;
   width: 600px;
   height: 200px;

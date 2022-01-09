@@ -13,7 +13,7 @@ import { loginAction } from '../reducers/user';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { isLogedin } = useSelector((state) => state.user);
+  const { isLogedin, user } = useSelector((state) => state.user);
 
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
@@ -21,13 +21,14 @@ const Login = () => {
   useEffect(() => {
     if (isLogedin) {
       Router.push('/');
+      console.log('user data', user);
     }
   });
 
   const onSubmitform = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(loginAction());
+      dispatch(loginAction({ email, password }));
     },
     [email, password],
   );
