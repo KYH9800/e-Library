@@ -2,8 +2,12 @@
 import { createWrapper } from 'next-redux-wrapper';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 
 import reducer from '../reducers';
+import rootSaga from '../sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 const loggerMiddleware =
   ({ dispatch, getState }) =>
@@ -14,12 +18,12 @@ const loggerMiddleware =
   };
 
 const configureStore = () => {
-  const middlewares = [loggerMiddleware]; // 미들웨어들을 넣으면 된다.
   const enhancer =
     process.env.NODE_ENV === 'production'
-      ? compose(applyMiddleware(...middlewares))
-      : composeWithDevTools(applyMiddleware(...middlewares));
+      ? compose(applyMiddleware(sagaMiddleware))
+      : composeWithDevTools(applyMiddleware(sagaMiddleware, loggerMiddleware));
   const store = createStore(reducer, enhancer);
+  store.sagaTask = sagaMiddleware.run(rootSaga);
   return store;
 };
 

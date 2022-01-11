@@ -12,10 +12,10 @@ import { logoutAction, CHANGE_NICKNAME } from '../reducers/user';
 const UserProfilePage = () => {
   const dispatch = useDispatch();
   const [nickname, setChangeNickname] = useInput('');
-  const { isLogedin } = useSelector((state) => state.user);
+  const { me } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (!isLogedin) {
+    if (!me) {
       Router.push('/login');
     }
   });

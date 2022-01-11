@@ -8,10 +8,6 @@ const UserProfile = () => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    console.log('me: ', me);
-  }, [me]);
-
   const onLogout = useCallback(() => {
     console.log('로그아웃');
     dispatch(logoutAction());

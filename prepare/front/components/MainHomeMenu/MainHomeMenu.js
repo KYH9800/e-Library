@@ -8,12 +8,12 @@ import LoginForm from '../LoginForm';
 import UserProfile from '../UserProfile';
 
 const MainHomeMenu = () => {
-  const { isLogedin } = useSelector((state) => state.user);
+  const { me } = useSelector((state) => state.user);
 
   return (
     <div>
       <LoginSignupMenu>
-        <>{isLogedin ? <UserProfile /> : <LoginForm />}</>
+        <>{me ? <UserProfile /> : <LoginForm />}</>
       </LoginSignupMenu>
       <NavWrapper>
         <h1>

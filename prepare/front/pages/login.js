@@ -13,15 +13,15 @@ import { loginAction } from '../reducers/user';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { isLogedin, user } = useSelector((state) => state.user);
+  const { me } = useSelector((state) => state.user);
 
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
 
   useEffect(() => {
-    if (isLogedin) {
+    if (me) {
       Router.push('/');
-      console.log('user data', user);
+      console.log('me data', me);
     }
   });
 
