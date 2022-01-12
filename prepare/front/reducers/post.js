@@ -53,12 +53,12 @@ const reducer = (state = initialState, action) => {
         loadPostsError: null,
       };
     case LOAD_POSTS_SUCCESS:
-      console.log('reducer mainPost: ', state.mainPosts);
+      console.log('reducer mainPosts: ', state.mainPosts);
       return {
         ...state,
         loadPostsLoading: false,
         loadPostsDone: true,
-        mainPosts: [...state.mainPosts, action.data],
+        mainPosts: state.mainPosts, // state.mainPosts.concat(action,data),
         hasMorePosts: state.mainPosts.length < 50 ? true : false,
       };
     case LOAD_POSTS_FAILURE:
@@ -76,7 +76,6 @@ const reducer = (state = initialState, action) => {
         addPostError: null,
       };
     case ADD_POST_SUCCESS:
-      console.log('test: ', state.mainPosts);
       return {
         ...state,
         addPostLoading: false,

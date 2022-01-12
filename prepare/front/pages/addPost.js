@@ -68,9 +68,7 @@ const AddPost = () => {
             content,
           }),
         );
-        if (addPostDone) {
-          Router.push('/community');
-        }
+        Router.push('/community');
       }
     },
     [title, kategory, content],

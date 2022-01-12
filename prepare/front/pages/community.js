@@ -91,39 +91,20 @@ const Community = () => {
             <button onClick={onClickAddPost}>글쓰기</button>
           </div>
         </CreactPostBtn>
-
         <PostWrapper>
-          {mainPosts?.map((data, index) => {
+          {mainPosts.map((data, index) => {
             return (
               <>
-                {data ? (
-                  <a>
-                    <div>
-                      <ul>
-                        <li>
-                          <Num>{index + 1}</Num>
-                          <Title>
-                            <span>[{data.kategory}]</span> <p>{data.title}</p>
-                          </Title>
-                          <Count>조회수: {data.count}</Count>
-                          <Id>작성자: {data.User.nickname}</Id>
-                        </li>
-                      </ul>
-                    </div>
-                  </a>
-                ) : (
-                  <p>글이 존재하지 않습니다.</p>
-                )}
                 <a>
                   <div>
                     <ul>
                       <li>
                         <Num>{index + 1}</Num>
                         <Title>
-                          <span>[{data?.kategory}]</span> <p>{data?.title}</p>
+                          <span>[{data.kategory}]</span> <p>{data.title}</p>
                         </Title>
-                        <Count>조회수: {data?.count}</Count>
-                        <Id>작성자: {data?.User.nickname}</Id>
+                        <Count>조회수: {data.count}</Count>
+                        <Id>작성자: {data.User.nickname}</Id>
                       </li>
                     </ul>
                   </div>
