@@ -21,13 +21,13 @@ function loginAPI(data) {
 function* login(action) {
   try {
     // api 통신할때는 call
-    const result = yield call(loginAPI, action.data);
-    console.log(result);
-    // yield delay(1000);
+    // const result = yield call(loginAPI, action.data);
+    // console.log(result);
+    yield delay(1000);
     // 아래와 같이 api 결과를 핸들링하여 dispatch 가능
     yield put({
       type: LOGIN_SUCCESS,
-      data: result.data,
+      data: action.data,
     });
   } catch (err) {
     yield put({

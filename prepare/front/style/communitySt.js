@@ -85,14 +85,18 @@ export const Num = styled.span`
 export const Title = styled.span`
   width: 675px;
   text-align: left;
+  display: flex;
   span {
+    width: 85px;
     color: #fb6363;
   }
 `;
 export const Count = styled.span`
   width: 100px;
+  text-align: left;
 `;
 export const Id = styled.span`
-  width: 100px;
+  width: 145px;
+  text-align: left;
 `;
 // margin: 0px 10px 0px 10px;

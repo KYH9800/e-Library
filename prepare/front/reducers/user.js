@@ -1,12 +1,4 @@
-// DummyData
-// const dummyUser = (data) => ({
-//   ...data,
-//   id: 1,
-//   nickname: '고윤혁',
-//   email: 'sksgur3@naver.com',
-//   password: 'dbsgur!',
-//   Posts: [{ id: 1, post: '01', post: '02' }],
-// });
+import { dummyUser } from '../public/user/user';
 
 // 초기 state
 export const initialState = {
@@ -68,7 +60,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loginLoading: false,
         loginDone: true,
-        me: action.data,
+        me: dummyUser(action.data),
         // isLogedin: true,
       };
     case LOGIN_FAILURE:
