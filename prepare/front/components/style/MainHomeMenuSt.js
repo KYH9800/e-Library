@@ -82,6 +82,7 @@ export const FooterComponent = styled.div`
   width: 1200px;
   height: 266px;
   header {
+    user-select: none;
     text-align: center;
     display: flex;
   }

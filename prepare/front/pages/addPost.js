@@ -7,7 +7,7 @@ import {
   Header,
   Main,
   TitleWrapper,
-  KategoryWrapper,
+  CategoryWrapper,
   ContentWrapper,
   BtnWrapper,
   SelectWraper,
@@ -22,18 +22,17 @@ import { addPost } from '../reducers/post';
 const AddPost = () => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
-  const { addPostDone } = useSelector((state) => state.post);
   const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
 
   const [title, onChangeTitle] = useInput('');
-  const [kategory, setKategory] = useState();
+  const [category, setCategory] = useState();
   const [content, onChangeContent] = useInput('');
 
   const handleChange = useCallback(
     (value) => {
-      setKategory(value);
+      setCategory(value);
     },
-    [kategory],
+    [category],
   );
 
   useEffect(() => {
@@ -56,7 +55,7 @@ const AddPost = () => {
       e.preventDefault();
       if (!title) {
         alert('제목을 입력하세요');
-      } else if (!kategory) {
+      } else if (!category) {
         alert('카테고리를 설정하세요');
       } else if (!content) {
         alert('게시글을 작성하세요');
@@ -64,14 +63,14 @@ const AddPost = () => {
         dispatch(
           addPost({
             title,
-            kategory,
+            category,
             content,
           }),
         );
         Router.push('/community');
       }
     },
-    [title, kategory, content],
+    [title, category, content],
   );
 
   return (
@@ -85,14 +84,14 @@ const AddPost = () => {
             <label htmlFor="title">글 제목</label>
             <input type="text" value={title} onChange={onChangeTitle} placeholder="글의 제목을 작성해주세요" />
           </TitleWrapper>
-          <KategoryWrapper>
+          <CategoryWrapper>
             <SelectWraper defaultValue="카테고리" onChange={handleChange}>
               <Select.Option value="자유게시글">자유게시글</Select.Option>
               <Select.Option value="모임공지">모임공지</Select.Option>
               <Select.Option value="독후감">독후감</Select.Option>
               <Select.Option value="건의게시글">건의게시글</Select.Option>
             </SelectWraper>
-          </KategoryWrapper>
+          </CategoryWrapper>
           <ContentWrapper>
             <label htmlFor="content">내용 작성</label>
             <br />

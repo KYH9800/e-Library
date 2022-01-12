@@ -1,12 +1,12 @@
 import React, { useCallback, useState } from 'react';
 import Head from 'next/head';
 
-import { Kategorie, SearchingKategorie, PostsCard, Post } from '../style/booksSt';
+import { Category, SearchingCategory, PostsCard, Post } from '../style/booksSt';
 
 import AppLayout from '../components/AppLayout';
 
 // dummyData
-const kategories = [
+const categories = [
   '인기도서',
   '소설',
   '시/에세이',
@@ -133,17 +133,17 @@ const Books = () => {
       <Head>
         <title>e도서관 | 책추천</title>
       </Head>
-      <Kategorie>
-        {kategories.map((kategorie, index) => {
-          return <a key={kategorie}>{kategorie}</a>;
+      <Category>
+        {categories.map((category, index) => {
+          return <a key={category}>{category}</a>;
         })}
-      </Kategorie>
-      <SearchingKategorie>
+      </Category>
+      <SearchingCategory>
         <form onSubmit={onSubmitClick}>
           <input type="text" placeholder="검색어를 입력해주세요" value={search} onChange={onChangeSearch} />
           <button type="submit">검색</button>
         </form>
-      </SearchingKategorie>
+      </SearchingCategory>
       <PostsCard>
         {bookImages.map((bookImage, index) => {
           return (

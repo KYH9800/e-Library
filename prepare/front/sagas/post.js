@@ -47,7 +47,7 @@ function* addPost(action) {
       data: {
         id: shortid.generate(),
         title: action.data.title,
-        kategory: action.data.kategory,
+        category: action.data.category,
         content: action.data.content,
       },
     });

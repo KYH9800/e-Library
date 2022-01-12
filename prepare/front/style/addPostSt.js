@@ -36,7 +36,7 @@ export const TitleWrapper = styled.div`
   }
 `;
 
-export const KategoryWrapper = styled.div`
+export const CategoryWrapper = styled.div`
   display: inline;
 `;
 

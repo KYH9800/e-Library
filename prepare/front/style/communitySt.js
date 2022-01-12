@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 // LoginSignupMenu
 export const MainWrapper = styled.div`
+  user-select: none;
   h1 {
-    user-select: none;
     text-align: center;
     margin: 50px;
     font-size: 35px;
@@ -53,6 +53,14 @@ export const CreactPostBtn = styled.div`
 `;
 export const PostWrapper = styled.div`
   margin: 15px 0px 150px 0px;
+  p {
+    text-align: center;
+    color: #fb6363;
+    border-bottom: 1px solid white;
+    padding: 22px 0px 22px 0px;
+    margin: 10px 0px 10px 0px;
+    background-color: #303030;
+  }
   div {
     background-color: #222222;
     padding: 20px 200px 20px 5px;

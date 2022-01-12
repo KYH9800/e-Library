@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Kategorie = styled.div`
+export const Category = styled.div`
   user-select: none;
   width: 1000px;
   text-align: center;
@@ -21,7 +21,7 @@ export const Kategorie = styled.div`
     background-color: #4c4b4b;
   }
 `;
-export const SearchingKategorie = styled.div`
+export const SearchingCategory = styled.div`
   user-select: none;
   form {
     margin: 50px 0px 50px 0px;

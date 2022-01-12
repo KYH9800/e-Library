@@ -92,6 +92,7 @@ const Community = () => {
           </div>
         </CreactPostBtn>
         <PostWrapper>
+          {mainPosts.length === 0 && <p>존재하는 게시글이 없습니다.</p>}
           {mainPosts.map((data, index) => {
             return (
               <>
@@ -101,7 +102,7 @@ const Community = () => {
                       <li>
                         <Num>{index + 1}</Num>
                         <Title>
-                          <span>[{data.kategory}]</span> <p>{data.title}</p>
+                          <span>[{data.category}]</span> <p>{data.title}</p>
                         </Title>
                         <Count>조회수: {data.count}</Count>
                         <Id>작성자: {data.User.nickname}</Id>

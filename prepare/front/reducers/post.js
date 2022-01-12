@@ -3,7 +3,7 @@ const dummyPost = (data) => [
   {
     id: data.id,
     title: data.title,
-    kategory: data.kategory,
+    category: data.category,
     content: data.content,
     count: 1,
     User: {
@@ -53,7 +53,7 @@ const reducer = (state = initialState, action) => {
         loadPostsError: null,
       };
     case LOAD_POSTS_SUCCESS:
-      console.log('reducer mainPosts: ', state.mainPosts);
+      // console.log('reducer mainPosts: ', state.mainPosts);
       return {
         ...state,
         loadPostsLoading: false,
