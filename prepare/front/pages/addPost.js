@@ -96,6 +96,7 @@ const AddPost = () => {
           <ContentWrapper>
             <label htmlFor="content">내용 작성</label>
             <br />
+            {/* CKeditor */}
             <textarea
               placeholder={`${me?.nickname}님의 게시글을 작성해주세요`}
               value={content}
@@ -104,10 +105,10 @@ const AddPost = () => {
           </ContentWrapper>
           <BtnWrapper>
             <Link href="/community">
-              <button>돌아가기</button>
+              <button>취소</button>
             </Link>
             <input type="file" multiple hidden ref={imageInput} />
-            <button onClick={onClickImageUpload}>이미지 업로드</button>
+            {/* <button onClick={onClickImageUpload}>이미지 업로드</button> */}
             <button type="submit">완료</button>
           </BtnWrapper>
         </form>

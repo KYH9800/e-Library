@@ -99,6 +99,7 @@ const reducer = (state = initialState, action) => {
         signupError: null,
       };
     case SIGNUP_SUCCESS:
+      console.log('user reducer me: ', me);
       return {
         ...state,
         signupLoading: false,
