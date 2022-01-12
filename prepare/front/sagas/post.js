@@ -23,7 +23,7 @@ function* loadPosts(action) {
     yield delay(1000);
     yield put({
       type: LOAD_POSTS_SUCCESS,
-      // data: action.data,
+      data: action.data,
     });
   } catch (err) {
     yield put({

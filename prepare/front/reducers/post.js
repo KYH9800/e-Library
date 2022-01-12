@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loadPostsLoading: false,
         loadPostsDone: true,
-        mainPosts: state.mainPosts, // state.mainPosts.concat(action,data),
+        mainPosts: action.data !== undefined ? state.mainPosts.concat(action.data) : state.mainPosts,
         hasMorePosts: state.mainPosts.length < 50 ? true : false,
       };
     case LOAD_POSTS_FAILURE:

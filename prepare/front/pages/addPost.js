@@ -43,13 +43,13 @@ const AddPost = () => {
     }
   });
 
-  const onClickImageUpload = useCallback(
-    (e) => {
-      imageInput.current.click();
-      console.log(e);
-    },
-    [imageInput.current],
-  );
+  // const onClickImageUpload = useCallback(
+  //   (e) => {
+  //     imageInput.current.click();
+  //     console.log(e);
+  //   },
+  //   [imageInput.current],
+  // );
 
   const onSubmit = useCallback(
     (e) => {
