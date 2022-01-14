@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 // LoginSignupMenu
 export const MainWrapper = styled.div`
-  user-select: none;
   h1 {
+    user-select: none;
     text-align: center;
     margin: 50px;
     font-size: 35px;
@@ -53,28 +53,22 @@ export const CreactPostBtn = styled.div`
 `;
 export const PostWrapper = styled.div`
   margin: 15px 0px 150px 0px;
-  p {
+  h3 {
+    font-size: 13px;
     text-align: center;
     color: #fb6363;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #525252;
     padding: 22px 0px 22px 0px;
     margin: 10px 0px 10px 0px;
     background-color: #303030;
   }
   div {
-    background-color: #222222;
-    padding: 20px 200px 20px 5px;
+    padding: 16px 0px 7px 5px;
     display: flex;
-    border-bottom: 1px solid #525252;
-  }
-  div:hover {
-    background-color: #2e2e2e;
-  }
-  div:active {
-    background-color: #3c3c3c;
   }
   ul {
-    margin: 0px 0px 0px 20px; /* auto */
+    display: inline-flex;
+    margin: 0px 0px 0px 15px; /* auto */
     list-style: none;
     padding-left: 0px;
     margin-bottom: 0px;
@@ -86,12 +80,58 @@ export const PostWrapper = styled.div`
     color: #d3d3d3;
   }
 `;
+
+export const UpdateBtn = styled.button`
+  color: #c0c0ff;
+  margin: 10px 5px 10px 5px;
+  background-color: #535353;
+  width: 100px;
+  height: 30px;
+  border: 1px solid #707070;
+  font-size: 15px;
+  float: right;
+  :hover {
+    background-color: #2e2e2e;
+  }
+  :active {
+    background-color: #3c3c3c;
+  }
+`;
+
+export const DeleteBtn = styled.button`
+  color: #ff3e3e;
+  margin: 10px 5px 10px 5px;
+  background-color: #535353;
+  width: 100px;
+  height: 30px;
+  border: 1px solid #707070;
+  font-size: 15px;
+  float: right;
+  :hover {
+    background-color: #2e2e2e;
+  }
+  :active {
+    background-color: #3c3c3c;
+  }
+`;
+
+export const ListWrapper = styled.div`
+  border-bottom: 1px solid #525252;
+  display: inline-flex;
+  background-color: #222222;
+  :hover {
+    background-color: #2e2e2e;
+  }
+  :active {
+    background-color: #3c3c3c;
+  }
+`;
 export const Num = styled.span`
   width: 55px;
   text-align: left;
 `;
 export const Title = styled.span`
-  width: 675px;
+  width: 645px;
   text-align: left;
   display: flex;
   span {

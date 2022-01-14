@@ -10,7 +10,7 @@ export const generateDuumyPost = (number) =>
       content: '게시글 01',
       title: '제목입니다.',
       count: 0,
-      kategory: categories[Math.floor(Math.random() * 4)],
+      category: categories[Math.floor(Math.random() * 4)],
       User: {
         id: shortId.generate(),
         nickname: shortId.generate(),

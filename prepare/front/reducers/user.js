@@ -30,6 +30,9 @@ export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
 export const CHANGE_NICKNAME = 'CHANGE_NICKNAME';
 
+export const ADD_POST_TO_ME = 'ADD_POST_TO_ME';
+export const REMOVE_POST_OF_ME = 'REMOVE_POST_OF_ME';
+
 export const loginAction = (data) => {
   console.log('loginAction data: ', data);
   return {
@@ -118,6 +121,22 @@ const reducer = (state = initialState, action) => {
         me: {
           ...state.me,
           nickname: action.data,
+        },
+      };
+    case ADD_POST_TO_ME:
+      return {
+        ...state,
+        me: {
+          ...state.me,
+          Posts: [{ id: action.data }, ...state.me.Posts],
+        },
+      };
+    case REMOVE_POST_OF_ME:
+      return {
+        ...state,
+        me: {
+          ...state.me,
+          Posts: state.me.Posts.filter((v) => v.id !== action.data),
         },
       };
     default:

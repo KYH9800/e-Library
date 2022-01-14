@@ -44,7 +44,7 @@ export const LoginSignupMenu = styled.div`
 `;
 // nav wrapper
 export const NavWrapper = styled.div`
-  background-color: rgba(46, 49, 51, 0.3);
+  background-color: rgb(46 49 51 / 81%);
   height: 90px;
   user-select: none;
   h1 {

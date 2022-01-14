@@ -1,19 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import Router from 'next/router';
 import Link from 'next/link';
 
-import { MainWrapper, Nav, CreactPostBtn, PostWrapper, Num, Title, Count, Id } from '../style/communitySt';
+import {
+  MainWrapper,
+  Nav,
+  CreactPostBtn,
+  PostWrapper,
+  ListWrapper,
+  UpdateBtn,
+  DeleteBtn,
+  Num,
+  Title,
+  Count,
+  Id,
+} from '../style/communitySt';
 import AppLayout from '../components/AppLayout';
 
-import { LOAD_POSTS_REQUEST } from '../reducers/post';
+import { LOAD_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../reducers/post';
 
 const Community = () => {
   const dispatch = useDispatch();
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
   const { me } = useSelector((state) => state.user);
   console.log('LOAD_POSTS_REQUEST_MainPosts: ', mainPosts);
+
+  const id = me?.id;
 
   useEffect(() => {
     dispatch({
@@ -49,6 +63,17 @@ const Community = () => {
       Router.push('/login');
     }
   };
+
+  const onRemovePost = useCallback(
+    (post) => () => {
+      console.log('postId: ', post.id);
+      dispatch({
+        type: REMOVE_POST_REQUEST,
+        data: post.id,
+      });
+    },
+    [],
+  );
 
   return (
     <AppLayout>
@@ -92,13 +117,13 @@ const Community = () => {
           </div>
         </CreactPostBtn>
         <PostWrapper>
-          {mainPosts.length === 0 && <p>존재하는 게시글이 없습니다.</p>}
+          {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
           {mainPosts.map((data, index) => {
             return (
-              <>
-                <a>
-                  <div>
-                    <ul>
+              <ListWrapper>
+                <div>
+                  <ul>
+                    <Link href={`communityPost/${data.id}`}>
                       <li>
                         <Num>{index + 1}</Num>
                         <Title>
@@ -107,10 +132,16 @@ const Community = () => {
                         <Count>조회수: {data.count}</Count>
                         <Id>작성자: {data.User.nickname}</Id>
                       </li>
-                    </ul>
-                  </div>
-                </a>
-              </>
+                    </Link>
+                  </ul>
+                </div>
+                {id && data.User.id === id ? (
+                  <>
+                    <UpdateBtn>수정</UpdateBtn>
+                    <DeleteBtn onClick={onRemovePost(data)}>삭제</DeleteBtn>
+                  </>
+                ) : null}
+              </ListWrapper>
             );
           })}
         </PostWrapper>
