@@ -1,11 +1,33 @@
 const express = require('express');
-const app = express();
+const server = express();
 
-app.get('/', (req, res) => {
+const postRouter = require('./routes/post');
+const userRouter = require('./routes/user');
+
+const db = require('./models').sequelize;
+
+db.sync()
+  .then(() => {
+    console.log('db 연결 성공');
+  })
+  .catch(console.error);
+
+db.sync({
+  alter: true,
+}); // sequelize model sync() 수정하기
+
+// front에서 받아온 data를 req.body안으로 넣어준다, json 형식으로
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
+server.get('/', (req, res) => {
   res.send('hello express in e도서관');
 });
 
-app.listen(3065, () => {
+server.use('/post', postRouter);
+server.use('/user', userRouter);
+
+server.listen(3065, () => {
   console.log('서버를 실행중입니다.');
 });
 

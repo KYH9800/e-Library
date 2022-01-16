@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 import Router from 'next/router';
 
@@ -19,7 +19,7 @@ const Signup = () => {
   const [password, onChangePassword] = useInput('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [passwordError, setPasswordError] = useState(false);
-  console.log(checkedInputs);
+  // console.log(checkedInputs);
 
   // 약관동의 절차
   const allCheckClick = useCallback((checked) => {
@@ -66,6 +66,7 @@ const Signup = () => {
       e.preventDefault();
       console.log(password, passwordCheck);
       if (password !== passwordCheck) {
+        alert('비밀번호가 일치하지 않습니다.');
         return setPasswordError(true);
       }
       console.log('server로 보낼 정보: ', email, nickname, password);

@@ -60,14 +60,15 @@ function* logout(action) {
   }
 }
 
-function signupAPI() {
-  return axios.post('/api/signup');
+function signupAPI(data) {
+  return axios.post('/user', data);
 }
 
 function* signup(action) {
   try {
-    // const result = yield call(signupAPI);
-    yield delay(1000);
+    const result = yield call(signupAPI, action.data);
+    console.log('signup: ', result);
+    // yield delay(1000);
     yield put({
       type: SIGNUP_SUCCESS,
     });
