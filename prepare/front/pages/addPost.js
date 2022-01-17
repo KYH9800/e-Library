@@ -40,7 +40,7 @@ const AddPost = () => {
       Router.push('/community');
       console.log('me in addPostPage: ', me);
     }
-  });
+  }, [me]);
 
   // const onClickImageUpload = useCallback(
   //   (e) => {
@@ -66,8 +66,8 @@ const AddPost = () => {
             category,
             content,
           }),
-        );
-        Router.push('/community');
+        ); //* reducer에서 data를 넘긴 뒤 database에 게시글 정보를 넣어준다
+        Router.push('/community'); //* addPost가 성공 시 cummunity 페이지로 이동하기
       }
     },
     [title, category, content],

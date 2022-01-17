@@ -126,12 +126,51 @@ export const ListWrapper = styled.div`
     background-color: #3c3c3c;
   }
 `;
+
+export const ChatWrapper = styled.div`
+  margin: 15px 0px 150px 0px;
+  h3 {
+    font-size: 13px;
+    text-align: center;
+    color: #fb6363;
+    border-bottom: 1px solid #525252;
+    padding: 22px 0px 22px 0px;
+    margin: 10px 0px 10px 0px;
+    background-color: #303030;
+  }
+  div {
+    padding: 16px 0px 6px 0px;
+    display: flex;
+  }
+  ul {
+    margin-left: 25px;
+  }
+  ul li {
+    user-select: none;
+    text-align: center;
+    display: flex;
+    color: #d3d3d3;
+  }
+`;
+
+export const ChatListWrapper = styled.div`
+  border-bottom: 1px solid #525252;
+  display: inline-flex;
+  background-color: #222222;
+  :hover {
+    background-color: #2e2e2e;
+  }
+  :active {
+    background-color: #3c3c3c;
+  }
+`;
+
 export const Num = styled.span`
   width: 55px;
   text-align: left;
 `;
 export const Title = styled.span`
-  width: 645px;
+  width: 595px;
   text-align: left;
   display: flex;
   span {
@@ -144,7 +183,8 @@ export const Count = styled.span`
   text-align: left;
 `;
 export const Id = styled.span`
-  width: 145px;
+  width: 165px;
+  margin-right: 15px;
   text-align: left;
 `;
 // margin: 0px 10px 0px 10px;

@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
 // sequelize는 내부적으로 mysql2라는 드라이버를 사용중 (node랑 mysql을 연결해주는 드라이버)
 const sequelize = new Sequelize(config.database, config.username, config.password, config); // node와 mysql 연결

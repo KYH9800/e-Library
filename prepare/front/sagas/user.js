@@ -15,38 +15,37 @@ import {
 } from '../reducers/user';
 
 function loginAPI(data) {
-  return axios.get('http://localhost:3000/user/user.json', data);
+  return axios.post('user/login', data);
 }
 
 function* login(action) {
   try {
     // api 통신할때는 call
-    // const result = yield call(loginAPI, action.data);
-    // console.log(result);
-    yield delay(1000);
-    // 아래와 같이 api 결과를 핸들링하여 dispatch 가능
+    const result = yield call(loginAPI, action.data);
+    console.log('user-saga-login-result: ', result);
+    // yield delay(1000);
     yield put({
       type: LOGIN_SUCCESS,
-      data: action.data,
+      data: result.data,
     });
   } catch (err) {
     yield put({
       type: LOGIN_FAILURE,
-      data: err.response.data,
+      error: err.response.data,
     });
   }
 }
 
-function logoutAPI(data) {
-  return axios.post('http://localhost:3000/user/user.json', data);
+function logoutAPI() {
+  return axios.post('user/logout');
 }
 
 function* logout(action) {
   try {
     // api 통신할때는 call
-    // const result = yield call(logoutAPI, action.data);
-    // console.log(result);
-    yield delay(1000);
+    const result = yield call(logoutAPI);
+    console.log(result);
+    // yield delay(1000);
     // 아래와 같이 api 결과를 핸들링하여 dispatch 가능
     yield put({
       type: LOGOUT_SUCCESS,
@@ -55,7 +54,7 @@ function* logout(action) {
   } catch (err) {
     yield put({
       type: LOGOUT_FAILURE,
-      data: err.response.data,
+      error: err.response.data,
     });
   }
 }
@@ -76,7 +75,7 @@ function* signup(action) {
     yield put({
       type: SIGNUP_FAILURE,
       error: err.response.data,
-    });
+    }); // 400, 500
   }
 }
 

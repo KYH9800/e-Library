@@ -1,7 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { MainWrapper, CreactPostBtn, PostWrapper, Num, Title, Count } from '../style/communitySt';
+import {
+  MainWrapper,
+  CreactPostBtn,
+  ChatWrapper,
+  ChatListWrapper,
+  Num,
+  Title,
+  LimitCount,
+  NowCount,
+  Null,
+} from '../style/chatRoomSt';
 
 import AppLayout from '../components/AppLayout';
 
@@ -82,25 +92,25 @@ const Community = () => {
             <button>대화방 만들기</button>
           </div>
         </CreactPostBtn>
-        <PostWrapper>
+        <ChatWrapper>
+          {dummyChatPosts.length === 0 && <Null>진행중인 대화방이 없습니다.</Null>}
           {dummyChatPosts.map((post, index) => {
             return (
-              <a>
+              <ChatListWrapper>
                 <div>
                   <ul>
                     <li>
                       <Num>{index + 1}</Num>
                       <Title>{post.title}</Title>
-                      <Count>
-                        인원 {post.limit} / {post.now} 명
-                      </Count>
+                      <LimitCount>제한 인원: {post.limit} 명</LimitCount>
+                      <NowCount>현재 인원: {post.now} 명</NowCount>
                     </li>
                   </ul>
                 </div>
-              </a>
+              </ChatListWrapper>
             );
           })}
-        </PostWrapper>
+        </ChatWrapper>
       </MainWrapper>
     </AppLayout>
   );

@@ -13,10 +13,16 @@ import { loginAction } from '../reducers/user';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { me } = useSelector((state) => state.user);
+  const { me, loginError } = useSelector((state) => state.user);
 
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
+
+  useEffect(() => {
+    if (loginError) {
+      alert(loginError);
+    }
+  }, [loginError]);
 
   useEffect(() => {
     if (me) {
@@ -44,7 +50,7 @@ const Login = () => {
           <h2>e도서관 이용을 위해 로그인을 해주세요</h2>
           <EmailInputTag>
             <label htmlFor="user-email">아이디</label>
-            <input type="email" required value={email} onChange={onChangeEmail} />
+            <input type="email" name="user-email" required value={email} onChange={onChangeEmail} />
           </EmailInputTag>
           <PasswordInputTag>
             <label htmlFor="password">비밀번호</label>

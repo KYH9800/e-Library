@@ -118,27 +118,27 @@ const Community = () => {
         </CreactPostBtn>
         <PostWrapper>
           {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
-          {mainPosts.map((data, index) => {
+          {mainPosts.map((post, index) => {
             return (
               <ListWrapper>
                 <div>
                   <ul>
-                    <Link href={`communityPost/${data.id}`}>
+                    <Link href={`communityPost/${post.id}`}>
                       <li>
                         <Num>{index + 1}</Num>
                         <Title>
-                          <span>[{data.category}]</span> <p>{data.title}</p>
+                          <span>[{post.category}]</span> <p>{post.title}</p>
                         </Title>
-                        <Count>조회수: {data.count}</Count>
-                        <Id>작성자: {data.User.nickname}</Id>
+                        <Count>조회수: {post.count}</Count>
+                        <Id>작성자: {post.User.nickname}</Id>
                       </li>
                     </Link>
                   </ul>
                 </div>
-                {id && data.User.id === id ? (
+                {id && post.User.id === id ? (
                   <>
                     <UpdateBtn>수정</UpdateBtn>
-                    <DeleteBtn onClick={onRemovePost(data)}>삭제</DeleteBtn>
+                    <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
                   </>
                 ) : null}
               </ListWrapper>

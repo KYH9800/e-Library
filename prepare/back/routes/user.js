@@ -1,16 +1,68 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const bcrypt = require('bcrypt');
+const passport = require('passport');
 
-// POST /user/
-router.post('/', async (req, res) => {
+const { User } = require('../models');
+const { Post } = require('../models');
+
+// POST /user/login, 로그인
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, clientError) => {
+    if (err) {
+      console.error(err);
+      return next(err);
+    }
+    if (clientError) {
+      return res.status(401).send(clientError.reason); // 401: 허가되지 않은
+    }
+    return req.login(user, async (loginErr) => {
+      if (loginErr) {
+        console.error(loginErr);
+        return next(loginErr);
+      }
+      // todo: 로그인 시 가져올 정보들을 선별하자
+      const fullUserInfoWithoutPassword = await User.findOne({
+        where: { id: user.id },
+        attributes: {
+          exclude: ['password'], // attributes -> exclude: pw 빼고 다 가져오겠다
+        },
+        include: [
+          {
+            model: Post, // hasMany라서 model: Post가 복수형이 되어 me.Posts가 된다
+            attributes: ['id'], // id만 가져오겠다
+          },
+        ],
+      });
+      return res.status(200).json(fullUserInfoWithoutPassword);
+    });
+  })(req, res, next);
+});
+
+// POST /user/logout
+router.post('/logout', (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.send('logout ok');
+});
+
+// POST /user/, 회원가입
+router.post('/', async (req, res, next) => {
   try {
     // 중복확인
-    // todo
+    const alreadyUserId = await User.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+    if (alreadyUserId) {
+      return res.status(403).send('이미 사용중인 계정입니다.');
+    }
     // User table에 가입 정보 생성
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
     await User.create({
       email: req.body.email,
       nickname: req.body.nickname,
-      password: req.body.password, // 비밀번호를 그대로 받아오면 보안에 위협, 라이브러리를 통한 보안 장치 장착
+      password: hashedPassword, // 비밀번호를 그대로 받아오면 보안에 위협, 라이브러리를 통한 보안 장치 장착
     });
     res.status(201).send('signup OK');
   } catch (err) {

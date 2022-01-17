@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import Router from 'next/router';
 
@@ -19,7 +19,21 @@ const Signup = () => {
   const [password, onChangePassword] = useInput('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [passwordError, setPasswordError] = useState(false);
+
+  const { signupDone, signupError } = useSelector((state) => state.user);
   // console.log(checkedInputs);
+
+  useEffect(() => {
+    if (signupDone) {
+      Router.push('/');
+    }
+  }, [signupDone]);
+
+  useEffect(() => {
+    if (signupError) {
+      alert(signupError);
+    }
+  }, [signupError]);
 
   // 약관동의 절차
   const allCheckClick = useCallback((checked) => {
@@ -74,9 +88,6 @@ const Signup = () => {
         type: SIGNUP_REQUEST,
         data: { email, nickname, password, passwordCheck },
       });
-      setTimeout(() => {
-        Router.push('/');
-      }, 1000);
     },
     [email, nickname, password, passwordCheck],
   );

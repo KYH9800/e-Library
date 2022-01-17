@@ -2,7 +2,6 @@ import { dummyUser } from '../public/user/user';
 
 // 초기 state
 export const initialState = {
-  // isLogedin: false, // fake
   loginLoading: false,
   loginDone: false,
   loginError: null,
@@ -41,10 +40,9 @@ export const loginAction = (data) => {
   };
 };
 
-export const logoutAction = (data) => {
+export const logoutAction = () => {
   return {
     type: LOGOUT_REQUEST,
-    data,
   };
 };
 
@@ -63,14 +61,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         loginLoading: false,
         loginDone: true,
-        me: dummyUser(action.data),
-        // isLogedin: true,
+        me: action.data,
       };
     case LOGIN_FAILURE:
       return {
         ...state,
         loginLoading: false,
-        loginError: action.arror,
+        loginError: action.error,
       };
     case LOGOUT_REQUEST:
       return {
@@ -85,7 +82,7 @@ const reducer = (state = initialState, action) => {
         logoutLoading: false,
         logoutDone: true,
         loginDone: false,
-        me: action.data,
+        me: null,
       };
     case LOGOUT_FAILURE:
       return {
@@ -111,7 +108,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         signupLoading: false,
-        signupError: action.arror,
+        signupError: action.error,
       };
     case CHANGE_NICKNAME:
       return {

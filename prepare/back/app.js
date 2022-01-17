@@ -1,10 +1,18 @@
 const express = require('express');
 const server = express();
 
+const cors = require('cors');
+
+const session = require('express-session');
+const passport = require('passport');
+const cookieparser = require('cookie-parser');
+require('dotenv').config(); // dotenv
+
 const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
 
 const db = require('./models').sequelize;
+const passportConfig = require('./passport');
 
 db.sync()
   .then(() => {
@@ -16,16 +24,30 @@ db.sync({
   alter: true,
 }); // sequelize model sync() 수정하기
 
+passportConfig();
+
+server.use(
+  cors({
+    origin: '*',
+    credentials: true,
+  })
+);
+
 // front에서 받아온 data를 req.body안으로 넣어준다, json 형식으로
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+
+server.use(cookieparser(process.env.COOKIE_SECRET));
+server.use(session({ secret: process.env.COOKIE_SECRET, resave: false, saveUninitialized: false })); // 세션 활성화
+server.use(passport.initialize()); // passport 구동
+server.use(passport.session()); // 세션 연결
 
 server.get('/', (req, res) => {
   res.send('hello express in e도서관');
 });
 
-server.use('/post', postRouter);
 server.use('/user', userRouter);
+server.use('/post', postRouter);
 
 server.listen(3065, () => {
   console.log('서버를 실행중입니다.');
