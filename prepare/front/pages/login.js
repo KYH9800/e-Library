@@ -9,7 +9,7 @@ import { Box, EmailInputTag, PasswordInputTag, CheckSaveId, ButtonRapper } from 
 import AppLayout from '../components/AppLayout';
 import useInput from '../hooks/useInput';
 
-import { loginAction } from '../reducers/user';
+import { loginAction, LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,6 +17,12 @@ const Login = () => {
 
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, []);
 
   useEffect(() => {
     if (loginError) {

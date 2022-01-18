@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 
 import { Wrapper, Introduce, BoaderBox, BoardListWrapper, ListBox } from '../style/indexSt';
 
 import AppLayout from '../components/AppLayout';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const Home = () => {
+  const dispatch = useDispatch();
+
   const quotes = [
     '추천도서1',
     '추천도서2',
@@ -42,6 +46,13 @@ const Home = () => {
     '카테고리 모임9',
     '카테고리 모임10',
   ];
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, []);
+
   return (
     <AppLayout>
       <Head>

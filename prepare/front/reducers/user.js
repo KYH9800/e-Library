@@ -5,6 +5,9 @@ export const initialState = {
   loginLoading: false,
   loginDone: false,
   loginError: null,
+  loadMyInfoLoading: false,
+  loadMyInfoDone: false,
+  loadMyInfoError: null,
   logoutLoading: false,
   logoutDone: false,
   logoutError: null,
@@ -18,6 +21,10 @@ export const initialState = {
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+export const LOAD_MY_INFO_REQUEST = 'LOAD_MY_INFO_REQUEST';
+export const LOAD_MY_INFO_SUCCESS = 'LOAD_MY_INFO_SUCCESS';
+export const LOAD_MY_INFO_FAILURE = 'LOAD_MY_INFO_FAILURE';
 
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
@@ -68,6 +75,26 @@ const reducer = (state = initialState, action) => {
         ...state,
         loginLoading: false,
         loginError: action.error,
+      };
+    case LOAD_MY_INFO_REQUEST:
+      return {
+        ...state,
+        loadMyInfoLoading: true,
+        loadMyInfoDone: false,
+        loadMyInfoError: null,
+      };
+    case LOAD_MY_INFO_SUCCESS:
+      return {
+        ...state,
+        loadMyInfoLoading: false,
+        loadMyInfoDone: true,
+        me: action.data,
+      };
+    case LOAD_MY_INFO_FAILURE:
+      return {
+        ...state,
+        loadMyInfoLoading: false,
+        loadMyInfoError: action.error,
       };
     case LOGOUT_REQUEST:
       return {

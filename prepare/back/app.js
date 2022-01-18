@@ -28,7 +28,7 @@ passportConfig();
 
 server.use(
   cors({
-    origin: '*',
+    origin: 'http://localhost:3000',
     credentials: true,
   })
 );
@@ -48,7 +48,7 @@ server.get('/', (req, res) => {
 
 server.use('/user', userRouter);
 server.use('/post', postRouter);
-
+/* 이 사이에 보이지 않는 error 처리 미들웨어가 존재 */
 server.listen(3065, () => {
   console.log('서버를 실행중입니다.');
 });

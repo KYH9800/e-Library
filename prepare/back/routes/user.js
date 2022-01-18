@@ -2,11 +2,32 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
+const { isLoggedIn, isNotLoggedIn } = require('./middleware');
+
 const { User } = require('../models');
 const { Post } = require('../models');
 
+// GET /user
+router.get('/', async (req, res, next) => {
+  try {
+    if (req.user) {
+      const user = await User.findOne({
+        where: {
+          id: req.user.id,
+        },
+      });
+      res.status(200).json(user);
+    } else {
+      res.status(200).json(null);
+    }
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
 // POST /user/login, 로그인
-router.post('/login', (req, res, next) => {
+router.post('/login', isNotLoggedIn, (req, res, next) => {
   passport.authenticate('local', (err, user, clientError) => {
     if (err) {
       console.error(err);
@@ -20,7 +41,7 @@ router.post('/login', (req, res, next) => {
         console.error(loginErr);
         return next(loginErr);
       }
-      // todo: 로그인 시 가져올 정보들을 선별하자
+      // 로그인 시 가져올 정보들을 선별하자
       const fullUserInfoWithoutPassword = await User.findOne({
         where: { id: user.id },
         attributes: {
@@ -39,14 +60,14 @@ router.post('/login', (req, res, next) => {
 });
 
 // POST /user/logout
-router.post('/logout', (req, res) => {
+router.post('/logout', isLoggedIn, (req, res) => {
   req.logout();
   req.session.destroy();
   res.send('logout ok');
 });
 
 // POST /user/, 회원가입
-router.post('/', async (req, res, next) => {
+router.post('/', isNotLoggedIn, async (req, res, next) => {
   try {
     // 중복확인
     const alreadyUserId = await User.findOne({

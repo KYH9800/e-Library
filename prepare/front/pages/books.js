@@ -1,9 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 
 import { Category, SearchingCategory, PostsCard, Post } from '../style/booksSt';
 
 import AppLayout from '../components/AppLayout';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 // dummyData
 const categories = [
@@ -114,7 +116,14 @@ const bookImages = [
 ];
 
 const Books = () => {
+  const dispatch = useDispatch();
   const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, []);
 
   const onChangeSearch = useCallback((e) => {
     setSearch(e.target.value);

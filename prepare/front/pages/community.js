@@ -20,6 +20,7 @@ import {
 import AppLayout from '../components/AppLayout';
 
 import { LOAD_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../reducers/post';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const Community = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ const Community = () => {
   const id = me?.id;
 
   useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
     dispatch({
       type: LOAD_POSTS_REQUEST,
     });

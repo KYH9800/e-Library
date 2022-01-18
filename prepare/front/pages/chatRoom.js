@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 
 import {
@@ -14,6 +15,7 @@ import {
 } from '../style/chatRoomSt';
 
 import AppLayout from '../components/AppLayout';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 // dummyPosts
 const dummyChatPosts = [
@@ -80,6 +82,14 @@ const dummyChatPosts = [
 ];
 
 const Community = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, []);
+
   return (
     <AppLayout>
       <Head>

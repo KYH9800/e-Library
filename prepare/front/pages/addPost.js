@@ -18,15 +18,28 @@ import AppLayout from '../components/AppLayout';
 import useInput from '../hooks/useInput';
 
 import { addPost } from '../reducers/post';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const AddPost = () => {
   const dispatch = useDispatch();
-  const { me } = useSelector((state) => state.user);
+  const { me, loadMyInfoDone } = useSelector((state) => state.user);
   const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
 
   const [title, onChangeTitle] = useInput('');
   const [category, setCategory] = useState();
   const [content, onChangeContent] = useInput('');
+
+  useEffect(() => {
+    dispatch({
+      type: LOAD_MY_INFO_REQUEST,
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!me) {
+      Router.push('/community');
+    }
+  }, [me]);
 
   const handleChange = useCallback(
     (value) => {
@@ -34,13 +47,6 @@ const AddPost = () => {
     },
     [category],
   );
-
-  useEffect(() => {
-    if (!me) {
-      Router.push('/community');
-      console.log('me in addPostPage: ', me);
-    }
-  }, [me]);
 
   // const onClickImageUpload = useCallback(
   //   (e) => {
