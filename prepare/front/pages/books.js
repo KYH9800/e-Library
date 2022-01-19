@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Head from 'next/head';
+import { wrapper } from '../store/configureStore';
+import { END } from 'redux-saga';
+import axios from 'axios';
 
 import { Category, SearchingCategory, PostsCard, Post } from '../style/booksSt';
 
@@ -119,12 +122,6 @@ const Books = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-  }, []);
-
   const onChangeSearch = useCallback((e) => {
     setSearch(e.target.value);
   }, []);
@@ -173,5 +170,19 @@ const Books = () => {
     </AppLayout>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+  // console.log('getServerSideProps req: ', req);
+  const cookie = req ? req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+  if (req && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch(END);
+  await store.sagaTask.toPromise();
+});
 
 export default Books;

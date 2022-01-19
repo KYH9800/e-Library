@@ -6,18 +6,18 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import { wrapper } from '../store/configureStore';
 
-const KStyle = ({ Component }) => (
+const ELibrary = ({ Component }) => (
   <>
     <Head>
       <meta charSet="utf-8" />
-      <title>K-Style</title>
+      <title>e도서관</title>
     </Head>
     <Component />
   </>
 );
 
-KStyle.propTypes = {
+ELibrary.propTypes = {
   Component: PropTypes.func.isRequired,
 };
 
-export default wrapper.withRedux(KStyle);
+export default wrapper.withRedux(ELibrary);

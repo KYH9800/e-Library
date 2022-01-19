@@ -2,6 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import Router from 'next/router';
+import { wrapper } from '../store/configureStore';
+import { END } from 'redux-saga';
+import axios from 'axios';
 
 import {
   Header,
@@ -22,7 +25,7 @@ import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const AddPost = () => {
   const dispatch = useDispatch();
-  const { me, loadMyInfoDone } = useSelector((state) => state.user);
+  const { me, loginDone } = useSelector((state) => state.user);
   const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
 
   const [title, onChangeTitle] = useInput('');
@@ -30,16 +33,10 @@ const AddPost = () => {
   const [content, onChangeContent] = useInput('');
 
   useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!me) {
+    if (loginDone) {
       Router.push('/community');
     }
-  }, [me]);
+  }, [loginDone]);
 
   const handleChange = useCallback(
     (value) => {
@@ -121,5 +118,19 @@ const AddPost = () => {
     </AppLayout>
   );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+  // console.log('getServerSideProps req: ', req);
+  const cookie = req ? req.headers.cookie : '';
+  axios.defaults.headers.Cookie = '';
+  if (req && cookie) {
+    axios.defaults.headers.Cookie = cookie;
+  }
+  store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch(END);
+  await store.sagaTask.toPromise();
+});
 
 export default AddPost;
