@@ -40,7 +40,7 @@ function* login(action) {
 }
 
 function loadMyInfoAPI() {
-  return axios.get('/user');
+  return axios.get('/user'); // http://localhost:3065/user
 }
 
 function* loadMyInfo(action) {

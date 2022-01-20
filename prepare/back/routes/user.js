@@ -9,6 +9,8 @@ const { Post } = require('../models');
 
 // GET /user
 router.get('/', async (req, res, next) => {
+  console.log('req.headers: ', req.headers);
+  console.log('req.user: ', req.user);
   try {
     if (req.user) {
       const user = await User.findOne({

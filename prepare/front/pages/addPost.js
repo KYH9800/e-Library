@@ -33,7 +33,7 @@ const AddPost = () => {
   const [content, onChangeContent] = useInput('');
 
   useEffect(() => {
-    if (loginDone) {
+    if (!loginDone) {
       Router.push('/community');
     }
   }, [loginDone]);

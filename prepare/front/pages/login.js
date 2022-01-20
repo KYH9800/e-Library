@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import Head from 'next/head';
 import Router from 'next/router';
+import { END } from 'redux-saga';
+import axios from 'axios';
+import { wrapper } from '../store/configureStore';
 
 import { Box, EmailInputTag, PasswordInputTag, CheckSaveId, ButtonRapper } from '../style/loginSt';
 
@@ -18,11 +21,11 @@ const Login = () => {
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
 
-  useEffect(() => {
-    dispatch({
-      type: LOAD_MY_INFO_REQUEST,
-    });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  // }, []);
 
   useEffect(() => {
     if (loginError) {
@@ -84,5 +87,21 @@ const Login = () => {
     </AppLayout>
   );
 };
+
+// getServerSideProps: 브라우저는 개입 못함, 순전히 Front Server에서 실해됨
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+  console.log('getServerSideProps req: ', req);
+  const cookie = req ? req.headers.cookie : '';
+  axios.defaults.headers.Cookie = ''; // 서버에서 다른 사람과 cookie가 공유되는 문제를 방지하고자 초기화를 해준다.
+  if (req && cookie) {
+    axios.defaults.headers.Cookie = cookie; // 서버에서 요청일때랑 cookie가 있으면 설정한 cookie를 넣어준다.
+  }
+  store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch(END);
+  console.log('getServerSideProps end');
+  await store.sagaTask.toPromise();
+});
 
 export default Login;

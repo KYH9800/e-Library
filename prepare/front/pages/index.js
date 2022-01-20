@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Head from 'next/head';
 import { END } from 'redux-saga';
-import axios from 'axios';
 import { wrapper } from '../store/configureStore';
+import axios from 'axios';
+import Head from 'next/head';
 
 import { Wrapper, Introduce, BoaderBox, BoardListWrapper, ListBox } from '../style/indexSt';
 
@@ -50,6 +50,12 @@ const Home = () => {
     '카테고리 모임9',
     '카테고리 모임10',
   ];
+
+  // useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  // }, []);
 
   return (
     <AppLayout>
@@ -112,12 +118,15 @@ const Home = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-  console.log('getServerSideProps req: ', req);
+// getServerSideProps: 브라우저는 개입 못함, 순전히 Front Server에서 실해됨
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, res, ...ets }) => {
+  console.log('getServerSideProps req.headers: ', req.headers);
   const cookie = req ? req.headers.cookie : '';
-  axios.defaults.headers.Cookie = '';
+  console.log('cookie: ', cookie);
+  axios.defaults.headers.Cookie = ''; // 서버에서 다른 사람과 cookie가 공유되는 문제를 방지하고자 초기화를 해준다.
   if (req && cookie) {
-    axios.defaults.headers.Cookie = cookie;
+    axios.defaults.headers.Cookie = cookie; // 서버에서 요청일때랑 cookie가 있으면 설정한 cookie를 넣어준다.
+    console.log('axios.defaults.headers.Cookie: ', axios.defaults.headers.Cookie);
   }
   store.dispatch({
     type: LOAD_MY_INFO_REQUEST,
@@ -127,3 +136,14 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
 });
 
 export default Home;
+
+//! 1. 새로고침 시 action에 대한 요청을 END통해 기다리지를 못함, 서버에 request 요청이 안감
+//? 2. cookie는 있음 1번이 문제임 request에서 success까지 기다리지를 못함
+
+/*
+getServerSideProps에 찍은 콘솔은 프론트 서버에서 뜹니다.
+쿠키가 제대로 전달이 되었다면 HYDRATE 부분이 문제거나 next-redux-wrapper쪽 문제일 것 같은데요.
+에러 분석은 프론트서버에서 하셔야할 것 같고요.
+브라우저 콘솔 보시면 4. WrapperApp created... 이게 있는데 이게 프론트 서버 콘솔에도 찍혀있을 겁니다.
+여기서 1,2,3,4단계 모두 콘솔에 찍힐텐데 중간에 state가 사라지는 지점이 있을겁니다. 그걸 보셔야 합니다.
+*/
