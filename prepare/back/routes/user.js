@@ -63,6 +63,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
 
 // POST /user/logout
 router.post('/logout', isLoggedIn, (req, res) => {
+  console.log('req.headers.cookie: ', req.headers.cookie);
   req.logout();
   req.session.destroy();
   res.send('logout ok');

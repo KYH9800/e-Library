@@ -9,10 +9,10 @@ import { Wrapper, Introduce, BoaderBox, BoardListWrapper, ListBox } from '../sty
 
 import AppLayout from '../components/AppLayout';
 
-import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
+import { LOAD_MY_INFO_REQUEST, LOAD_MY_INFO_SUCCESS } from '../reducers/user';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const quotes = [
     '추천도서1',

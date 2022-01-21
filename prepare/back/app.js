@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const session = require('express-session');
 const passport = require('passport');
-const cookieparser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 require('dotenv').config(); // dotenv
 
 const postRouter = require('./routes/post');
@@ -37,7 +37,7 @@ server.use(
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
-server.use(cookieparser(process.env.COOKIE_SECRET));
+server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(session({ secret: process.env.COOKIE_SECRET, resave: false, saveUninitialized: false })); // 세션 활성화
 server.use(passport.initialize()); // passport 구동
 server.use(passport.session()); // 세션 연결

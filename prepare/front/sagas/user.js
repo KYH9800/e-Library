@@ -43,10 +43,10 @@ function loadMyInfoAPI() {
   return axios.get('/user'); // http://localhost:3065/user
 }
 
-function* loadMyInfo(action) {
+function* loadMyInfo() {
   try {
     // api 통신할때는 call
-    const result = yield call(loadMyInfoAPI, action.data);
+    const result = yield call(loadMyInfoAPI);
     // yield delay(1000);
     yield put({
       type: LOAD_MY_INFO_SUCCESS,

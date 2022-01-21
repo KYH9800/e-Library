@@ -7,8 +7,6 @@ import createSagaMiddleware from 'redux-saga';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
 
-const sagaMiddleware = createSagaMiddleware();
-
 const loggerMiddleware =
   ({ dispatch, getState }) =>
   (next) =>
@@ -18,6 +16,7 @@ const loggerMiddleware =
   };
 
 const configureStore = () => {
+  const sagaMiddleware = createSagaMiddleware();
   const enhancer =
     process.env.NODE_ENV === 'production'
       ? compose(applyMiddleware(sagaMiddleware))
@@ -27,4 +26,6 @@ const configureStore = () => {
   return store;
 };
 
-export const wrapper = createWrapper(configureStore, { debug: true }); // process.env.NODE_ENV === 'development',
+export const wrapper = createWrapper(configureStore, {
+  debug: process.env.NODE_ENV !== 'production',
+}); // process.env.NODE_ENV === 'development',
