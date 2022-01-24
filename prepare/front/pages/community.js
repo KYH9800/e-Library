@@ -128,7 +128,7 @@ const Community = () => {
               <ListWrapper>
                 <div>
                   <ul>
-                    <Link href={`communityPost/${post.id}`}>
+                    <Link href={`post/${post.id}`}>
                       <li>
                         <Num>{index + 1}</Num>
                         <Title>

@@ -7,8 +7,10 @@ const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 require('dotenv').config(); // dotenv
+const morgan = require('morgan');
 
 const postRouter = require('./routes/post');
+const postsRouter = require('./routes/posts');
 const userRouter = require('./routes/user');
 
 const db = require('./models').sequelize;
@@ -26,6 +28,7 @@ db.sync({
 
 passportConfig();
 
+server.use(morgan('dev')); // 프론트에서 백엔드로 어떤 요청을 보냈는가 확인
 server.use(
   cors({
     origin: 'http://localhost:3000',
@@ -46,8 +49,9 @@ server.get('/', (req, res) => {
   res.send('hello express in e도서관');
 });
 
-server.use('/user', userRouter);
+server.use('/posts', postsRouter);
 server.use('/post', postRouter);
+server.use('/user', userRouter);
 /* 이 사이에 보이지 않는 error 처리 미들웨어가 존재 */
 server.listen(3065, () => {
   console.log('서버를 실행중입니다.');

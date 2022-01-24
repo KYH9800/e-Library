@@ -83,7 +83,7 @@ const reducer = (state = initialState, action) =>
         console.log('reducer mainPosts: ', draft.mainPosts);
         draft.loadPostsLoading = false;
         draft.loadPostsDone = true;
-        draft.mainPosts = action.data !== undefined ? draft.mainPosts.concat(action.data) : draft.mainPosts;
+        draft.mainPosts = draft.mainPosts.concat(action.data);
         draft.hasMorePosts = draft.mainPosts.length < 20 ? true : false;
         break;
       case LOAD_POSTS_FAILURE:

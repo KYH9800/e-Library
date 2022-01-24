@@ -139,7 +139,8 @@ const reducer = (state = initialState, action) =>
         break;
       //* ADD_POST_TO_ME
       case ADD_POST_TO_ME:
-        console.log(action.data);
+        console.log('action.data: ', action.data);
+        console.log('draft.me: ', state.me);
         draft.me.Posts.unshift({ id: action.data });
         break;
       // state.me.Posts.concat({ id: action.data })

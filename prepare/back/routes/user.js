@@ -18,7 +18,19 @@ router.get('/', async (req, res, next) => {
           id: req.user.id,
         },
       });
-      res.status(200).json(user);
+      const fullUserWithoutPassword = await User.findOne({
+        where: { id: req.user.id },
+        attributes: {
+          exclude: ['password'], // 원하는 정보만 가져오거나 가져오지 않겠다 / 현재: pw 빼고 다 가져오겠다
+        },
+        include: [
+          {
+            model: Post,
+            attributes: ['id'],
+          },
+        ], // 가져올 정보중 뺄 것들
+      });
+      res.status(200).json(fullUserWithoutPassword);
     } else {
       res.status(200).json(null);
     }
