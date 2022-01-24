@@ -25,7 +25,7 @@ import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const AddPost = () => {
   const dispatch = useDispatch();
-  const { me } = useSelector((state) => state.user);
+  const { me, addPostError } = useSelector((state) => state.user);
   const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
 
   const [title, onChangeTitle] = useInput('');
@@ -63,10 +63,15 @@ const AddPost = () => {
       } else if (!content) {
         return alert('게시글을 작성하세요');
       }
+      // dispatch loadPostRequest
       dispatch({
         type: ADD_POST_REQUEST,
         data: { title, category, content },
-      }); //* reducer에서 data를 넘긴 뒤 database에 게시글 정보를 넣어준다
+      });
+      // error 없으면 community 목록으로 이동
+      if (!addPostError) {
+        Router.push('/community');
+      }
     },
     [title, category, content],
   );

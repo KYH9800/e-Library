@@ -30,15 +30,7 @@ const Community = () => {
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
   const { me } = useSelector((state) => state.user);
   console.log('LOAD_POSTS_REQUEST_MainPosts: ', mainPosts);
-
   const id = me?.id;
-
-  //! getServerSideProps
-  // useEffect(() => {
-  //   dispatch({
-  //     type: LOAD_POSTS_REQUEST,
-  //   });
-  // }, []);
 
   useEffect(() => {
     // comopnentDidMount()

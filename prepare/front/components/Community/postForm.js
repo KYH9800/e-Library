@@ -4,8 +4,7 @@ import Link from 'next/link';
 import { TextWrapper, ButtonWrapper } from '../style/postFormSt';
 
 const PostForm = ({ post }) => {
-  console.log('PostForm의 넘겨받은 Props: ', post);
-
+  // console.log('PostForm의 넘겨받은 Props: ', post);
   return (
     <>
       <TextWrapper>
