@@ -42,17 +42,17 @@ function* loadPosts(action) {
 }
 
 function loadPostAPI(data) {
-  return axios.get(`http://localhost:3000/post/singPost.json`);
+  return axios.get(`/post/${data}`);
 }
 
 function* loadPost(action) {
   try {
-    // const result = yield call(loadPostAPI, action.data);
-    // console.log('result', result);
-    yield delay(1000);
+    const result = yield call(loadPostAPI, action.data);
+    console.log('result', result);
+    // yield delay(1000);
     yield put({
       type: LOAD_POST_SUCCESS,
-      data: dummyPost,
+      data: result.data, // dummyPost
     });
   } catch (err) {
     yield put({
