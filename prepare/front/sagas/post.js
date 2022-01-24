@@ -88,17 +88,17 @@ function* addPost(action) {
 }
 
 function removePostAPI(data) {
-  return axios.post(`http://localhost:3000/post/dummyPost.js`, data);
+  return axios.delete(`/post/${data}`); // data: post.id
 }
 
 function* removePost(action) {
   try {
-    // const result = yield call(removePostAPI, action.data);
-    // console.log('result', result);
-    yield delay(1000);
+    const result = yield call(removePostAPI, action.data);
+    console.log('result', result);
+    // yield delay(1000);
     yield put({
       type: REMOVE_POST_SUCCESS,
-      data: action.data,
+      data: result.data,
     });
     yield put({
       type: REMOVE_POST_OF_ME,
