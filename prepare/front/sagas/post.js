@@ -75,7 +75,6 @@ function* addPost(action) {
     yield put({
       type: ADD_POST_SUCCESS,
       data: {
-        id,
         title: action.data.title,
         category: action.data.category,
         content: action.data.content,

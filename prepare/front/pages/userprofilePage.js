@@ -7,7 +7,7 @@ import { Wrapper, Box } from '../style/userprofilePageSt';
 
 import AppLayout from '../components/AppLayout';
 import useInput from '../hooks/useInput';
-import { logoutAction, CHANGE_NICKNAME } from '../reducers/user';
+import { logoutAction, CHANGE_NICKNAME_REQUEST } from '../reducers/user';
 
 const UserProfilePage = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const UserProfilePage = () => {
     (e) => {
       e.preventDefault();
       dispatch({
-        type: CHANGE_NICKNAME,
+        type: CHANGE_NICKNAME_REQUEST,
         data: nickname,
       });
       console.log('changeNickname: ', nickname);

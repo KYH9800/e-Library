@@ -25,7 +25,7 @@ import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const AddPost = () => {
   const dispatch = useDispatch();
-  const { me, loginDone } = useSelector((state) => state.user);
+  const { me } = useSelector((state) => state.user);
   const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
 
   const [title, onChangeTitle] = useInput('');
@@ -33,10 +33,10 @@ const AddPost = () => {
   const [content, onChangeContent] = useInput('');
 
   useEffect(() => {
-    if (!loginDone) {
+    if (!me) {
       Router.push('/community');
     }
-  }, [loginDone]);
+  }, [me]);
 
   const handleChange = useCallback(
     (value) => {

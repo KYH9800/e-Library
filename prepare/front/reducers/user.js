@@ -2,6 +2,9 @@ import { dummyUser } from '../public/user/user';
 
 // 초기 state
 export const initialState = {
+  changeNicknameLoading: false,
+  changeNicknameDone: false,
+  changeNicknameError: null,
   loginLoading: false,
   loginDone: false,
   loginError: null,
@@ -34,7 +37,9 @@ export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 
-export const CHANGE_NICKNAME = 'CHANGE_NICKNAME';
+export const CHANGE_NICKNAME_REQUEST = 'CHANGE_NICKNAME_REQUEST';
+export const CHANGE_NICKNAME_SUCCESS = 'CHANGE_NICKNAME_SUCCESS';
+export const CHANGE_NICKNAME_FAILURE = 'CHANGE_NICKNAME_FAILURE';
 
 export const ADD_POST_TO_ME = 'ADD_POST_TO_ME';
 export const REMOVE_POST_OF_ME = 'REMOVE_POST_OF_ME';
@@ -137,13 +142,28 @@ const reducer = (state = initialState, action) => {
         signupLoading: false,
         signupError: action.error,
       };
-    case CHANGE_NICKNAME:
+    case CHANGE_NICKNAME_REQUEST:
       return {
         ...state,
+        changeNicknameLoading: true,
+        changeNicknameDone: false,
+        changeNicknameError: null,
+      };
+    case CHANGE_NICKNAME_SUCCESS:
+      return {
+        ...state,
+        changeNicknameLoading: false,
+        changeNicknameDone: true,
         me: {
           ...state.me,
-          nickname: action.data,
+          nickname: action.data.nickname,
         },
+      };
+    case CHANGE_NICKNAME_FAILURE:
+      return {
+        ...state,
+        changeNicknameLoading: false,
+        changeNicknameError: action.error,
       };
     case ADD_POST_TO_ME:
       return {
