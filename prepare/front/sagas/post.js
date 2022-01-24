@@ -2,7 +2,7 @@
 import { generateDuumyPost } from '../public/post/generateDuumyPost';
 import { dummyPost } from '../public/post/singPost';
 import { all, fork, put, call, takeLatest, delay } from 'redux-saga/effects';
-import shortid from 'shortid';
+import axios from 'axios';
 
 import {
   LOAD_POSTS_REQUEST,
@@ -63,31 +63,26 @@ function* loadPost(action) {
 }
 
 function addPostAPI(data) {
-  return axios.post(`http://localhost:3000/post/dummyPost.js`, data);
+  return axios.post('/post', data);
+  // { title: data.title, category: data.category, content: data.content }
 }
 
 function* addPost(action) {
   try {
-    // const result = yield call(addPostAPI, action.data);
-    // console.log('result', result);
-    const id = shortid.generate();
-    yield delay(1000);
+    const result = yield call(addPostAPI, action.data);
+    // console.log('result', result.data.id);
     yield put({
       type: ADD_POST_SUCCESS,
-      data: {
-        title: action.data.title,
-        category: action.data.category,
-        content: action.data.content,
-      },
+      data: result.data,
     });
     yield put({
-      type: ADD_POST_TO_ME,
-      data: id,
+      type: ADD_POST_TO_ME, // 사용자 본인의 POST에 추가
+      data: result.data.id,
     });
   } catch (err) {
     yield put({
       type: ADD_POST_FAILURE,
-      data: err.response.data,
+      error: err.response.data,
     });
   }
 }

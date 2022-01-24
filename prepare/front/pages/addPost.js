@@ -20,7 +20,7 @@ import { Select } from 'antd';
 import AppLayout from '../components/AppLayout';
 import useInput from '../hooks/useInput';
 
-import { addPost } from '../reducers/post';
+import { ADD_POST_REQUEST } from '../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const AddPost = () => {
@@ -57,21 +57,16 @@ const AddPost = () => {
     (e) => {
       e.preventDefault();
       if (!title) {
-        alert('제목을 입력하세요');
+        return alert('제목을 입력하세요');
       } else if (!category) {
-        alert('카테고리를 설정하세요');
+        return alert('카테고리를 설정하세요');
       } else if (!content) {
-        alert('게시글을 작성하세요');
-      } else {
-        dispatch(
-          addPost({
-            title,
-            category,
-            content,
-          }),
-        ); //* reducer에서 data를 넘긴 뒤 database에 게시글 정보를 넣어준다
-        Router.push('/community'); //* addPost가 성공 시 cummunity 페이지로 이동하기
+        return alert('게시글을 작성하세요');
       }
+      dispatch({
+        type: ADD_POST_REQUEST,
+        data: { title, category, content },
+      }); //* reducer에서 data를 넘긴 뒤 database에 게시글 정보를 넣어준다
     },
     [title, category, content],
   );

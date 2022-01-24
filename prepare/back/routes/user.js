@@ -9,8 +9,8 @@ const { Post } = require('../models');
 
 // GET /user
 router.get('/', async (req, res, next) => {
-  console.log('req.headers: ', req.headers);
-  console.log('req.user: ', req.user);
+  // console.log('req.headers: ', req.headers);
+  // console.log('req.user: ', req.user);
   try {
     if (req.user) {
       const user = await User.findOne({
@@ -63,7 +63,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
 
 // POST /user/logout
 router.post('/logout', isLoggedIn, (req, res) => {
-  console.log('req.headers.cookie: ', req.headers.cookie);
+  // console.log('req.headers.cookie: ', req.headers.cookie);
   req.logout();
   req.session.destroy();
   res.send('logout ok');

@@ -1,5 +1,3 @@
-import shortid from 'shortid';
-
 const dummyPost = (data) => [
   {
     id: data.id,
@@ -15,6 +13,8 @@ const dummyPost = (data) => [
     Comments: [],
   },
 ];
+
+import produce from 'immer';
 
 // dummyPost
 export const initialState = {
@@ -53,103 +53,76 @@ export const REMOVE_POST_REQUEST = 'REMOVE_POST_REQUEST';
 export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS';
 export const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
 
-export const addPost = (data) => ({
-  type: ADD_POST_REQUEST,
-  data,
-});
-
 // reducer
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    // LOAD_POST
-    case LOAD_POST_REQUEST:
-      return {
-        ...state,
-        loadPostLoading: true,
-        loadPostDone: false,
-        loadPostError: null,
-      };
-    case LOAD_POST_SUCCESS:
-      console.log('LOAD_POST_SUCCESS: ', action.data);
-      return {
-        ...state,
-        loadPostLoading: false,
-        loadPostDone: true,
-        singlePost: action.data,
-      };
-    case LOAD_POST_FAILURE:
-      return {
-        ...state,
-        loadPostLoading: false,
-        loadPostError: action.error,
-      };
-    // LOAD_POSTS
-    case LOAD_POSTS_REQUEST:
-      return {
-        ...state,
-        loadPostsLoading: true,
-        loadPostsDone: false,
-        loadPostsError: null,
-      };
-    case LOAD_POSTS_SUCCESS:
-      console.log('reducer mainPosts: ', state.mainPosts);
-      return {
-        ...state,
-        loadPostsLoading: false,
-        loadPostsDone: true,
-        mainPosts: action.data !== undefined ? state.mainPosts.concat(action.data) : state.mainPosts,
-        hasMorePosts: state.mainPosts.length < 20 ? true : false,
-      };
-    case LOAD_POSTS_FAILURE:
-      return {
-        ...state,
-        loadPostsLoading: false,
-        loadPostsError: action.error,
-      };
-    // ADD_POST
-    case ADD_POST_REQUEST:
-      return {
-        ...state,
-        addPostLoading: true,
-        addPostDone: false,
-        addPostError: null,
-      };
-    case ADD_POST_SUCCESS:
-      return {
-        ...state,
-        addPostLoading: false,
-        addPostDone: true,
-        mainPosts: dummyPost(action.data).concat(state.mainPosts),
-      };
-    case ADD_POST_FAILURE:
-      return {
-        ...state,
-        addPostLoading: false,
-        addPostError: action.error,
-      };
-    case REMOVE_POST_REQUEST:
-      return {
-        ...state,
-        removePostLoading: true,
-        removePostDone: false,
-        removePostError: null,
-      };
-    case REMOVE_POST_SUCCESS:
-      return {
-        ...state,
-        removePostLoading: false,
-        removePostDone: true,
-        mainPosts: state.mainPosts.filter((v) => v.id !== action.data),
-      };
-    case REMOVE_POST_FAILURE:
-      return {
-        ...state,
-        removePostLoading: false,
-        removePostError: action.error,
-      };
-    default:
-      return state;
-  }
-};
+const reducer = (state = initialState, action) =>
+  produce(state, (draft) => {
+    switch (action.type) {
+      //* LOAD_POST
+      case LOAD_POST_REQUEST:
+        draft.loadPostLoading = true;
+        draft.loadPostDone = false;
+        draft.loadPostError = null;
+        break;
+      case LOAD_POST_SUCCESS:
+        console.log('LOAD_POST_SUCCESS: ', action.data);
+        draft.loadPostLoading = false;
+        draft.loadPostDone = true;
+        draft.singlePost = action.data;
+        break;
+      case LOAD_POST_FAILURE:
+        draft.loadPostLoading = false;
+        draft.loadPostError = action.error;
+        break;
+      //* LOAD_POSTS
+      case LOAD_POSTS_REQUEST:
+        draft.loadPostsLoading = true;
+        draft.loadPostsDone = false;
+        draft.loadPostsError = null;
+        break;
+      case LOAD_POSTS_SUCCESS:
+        console.log('reducer mainPosts: ', draft.mainPosts);
+        draft.loadPostsLoading = false;
+        draft.loadPostsDone = true;
+        draft.mainPosts = action.data !== undefined ? draft.mainPosts.concat(action.data) : draft.mainPosts;
+        draft.hasMorePosts = draft.mainPosts.length < 20 ? true : false;
+        break;
+      case LOAD_POSTS_FAILURE:
+        draft.loadPostsLoading = false;
+        draft.loadPostsError = action.error;
+        break;
+      //* ADD_POST
+      case ADD_POST_REQUEST:
+        draft.addPostLoading = true;
+        draft.addPostDone = false;
+        draft.addPostError = null;
+        break;
+      case ADD_POST_SUCCESS:
+        draft.addPostLoading = false;
+        draft.addPostDone = true;
+        draft.mainPosts = draft.mainPosts.concat(action.data);
+        break;
+      case ADD_POST_FAILURE:
+        draft.addPostLoading = false;
+        draft.addPostError = action.error;
+        break;
+      //* REMOVE_POST
+      case REMOVE_POST_REQUEST:
+        draft.removePostLoading = true;
+        draft.removePostDone = false;
+        draft.removePostError = null;
+        break;
+      case REMOVE_POST_SUCCESS:
+        draft.removePostLoading = false;
+        draft.removePostDone = true;
+        draft.mainPosts = draft.mainPosts.filter((v) => v.id !== action.data);
+        break;
+      case REMOVE_POST_FAILURE:
+        draft.removePostLoading = false;
+        draft.removePostError = action.error;
+        break;
+      default:
+        break;
+    }
+  });
 
 export default reducer;
