@@ -50,16 +50,38 @@ export const SelectWraper = styled(Select)`
 
 export const ContentWrapper = styled.div`
   margin: 30px 0px 10px 0px;
-  div {
-    .ql-editor {
-      color: white;
-      height: 600px;
-    }
+  textarea {
+    background-color: #e3dada;
+    font-size: 17px;
+    font-family: '고딕';
+    font-weight: 600;
+    padding: 15px;
+    color: black;
+    margin-top: 13px;
+    width: 82.8%;
+    height: 450px;
+  }
+  label {
+    padding: 10px 424px 10px 450px;
+    border: 5px solid #3c4143;
+    background-color: #3c4143;
+  }
+  input {
+    text-align: left;
+    margin: 12px;
+    background-color: #e3dada;
+    width: 764px;
+    height: 500px;
+    color: black;
+    font-size: 15px;
+    font-family: '고딕';
+    font-weight: 500;
+    padding: 12px 8px 10px 8px;
   }
 `;
 
 export const BtnWrapper = styled.div`
-  margin: 35px;
+  /* text-align: right; */
   button {
     background-color: #222222;
     width: 150px;

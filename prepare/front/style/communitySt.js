@@ -63,7 +63,7 @@ export const PostWrapper = styled.div`
     background-color: #303030;
   }
   div {
-    padding: 16px 0px 7px 5px;
+    /* padding: 16px 0px 7px 5px; */
     display: flex;
   }
   ul {
@@ -83,7 +83,7 @@ export const PostWrapper = styled.div`
 
 export const UpdateBtn = styled.button`
   color: #c0c0ff;
-  margin: 10px 5px 10px 5px;
+  margin: 33px 5px 33px 5px;
   background-color: #535353;
   width: 100px;
   height: 30px;
@@ -100,7 +100,7 @@ export const UpdateBtn = styled.button`
 
 export const DeleteBtn = styled.button`
   color: #ff3e3e;
-  margin: 10px 5px 10px 5px;
+  margin: 33px 5px 33px 5px;
   background-color: #535353;
   width: 100px;
   height: 30px;
@@ -124,6 +124,9 @@ export const ListWrapper = styled.div`
   }
   :active {
     background-color: #3c3c3c;
+  }
+  div {
+    padding: 40px 0px 21px 5px;
   }
 `;
 

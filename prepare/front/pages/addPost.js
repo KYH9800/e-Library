@@ -1,10 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import Router from 'next/router';
 import { wrapper } from '../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
+
+//* for quill text editor
+import dynamic from 'next/dynamic';
+import 'react-quill/dist/quill.snow.css';
 
 import {
   Header,
@@ -23,14 +27,52 @@ import useInput from '../hooks/useInput';
 import { ADD_POST_REQUEST } from '../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
+//* quill text editor
+const QuillNoSSRWrapper = dynamic(import('react-quill'), {
+  ssr: false,
+  loading: () => <p>Loading ...</p>,
+});
+
+const modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+    ['link', 'image', 'video'],
+    ['clean'],
+  ],
+  clipboard: {
+    // toggle to add extra line breaks when pasting HTML:
+    matchVisual: false,
+  },
+};
+
+const formats = [
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'video',
+];
+
+//* AddPost
 const AddPost = () => {
   const dispatch = useDispatch();
   const { me, addPostError } = useSelector((state) => state.user);
-  const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
 
   const [title, onChangeTitle] = useInput('');
   const [category, setCategory] = useState();
-  const [content, onChangeContent] = useInput('');
+  const [content, setContent] = useState('');
 
   useEffect(() => {
     if (!me) {
@@ -44,14 +86,6 @@ const AddPost = () => {
     },
     [category],
   );
-
-  // const onClickImageUpload = useCallback(
-  //   (e) => {
-  //     imageInput.current.click();
-  //     console.log(e);
-  //   },
-  //   [imageInput.current],
-  // );
 
   const onSubmit = useCallback(
     (e) => {
@@ -81,6 +115,7 @@ const AddPost = () => {
       <Header>
         <h1>글쓰기</h1>
       </Header>
+
       <Main>
         <form onSubmit={onSubmit}>
           <TitleWrapper>
@@ -96,21 +131,19 @@ const AddPost = () => {
             </SelectWraper>
           </CategoryWrapper>
           <ContentWrapper>
-            <label htmlFor="content">내용 작성</label>
-            <br />
-            {/* CKeditor */}
-            <textarea
-              placeholder={`${me?.nickname}님의 게시글을 작성해주세요`}
+            <QuillNoSSRWrapper
+              modules={modules}
+              formats={formats}
+              theme="snow"
+              placeholder={`${me.nickname}님의 글을 입력해주세요`}
               value={content}
-              onChange={onChangeContent}
-            ></textarea>
+              onChange={setContent}
+            />
           </ContentWrapper>
           <BtnWrapper>
             <Link href="/community">
               <button>취소</button>
             </Link>
-            <input type="file" multiple hidden ref={imageInput} />
-            {/* <button onClick={onClickImageUpload}>이미지 업로드</button> */}
             <button type="submit">완료</button>
           </BtnWrapper>
         </form>
@@ -134,3 +167,13 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
 });
 
 export default AddPost;
+
+/*
+<label htmlFor="content">내용 작성</label>
+<br />
+<textarea
+  placeholder={`${me?.nickname}님의 게시글을 작성해주세요`}
+  value={content}
+  onChange={onChangeContent}
+></textarea>
+*/

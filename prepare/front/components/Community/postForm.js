@@ -19,6 +19,7 @@ const PostForm = ({ post }) => {
             <button>목록으로</button>
           </Link>
         </ButtonWrapper>
+        {/* 로그인 된 사용자만 보이도록 댓글창 추가 */}
       </TextWrapper>
     </>
   );

@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { END } from 'redux-saga';
-import { wrapper } from '../../store/configureStore';
+import { wrapper } from '../../../store/configureStore';
 import axios from 'axios';
 
-import { MainWrapper } from '../../style/communitySt';
+import { MainWrapper } from '../../../style/communitySt';
 
-import AppLayout from '../../components/AppLayout';
-import PostForm from '../../components/Community/postForm'; // props 넘겨주기
+import AppLayout from '../../../components/AppLayout';
+import UpdatePostForm from '../../../components/Community/updatePostForm'; // props 넘겨주기
 
-import { LOAD_POST_REQUEST } from '../../reducers/post';
-import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
+import { LOAD_POST_REQUEST } from '../../../reducers/post';
+import { LOAD_MY_INFO_REQUEST } from '../../../reducers/user';
 
 //* 여기서 dispatch LOAD_POST 시, post.id의 게시글을 불러오면 된다. (SSR, getServerSideProps)
 
@@ -28,13 +28,13 @@ const Post = () => {
       <Head>
         <title>
           {singlePost.User.nickname}
-          님의 글
+          님의 글 수정
         </title>
       </Head>
       {singlePost ? (
         <MainWrapper>
           <h1>커뮤니티</h1>
-          <PostForm post={singlePost} />
+          <UpdatePostForm post={singlePost} />
         </MainWrapper>
       ) : (
         <MainWrapper>

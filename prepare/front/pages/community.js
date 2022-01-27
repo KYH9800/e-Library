@@ -56,7 +56,7 @@ const Community = () => {
     if (me) {
       Router.push('/addPost');
     } else {
-      alert('로그인 후 이용 가능합니다.');
+      alert('로그인 후 이용 가능합니다.'); // 안전장치
       Router.push('/login');
     }
   };
@@ -68,6 +68,17 @@ const Community = () => {
         type: REMOVE_POST_REQUEST,
         data: post.id,
       });
+    },
+    [],
+  );
+
+  const onClickUpdate = useCallback(
+    (post) => () => {
+      if (me) {
+        Router.push(`/post/updatePost/${post}`);
+      } else {
+        alert('회원님의 글만 수정이 가능합니다.'); // 안전장치
+      }
     },
     [],
   );
@@ -117,10 +128,10 @@ const Community = () => {
           {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
           {mainPosts.map((post, index) => {
             return (
-              <ListWrapper>
-                <div>
-                  <ul>
-                    <Link href={`post/${post.id}`}>
+              <ListWrapper key={post.id}>
+                <Link href={`post/${post.id}`}>
+                  <div>
+                    <ul>
                       <li>
                         <Num>{index + 1}</Num>
                         <Title>
@@ -129,12 +140,12 @@ const Community = () => {
                         <Count>조회수: {post.count}</Count>
                         <Id>작성자: {post.User.nickname}</Id>
                       </li>
-                    </Link>
-                  </ul>
-                </div>
+                    </ul>
+                  </div>
+                </Link>
                 {id && post.User.id === id ? (
                   <>
-                    <UpdateBtn>수정</UpdateBtn>
+                    <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
                     <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
                   </>
                 ) : null}
