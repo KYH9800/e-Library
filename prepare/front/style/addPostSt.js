@@ -50,11 +50,30 @@ export const SelectWraper = styled(Select)`
 
 export const ContentWrapper = styled.div`
   margin: 30px 0px 10px 0px;
+  background-color: #e3dada;
+  p {
+    color: black;
+  }
+  h1 {
+    color: black;
+  }
+  h2 {
+    color: black;
+  }
+  li {
+    color: black;
+  }
   div {
+    .ql-toolbar {
+      background-color: #909090;
+    }
     .ql-editor {
       color: white;
       height: 600px;
     }
+  }
+  img {
+    display: block;
   }
 `;
 
