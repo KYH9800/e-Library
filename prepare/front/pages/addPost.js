@@ -127,14 +127,13 @@ const AddPost = () => {
         return alert('게시글을 작성하세요');
       }
       const formData = new FormData();
-      imagePaths.forEach((p) => {
-        formData.append('image', p);
-      });
-      formData.append({ title: title, category: category, content: content });
+      // imagePaths.forEach((p) => {
+      //   formData.append('image', p);
+      // });
       // dispatch loadPostRequest
       dispatch({
         type: ADD_POST_REQUEST,
-        data: formData,
+        data: { title, category, content },
       });
       // error 없으면 community 목록으로 이동
       if (!addPostError) {

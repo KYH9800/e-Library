@@ -1,6 +1,6 @@
 // sagas/post.js
-import { generateDuumyPost } from '../public/post/generateDuumyPost';
-import { dummyPost } from '../public/post/singPost';
+// import { generateDuumyPost } from '../public/post/generateDuumyPost';
+// import { dummyPost } from '../public/post/singPost';
 import { all, fork, put, call, takeLatest, delay } from 'redux-saga/effects';
 import axios from 'axios';
 
