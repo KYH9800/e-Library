@@ -6,10 +6,6 @@ import { wrapper } from '../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
 
-//* for quill text editor
-import dynamic from 'next/dynamic';
-import 'react-quill/dist/quill.snow.css';
-
 import {
   Header,
   Main,
@@ -27,80 +23,44 @@ import useInput from '../hooks/useInput';
 import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST } from '../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
-//* quill text editor
-const QuillNoSSRWrapper = dynamic(import('react-quill'), {
-  ssr: false,
-  loading: () => <p>Loading ...</p>,
-});
-
-const formats = [
-  'header',
-  'font',
-  'size',
-  'bold',
-  'italic',
-  'underline',
-  'strike',
-  'blockquote',
-  'list',
-  'bullet',
-  'indent',
-  'link',
-  'image',
-  'video',
-];
-
-//* AddPost
 const AddPost = () => {
   const dispatch = useDispatch();
-  const { me, addPostError, imagePaths } = useSelector((state) => state.user);
+  const { me, addPostError } = useSelector((state) => state.user);
+  const { imagePaths } = useSelector((state) => state.post);
   console.log('imagePaths', imagePaths);
 
   const [title, onChangeTitle] = useInput('');
   const [category, setCategory] = useState();
-  const [content, setContent] = useState('');
+  const [content, onChangeContent] = useInput('');
 
-  const quillRef = useRef();
-
-  //* quill text editor
-  const imageHandler = (e) => {
-    console.log('에디터의 이미지 버튼을 클릭하면 이 핸들러가 시작됩니다.'); // true
-    const input = document.createElement('input'); // 1. 이미지를 저장할 input type=file DOM을 만든다.
-    // 속성 써주기
-    input.setAttribute('type', 'file');
-    input.setAttribute('accept', 'image/*');
-    input.click(); // 에디터 이미지버튼을 클릭하면 이 input이 클릭된다. input이 클릭되면 파일 선택창이 나타난다.
-
-    input.addEventListener('change', async () => {
-      console.log('onChange');
-      const file = input.files[0];
-      const imageFormData = new FormData(); // multer에 맞는 형식으로 데이터 만들어준다.
-      [].forEach.call(file, (f) => {
-        imageFormData.append('image', f); // formData는 키-밸류 구조
+  // onSubmit
+  const onSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (!title) {
+        return alert('제목을 입력하세요');
+      } else if (!category) {
+        return alert('카테고리를 설정하세요');
+      } else if (!content) {
+        return alert('게시글을 작성하세요');
+      }
+      const formData = new FormData();
+      imagePaths.forEach((p) => {
+        formData.append('image', p);
       });
+      formData.append('title', title);
+      formData.append('category', category);
+      formData.append('content', content);
       dispatch({
-        type: UPLOAD_IMAGES_REQUEST,
-        data: imageFormData,
+        type: ADD_POST_REQUEST,
+        data: formData,
       });
-    });
-  };
-
-  //* quill text editor
-  // useMemo를 사용한 이유는 modules가 렌더링마다 변하면 에디터에서 입력이 끊기는 버그가 발생
-  const modules = useMemo(
-    () => ({
-      toolbar: {
-        container: [
-          [{ header: [1, 2, false] }],
-          ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-          [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
-          ['link', 'image'],
-          ['clean'],
-        ],
-        handlers: { image: imageHandler },
-      },
-    }),
-    [],
+      // error 없으면 community 목록으로 이동
+      if (!addPostError) {
+        Router.push('/community');
+      }
+    },
+    [title, category, content],
   );
 
   useEffect(() => {
@@ -116,31 +76,31 @@ const AddPost = () => {
     [category],
   );
 
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      if (!title) {
-        return alert('제목을 입력하세요');
-      } else if (!category) {
-        return alert('카테고리를 설정하세요');
-      } else if (!content) {
-        return alert('게시글을 작성하세요');
-      }
-      const formData = new FormData();
-      // imagePaths.forEach((p) => {
-      //   formData.append('image', p);
+  const imageInput = useRef();
+  const onClickImageUpload = useCallback(() => {
+    imageInput.current.click();
+  }, [imageInput.current]);
+
+  const onChangeImages = useCallback((e) => {
+    console.log('images', e.target.files);
+    const imageFormData = new FormData();
+    [].forEach.call(e.target.files, (f) => {
+      imageFormData.append('image', f);
+    });
+    dispatch({
+      type: UPLOAD_IMAGES_REQUEST,
+      data: imageFormData,
+    });
+  }, []);
+
+  const onRemoveImage = useCallback(
+    (index) => () => {
+      // dispatch({
+      //   type: REMOVE_IMAGE,
+      //   data: index,
       // });
-      // dispatch loadPostRequest
-      dispatch({
-        type: ADD_POST_REQUEST,
-        data: { title, category, content },
-      });
-      // error 없으면 community 목록으로 이동
-      if (!addPostError) {
-        Router.push('/community');
-      }
     },
-    [title, category, content],
+    [],
   );
 
   return (
@@ -164,21 +124,33 @@ const AddPost = () => {
             </SelectWraper>
           </CategoryWrapper>
           <ContentWrapper>
-            <QuillNoSSRWrapper
-              ref={quillRef}
-              modules={modules}
-              formats={formats}
-              theme="snow"
-              placeholder={`${me?.nickname}님의 글을 입력해주세요`}
+            <label htmlFor="content">내용 작성</label>
+            <br />
+            <textarea
+              placeholder={`${me?.nickname}님의 게시글을 작성해주세요`}
               value={content}
-              onChange={setContent}
+              onChange={onChangeContent}
             />
+            {imagePaths.map((v, i) => (
+              <div key={v} style={{ display: 'inline-block' }}>
+                <img src={`http://localhost:3065/${v}`} style={{ width: '200px' }} alt={v} />
+                <div>
+                  <button type="button" onClick={onRemoveImage(i)}>
+                    제거
+                  </button>
+                </div>
+              </div>
+            ))}
           </ContentWrapper>
           <BtnWrapper>
+            <input type="file" name="image" multiple hidden ref={imageInput} onChange={onChangeImages} />
+            <button type="button" onClick={onClickImageUpload}>
+              이미지 업로드
+            </button>
+            <button type="submit">완료</button>
             <Link href="/community">
               <button>취소</button>
             </Link>
-            <button type="submit">완료</button>
           </BtnWrapper>
         </form>
       </Main>
@@ -203,11 +175,5 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
 export default AddPost;
 
 /*
-<label htmlFor="content">내용 작성</label>
-<br />
-<textarea
-  placeholder={`${me?.nickname}님의 게시글을 작성해주세요`}
-  value={content}
-  onChange={onChangeContent}
-></textarea>
+
 */

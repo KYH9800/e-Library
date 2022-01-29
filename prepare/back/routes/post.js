@@ -23,8 +23,24 @@ router.post('/', isLoggedIn, async (req, res, next) => {
       content: req.body.content,
       UserId: req.user.id,
     });
+    if (req.body.image) {
+      if (Array.isArray(req.body.image)) {
+        // 이미지를 여러 개 올리면 image: [이미지.png, 지수.png]
+        const images = await Promise.all(req.body.image.map((image) => Image.create({ src: image })));
+        await post.addImages(images);
+      } else {
+        // 이미지를 하나만 올리면 image: 이미지.png
+        const image = await Image.create({ src: req.body.image });
+        await post.addImages(image);
+      }
+    }
     const fullPost = await Post.findOne({
       where: { id: post.id },
+      include: [
+        {
+          model: Image,
+        },
+      ],
     });
     res.status(201).json(fullPost);
   } catch (err) {
@@ -39,10 +55,11 @@ const upload = multer({
       done(null, 'uploads/');
     },
     // 이미지.png
-    filename: function (req, file, cb) {
-      const ext = path.extname(file.originalname); // 확장자 추출(.png)
-      const basename = path.basename(file.originalname, ext); // 이미지
-      done(null, basename + new Data().getTime() + ext); // 이미지20210124.png
+    filename(req, file, cb) {
+      const ext = path.extname(file.originalname); // 파일의 확장자
+      console.log('file.originalname', file.originalname);
+      // 파일명이 절대 겹치지 않도록 해줘야한다.
+      cb(null, path.basename(file.originalname, ext) + Date.now() + ext); // 파일이름 + 현재시간밀리초 + 파일확장자명
     },
   }),
   limits: { fileSize: 20 * 1024 * 1024 }, // 파일크기: 20MB

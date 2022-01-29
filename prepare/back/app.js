@@ -8,6 +8,7 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 require('dotenv').config(); // dotenv
 const morgan = require('morgan');
+const path = require('path');
 
 const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts');
@@ -37,6 +38,7 @@ server.use(
 );
 
 // front에서 받아온 data를 req.body안으로 넣어준다, json 형식으로
+server.use('/', express.static(path.join(__dirname, 'uploads')));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
