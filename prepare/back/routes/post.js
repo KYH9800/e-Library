@@ -13,14 +13,31 @@ try {
   fs.mkdirSync('uploads');
 }
 
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, done) {
+      done(null, 'uploads/');
+    },
+    // 이미지.png
+    filename(req, file, cb) {
+      const ext = path.extname(file.originalname); // 파일의 확장자
+      console.log('file.originalname', file.originalname);
+      // 파일명이 절대 겹치지 않도록 해줘야한다.
+      cb(null, path.basename(file.originalname, ext) + Date.now() + ext); // 파일이름 + 현재시간밀리초 + 파일확장자명
+    },
+  }),
+  limits: { fileSize: 20 * 1024 * 1024 }, // 파일크기: 20MB
+}); // 지금은 하드디스크에 저장하지만 AWS 배포 시 storage 옵션만 S3 서비스로 갈아끼울 예정
+
 // POST /post
-router.post('/', isLoggedIn, async (req, res, next) => {
+router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
   try {
     console.log('서버로 넘어오는 data: ', req.body);
     const post = await Post.create({
       title: req.body.title,
       category: req.body.category,
       content: req.body.content,
+      image: req.body.image,
       UserId: req.user.id,
     });
     if (req.body.image) {
@@ -49,22 +66,6 @@ router.post('/', isLoggedIn, async (req, res, next) => {
   }
 });
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: function (req, file, done) {
-      done(null, 'uploads/');
-    },
-    // 이미지.png
-    filename(req, file, cb) {
-      const ext = path.extname(file.originalname); // 파일의 확장자
-      console.log('file.originalname', file.originalname);
-      // 파일명이 절대 겹치지 않도록 해줘야한다.
-      cb(null, path.basename(file.originalname, ext) + Date.now() + ext); // 파일이름 + 현재시간밀리초 + 파일확장자명
-    },
-  }),
-  limits: { fileSize: 20 * 1024 * 1024 }, // 파일크기: 20MB
-}); // 지금은 하드디스크에 저장하지만 AWS 배포 시 storage 옵션만 S3 서비스로 갈아끼울 예정
-
 // POST /post/images
 router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => {
   console.log(req.files); // 업로드가 어떻게 됬는지 정보들이 담겨있음
@@ -72,7 +73,7 @@ router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => {
 }); // 먼저 파일명만 return 해준다. -> v.filename, 추후 배포 시 이미지는 지우지 않는다.(자산이다)
 
 // GET /post/1
-router.get('/:postId', async (req, res, next) => {
+router.get('/:postId', upload.none(), async (req, res, next) => {
   try {
     const post = await Post.findOne({
       where: { id: req.params.postId },
@@ -83,6 +84,9 @@ router.get('/:postId', async (req, res, next) => {
     const fullPost = await Post.findOne({
       where: { id: post.id },
       include: [
+        {
+          model: Image,
+        },
         {
           model: User,
           attributes: ['id', 'nickname'],

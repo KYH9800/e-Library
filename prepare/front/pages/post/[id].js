@@ -21,13 +21,13 @@ const Post = () => {
   const router = useRouter();
   const { id } = router.query;
   const { singlePost } = useSelector((state) => state.post);
-  // console.log('다이나믹 라우팅 id: ', id);
+  // console.log(singlePost);
 
   return (
     <AppLayout>
       <Head>
         <title>
-          {singlePost.User.nickname}
+          {singlePost?.User.nickname}
           님의 글
         </title>
       </Head>

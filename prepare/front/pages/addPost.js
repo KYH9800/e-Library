@@ -14,6 +14,7 @@ import {
   ContentWrapper,
   BtnWrapper,
   SelectWraper,
+  TextEdit,
 } from '../style/addPostSt';
 import { Select } from 'antd';
 
@@ -27,11 +28,11 @@ const AddPost = () => {
   const dispatch = useDispatch();
   const { me, addPostError } = useSelector((state) => state.user);
   const { imagePaths } = useSelector((state) => state.post);
-  console.log('imagePaths', imagePaths);
+  // console.log('imagePaths', imagePaths);
 
   const [title, onChangeTitle] = useInput('');
   const [category, setCategory] = useState();
-  const [content, onChangeContent] = useInput('');
+  const [content, setContent] = useState('');
 
   // onSubmit
   const onSubmit = useCallback(
@@ -44,20 +45,22 @@ const AddPost = () => {
       } else if (!content) {
         return alert('게시글을 작성하세요');
       }
-      const formData = new FormData();
-      imagePaths.forEach((p) => {
-        formData.append('image', p);
-      });
-      formData.append('title', title);
-      formData.append('category', category);
-      formData.append('content', content);
-      dispatch({
-        type: ADD_POST_REQUEST,
-        data: formData,
-      });
-      // error 없으면 community 목록으로 이동
-      if (!addPostError) {
-        Router.push('/community');
+      if (confirm('게시글을 생성하시겠습니까?') == true) {
+        const formData = new FormData();
+        imagePaths.forEach((p) => {
+          formData.append('image', p);
+        });
+        formData.append('title', title);
+        formData.append('category', category);
+        formData.append('content', content);
+        dispatch({
+          type: ADD_POST_REQUEST,
+          data: formData,
+        });
+        // error 없으면 community 목록으로 이동
+        if (!addPostError) {
+          Router.push('/community');
+        }
       }
     },
     [title, category, content],
@@ -95,20 +98,30 @@ const AddPost = () => {
 
   const onRemoveImage = useCallback(
     (index) => () => {
-      // dispatch({
-      //   type: REMOVE_IMAGE,
-      //   data: index,
-      // });
+      if (confirm('정말 삭제하시겠습니까??') == true) {
+        console.log(index);
+        // dispatch({
+        //   type: REMOVE_IMAGE,
+        //   data: index,
+        // });
+      }
     },
     [],
   );
+
+  const setStyle = (style) => {
+    console.log(style);
+  };
+
+  const handleInput = (e) => {
+    setContent(e.target.innerText);
+  };
 
   return (
     <AppLayout>
       <Header>
         <h1>글쓰기</h1>
       </Header>
-
       <Main>
         <form onSubmit={onSubmit}>
           <TitleWrapper>
@@ -123,34 +136,96 @@ const AddPost = () => {
               <Select.Option value="건의게시글">건의게시글</Select.Option>
             </SelectWraper>
           </CategoryWrapper>
-          <ContentWrapper>
-            <label htmlFor="content">내용 작성</label>
-            <br />
-            <textarea
-              placeholder={`${me?.nickname}님의 게시글을 작성해주세요`}
-              value={content}
-              onChange={onChangeContent}
-            />
-            {imagePaths.map((v, i) => (
-              <div key={v} style={{ display: 'inline-block' }}>
-                <img src={`http://localhost:3065/${v}`} style={{ width: '200px' }} alt={v} />
-                <div>
-                  <button type="button" onClick={onRemoveImage(i)}>
-                    제거
-                  </button>
+          <ContentWrapper></ContentWrapper>
+          <TextEdit>
+            <div className="editor-menu">
+              <button
+                type="button"
+                onClick={() => {
+                  setStyle('bold');
+                }}
+              >
+                <b>B</b>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setStyle('italic');
+                }}
+              >
+                <i>I</i>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setStyle('underline');
+                }}
+              >
+                <u>U</u>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setStyle('strikeThrough');
+                }}
+              >
+                <s>S</s>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setStyle('insertOrderedList');
+                }}
+              >
+                OL
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setStyle('insertUnorderedList');
+                }}
+              >
+                UL
+              </button>
+              <input type="file" name="image" multiple hidden ref={imageInput} onChange={onChangeImages} />
+              <button type="button" onClick={onClickImageUpload}>
+                IMG
+              </button>
+            </div>
+
+            <div
+              id="editor"
+              contentEditable
+              suppressContentEditableWarning
+              spellCheck={false}
+              value={`${me?.nickname}님의 게시글을 작성해주세요`}
+              onInput={handleInput}
+            >
+              {imagePaths.map((v, i) => (
+                <div key={i}>
+                  <img
+                    src={`http://localhost:3065/${v}`}
+                    style={{ width: '200px' }}
+                    alt={v}
+                    onClick={onRemoveImage(i)}
+                  />
                 </div>
-              </div>
-            ))}
-          </ContentWrapper>
+              ))}
+            </div>
+          </TextEdit>
           <BtnWrapper>
-            <input type="file" name="image" multiple hidden ref={imageInput} onChange={onChangeImages} />
-            <button type="button" onClick={onClickImageUpload}>
-              이미지 업로드
-            </button>
             <button type="submit">완료</button>
-            <Link href="/community">
-              <button>취소</button>
-            </Link>
+
+            <button
+              type="button"
+              onClick={() => {
+                if (confirm('작성 중인 게시글은 저장되지 않습니다. 작성을 취소하시겠습니까?') == true) {
+                  Router.push('/community');
+                }
+              }}
+            >
+              취소
+            </button>
           </BtnWrapper>
         </form>
       </Main>

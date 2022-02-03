@@ -2,9 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 
 import { TextWrapper, ButtonWrapper } from '../style/postFormSt';
+import PostImages from './postImage';
 
 const PostForm = ({ post }) => {
-  // console.log('PostForm의 넘겨받은 Props: ', post);
+  console.log('PostForm의 넘겨받은 Props: ', post);
   return (
     <>
       <TextWrapper>
@@ -13,6 +14,7 @@ const PostForm = ({ post }) => {
         <div>
           작성자: <span>{post.User.nickname}</span> 님
         </div>
+        {post.Images[0] && <PostImages images={post.Images} />}
         <p>{post.content}</p>
         <ButtonWrapper>
           <Link href="/community">
