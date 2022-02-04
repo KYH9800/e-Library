@@ -15,9 +15,11 @@ import {
   BtnWrapper,
   SelectWraper,
 } from '../../style/updatePostSt';
+import { ImageWrapper, TextWrapper } from '../style/postFormSt';
 import { Select } from 'antd';
 
 import useInput from '../../hooks/useInput';
+import PostImages from './postImage';
 
 import { UPDATE_POST_REQUEST } from '../../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
@@ -25,11 +27,13 @@ import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 const UpdatePostForm = ({ post }) => {
   const dispatch = useDispatch();
   const { me, addPostError } = useSelector((state) => state.user);
+
   const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
 
   const [title, onChangeTitle] = useInput('');
   const [category, setCategory] = useState();
   const [content, onChangeContent] = useInput('');
+  console.log('content: ', content);
 
   useEffect(() => {
     if (!me) {
@@ -51,9 +55,16 @@ const UpdatePostForm = ({ post }) => {
       if (!category) {
         return alert('카테고리를 설정하세요');
       }
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('category', category);
+      formData.append('content', content);
       dispatch({
         type: UPDATE_POST_REQUEST,
-        data: { title, category, content },
+        data: {
+          PostId: post.id,
+          formData,
+        }, //! error 발생: update 시 보낼 data를 formData.append로 묶어주기
       });
       if (!addPostError) {
         Router.push('/community');
@@ -80,9 +91,14 @@ const UpdatePostForm = ({ post }) => {
             </SelectWraper>
           </CategoryWrapper>
           <ContentWrapper>
-            <label htmlFor="content">내용 수정하기</label>
+            {/* <label htmlFor="content">내용 수정하기</label> */}
             <br />
-            <textarea placeholder={`${post.content}`} value={content} onChange={onChangeContent}></textarea>
+            <TextWrapper>
+              <ImageWrapper>{post.Images[0] && <PostImages images={post.Images} />}</ImageWrapper>
+              <p>
+                <textarea type="text" placeholder={post.content} value={content} onChange={onChangeContent} />
+              </p>
+            </TextWrapper>
           </ContentWrapper>
           <BtnWrapper>
             <Link href="/community">

@@ -73,7 +73,7 @@ router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => {
 }); // 먼저 파일명만 return 해준다. -> v.filename, 추후 배포 시 이미지는 지우지 않는다.(자산이다)
 
 // GET /post/1
-router.get('/:postId', upload.none(), async (req, res, next) => {
+router.get('/:postId', async (req, res, next) => {
   try {
     const post = await Post.findOne({
       where: { id: req.params.postId },
@@ -99,6 +99,34 @@ router.get('/:postId', upload.none(), async (req, res, next) => {
     next(err);
   }
 });
+
+// 게시글 수정
+router.patch('/:postId', isLoggedIn, upload.none(), async (req, res, next) => {
+  try {
+    await Post.update(
+      {
+        title: req.body.title,
+        category: req.body.category,
+        content: req.body.content,
+      },
+      {
+        where: {
+          id: req.params.postId,
+          UserId: req.user.id, // 이렇게 하면 다른 사람이 못 지움(해당 작성자만 지울수 있음)
+        },
+      }
+    );
+    res.status(200).json({
+      PostId: parseInt(req.params.postId, 10),
+      title: req.body.title,
+      content: req.body.content,
+      category: req.body.category,
+    });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+}); // PATCH /post
 
 // DELETE /post/1
 router.delete('/:postId', isLoggedIn, async (req, res, next) => {

@@ -98,14 +98,35 @@ export const TextEdit = styled.div`
   }
   #editor {
     background-color: #e3dada;
+    /* height: 196px; */
     padding: 16px 24px;
     border: 1px solid #d6d6d6;
     margin: auto;
     text-align: left;
     width: 651px;
   }
-  div img:hover {
-    border: 3px solid red;
+  #explain {
+    position: absolute;
+    opacity: 0;
+  }
+  .text_photo {
+    margin: 3px;
+  }
+  .text_photo:hover {
+    border: 1px solid red;
+    background: #9049497d;
+  }
+  .text_photo:hover #explain {
+    opacity: 1;
+    font-size: 22px;
+    color: red;
+  }
+`;
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  div {
+    margin: 3px;
   }
 `;
 

@@ -15,13 +15,14 @@ import {
   BtnWrapper,
   SelectWraper,
   TextEdit,
+  ImageWrapper,
 } from '../style/addPostSt';
 import { Select } from 'antd';
 
 import AppLayout from '../components/AppLayout';
 import useInput from '../hooks/useInput';
 
-import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST } from '../reducers/post';
+import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
 const AddPost = () => {
@@ -100,10 +101,10 @@ const AddPost = () => {
     (index) => () => {
       if (confirm('정말 삭제하시겠습니까??') == true) {
         console.log(index);
-        // dispatch({
-        //   type: REMOVE_IMAGE,
-        //   data: index,
-        // });
+        dispatch({
+          type: REMOVE_IMAGE,
+          data: index,
+        });
       }
     },
     [],
@@ -192,30 +193,26 @@ const AddPost = () => {
                 IMG
               </button>
             </div>
-
-            <div
-              id="editor"
-              contentEditable
-              suppressContentEditableWarning
-              spellCheck={false}
-              value={`${me?.nickname}님의 게시글을 작성해주세요`}
-              onInput={handleInput}
-            >
-              {imagePaths.map((v, i) => (
-                <div key={i}>
-                  <img
-                    src={`http://localhost:3065/${v}`}
-                    style={{ width: '200px' }}
-                    alt={v}
-                    onClick={onRemoveImage(i)}
-                  />
-                </div>
-              ))}
-            </div>
+            <ImageWrapper>
+              <div
+                id="editor"
+                contentEditable
+                suppressContentEditableWarning
+                spellCheck={false}
+                value={`${me?.nickname}님의 게시글을 작성해주세요`}
+                onInput={handleInput}
+              ></div>
+            </ImageWrapper>
+            <br />
+            {imagePaths.map((v, i) => (
+              <div class="text_photo" key={i} style={{ display: 'inline-block' }} onClick={onRemoveImage(i)}>
+                <p id="explain">삭제</p>
+                <img src={`http://localhost:3065/${v}`} style={{ width: '120px' }} alt={v} />
+              </div>
+            ))}
           </TextEdit>
           <BtnWrapper>
             <button type="submit">완료</button>
-
             <button
               type="button"
               onClick={() => {
@@ -248,7 +245,3 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
 });
 
 export default AddPost;
-
-/*
-
-*/

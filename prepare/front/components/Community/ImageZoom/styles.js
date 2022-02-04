@@ -2,7 +2,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { CloseOutlined } from '@ant-design/icons';
 
-export const Global = createGlobalStyle`
+export const GlobalImages = createGlobalStyle`
 // react-slick class를 global로 설정
   .slick-slide {
     display: inline-block;
@@ -37,8 +37,11 @@ export const Header = styled.header`
 `;
 
 export const SlickWrapper = styled.div`
-  height: calc(100% - 44px);
+  height: calc(100% - 100px);
   background: #090909;
+  div {
+    text-align: center;
+  }
 `;
 
 export const CloseBtn = styled(CloseOutlined)`
@@ -71,5 +74,6 @@ export const ImgWrapper = styled.div`
   & img {
     margin: 0 auto;
     max-height: 750px;
+    max-width: 600px;
   }
 `;

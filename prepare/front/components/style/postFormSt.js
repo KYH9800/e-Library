@@ -40,6 +40,14 @@ export const TextWrapper = styled.main`
     font-size: 16px;
     border-bottom: 1px solid white;
   }
+  textarea {
+    height: 200px;
+    width: 100%;
+    margin: auto;
+  }
+`;
+export const ImageWrapper = styled.h2`
+  text-align: center;
 `;
 export const ButtonWrapper = styled.div`
   margin: auto;

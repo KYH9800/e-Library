@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Slick from 'react-slick';
 // styled-components
-import { Global, Overlay, Header, CloseBtn, SlickWrapper, ImgWrapper, Indicator } from './styles';
+import { GlobalImages, Overlay, Header, CloseBtn, SlickWrapper, ImgWrapper, Indicator } from './styles';
 
 //! 이미지를 확대해서 볼 수 있다 ("개발자 코드는 자산이다. 나중에 필요 시 재활용이 가능하다.")
 const ImagesZoom = ({ images, onClose }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  let backURL = `http://localhost:3065/`;
   return (
     <Overlay>
-      <Global />
+      <GlobalImages />
       <Header>
         <h1>상세 이미지</h1>
         <CloseBtn onClick={onClose} />
@@ -26,7 +27,7 @@ const ImagesZoom = ({ images, onClose }) => {
           >
             {images.map((v) => (
               <ImgWrapper key={v.src}>
-                <img src={v.src} alt={v.src} />
+                <img src={backURL + v.src} alt={backURL + v.src} />
                 {/* <img src={`${v.src.replace(/\/thumb\//, '/original/')}`} alt={v.src} /> */}
               </ImgWrapper>
             ))}
