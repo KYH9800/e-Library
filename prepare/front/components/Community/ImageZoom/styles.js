@@ -42,8 +42,8 @@ export const Header = styled.header`
 `;
 
 export const SlickWrapper = styled.div`
-  height: calc(100%);
-  background: #090909;
+  height: calc(100%); // height: calc(100% - 100px)
+  background: #090909fc; // #090909;
   div {
     text-align: center;
   }

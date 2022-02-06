@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { TextWrapper, ButtonWrapper, ImageWrapper } from '../style/postFormSt';
+import { TextWrapper, ButtonWrapper, Category, Title, UserNickname, Content, ImageWrapper } from '../style/postFormSt';
 import PostImages from './postImage';
 
 const PostForm = ({ post }) => {
@@ -9,13 +9,13 @@ const PostForm = ({ post }) => {
   return (
     <>
       <TextWrapper>
-        <h2>[{post.category}]</h2>
-        <h3>{post.title}</h3>
-        <div>
+        <Category>[{post.category}]</Category>
+        <Title>{post.title}</Title>
+        <UserNickname>
           작성자: <span>{post.User.nickname}</span> 님
-        </div>
+        </UserNickname>
         <ImageWrapper>{post.Images[0] && <PostImages images={post.Images} />}</ImageWrapper>
-        <p>
+        <Content>
           {post.content.split('\n').map((line, i) => {
             //this.props.data.content: 내용
             return (
@@ -25,7 +25,7 @@ const PostForm = ({ post }) => {
               </span>
             );
           })}
-        </p>
+        </Content>
         <ButtonWrapper>
           <Link href="/community">
             <button>목록으로</button>

@@ -51,7 +51,6 @@ export const SelectWraper = styled(Select)`
 export const ContentWrapper = styled.div`
   margin: auto;
   width: 800px;
-
   textarea {
     background-color: #e3dada;
     font-size: 17px;
