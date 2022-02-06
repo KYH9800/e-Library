@@ -102,6 +102,8 @@ router.get('/:postId', async (req, res, next) => {
 
 // 게시글 수정
 router.patch('/:postId', isLoggedIn, upload.none(), async (req, res, next) => {
+  console.log('게시글 수정: ', req.body);
+  console.log('req.params: ', req.params.postId);
   try {
     await Post.update(
       {

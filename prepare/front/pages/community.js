@@ -63,11 +63,13 @@ const Community = () => {
 
   const onRemovePost = useCallback(
     (post) => () => {
-      console.log('postId: ', post.id);
-      dispatch({
-        type: REMOVE_POST_REQUEST,
-        data: post.id,
-      });
+      // console.log('postId: ', post.id);
+      if (confirm('게시글을 삭제 하시겠습니까? 삭제 후 게시글은 복구되지 않습니다.') == true) {
+        dispatch({
+          type: REMOVE_POST_REQUEST,
+          data: post.id,
+        });
+      }
     },
     [],
   );

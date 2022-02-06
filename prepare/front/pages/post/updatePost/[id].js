@@ -17,7 +17,7 @@ import { LOAD_MY_INFO_REQUEST } from '../../../reducers/user';
 //* 여기서 dispatch LOAD_POST 시, post.id의 게시글을 불러오면 된다. (SSR, getServerSideProps)
 
 const Post = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const router = useRouter();
   const { id } = router.query;
   const { singlePost } = useSelector((state) => state.post);

@@ -7,7 +7,6 @@ import { END } from 'redux-saga';
 import axios from 'axios';
 
 import {
-  Header,
   Main,
   TitleWrapper,
   CategoryWrapper,
@@ -15,7 +14,6 @@ import {
   BtnWrapper,
   SelectWraper,
 } from '../../style/updatePostSt';
-import { ImageWrapper, TextWrapper } from '../style/postFormSt';
 import { Select } from 'antd';
 
 import useInput from '../../hooks/useInput';
@@ -26,14 +24,14 @@ import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 
 const UpdatePostForm = ({ post }) => {
   const dispatch = useDispatch();
-  const { me, addPostError } = useSelector((state) => state.user);
+  const { me, updatePostError } = useSelector((state) => state.user);
 
   const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
 
   const [title, onChangeTitle] = useInput('');
   const [category, setCategory] = useState();
-  const [content, onChangeContent] = useInput('');
-  console.log('content: ', content);
+  const [changeContent, onChangeContent] = useInput('');
+  // console.log(title, category, changeContent, post.id);
 
   useEffect(() => {
     if (!me) {
@@ -48,30 +46,30 @@ const UpdatePostForm = ({ post }) => {
     [category],
   );
 
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      // console.log(title, category, content);
-      if (!category) {
-        return alert('카테고리를 설정하세요');
-      }
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('category', category);
-      formData.append('content', content);
+  const onClickCancle = useCallback(() => {
+    if (confirm('취소 시 수정된 게시글은 복구되지 않습니다.\n취소하고 목록으로 이동 하시겠습니까?') === true) {
+      Router.push('/community');
+    }
+  });
+
+  const onSubmit = useCallback((e) => {
+    e.preventDefault();
+    // console.log(title, category, content);
+    if (confirm('게시글을 수정하시겠습니까?') === true) {
       dispatch({
         type: UPDATE_POST_REQUEST,
         data: {
           PostId: post.id,
-          formData,
+          title: title,
+          category: category,
+          content: changeContent,
         }, //! error 발생: update 시 보낼 data를 formData.append로 묶어주기
       });
-      if (!addPostError) {
+      if (!updatePostError) {
         Router.push('/community');
       }
-    },
-    [title, category, content],
-  );
+    }
+  });
 
   return (
     <>
@@ -80,30 +78,38 @@ const UpdatePostForm = ({ post }) => {
         <form onSubmit={onSubmit}>
           <TitleWrapper>
             <label htmlFor="title">제목 수정</label>
-            <input type="text" value={title} onChange={onChangeTitle} placeholder={`${post.title}`} />
+            <input
+              type="text"
+              defaultValue={post.title}
+              value={title}
+              onChange={onChangeTitle}
+              placeholder={`${post.title}`}
+            />
           </TitleWrapper>
           <CategoryWrapper>
-            <SelectWraper defaultValue="카테고리" onChange={handleChange}>
+            <SelectWraper defaultValue={post.category} onChange={handleChange}>
               <Select.Option value="자유게시글">자유게시글</Select.Option>
               <Select.Option value="모임공지">모임공지</Select.Option>
               <Select.Option value="독후감">독후감</Select.Option>
               <Select.Option value="건의게시글">건의게시글</Select.Option>
             </SelectWraper>
           </CategoryWrapper>
+
           <ContentWrapper>
-            {/* <label htmlFor="content">내용 수정하기</label> */}
-            <br />
-            <TextWrapper>
-              <ImageWrapper>{post.Images[0] && <PostImages images={post.Images} />}</ImageWrapper>
-              <p>
-                <textarea type="text" placeholder={post.content} value={content} onChange={onChangeContent} />
-              </p>
-            </TextWrapper>
+            <>{post.Images[0] && <PostImages images={post.Images} />}</>
+            <textarea
+              type="text"
+              defaultValue={post.content}
+              placeholder={post.content}
+              value={changeContent}
+              onChange={onChangeContent}
+            />
           </ContentWrapper>
+
           <BtnWrapper>
-            <Link href="/community">
-              <button>취소</button>
-            </Link>
+            <button type="button" onClick={onClickCancle}>
+              취소
+            </button>
             <input type="file" multiple hidden ref={imageInput} />
             <button type="submit">수정하기</button>
           </BtnWrapper>
@@ -122,6 +128,9 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
   }
   store.dispatch({
     type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch({
+    type: LOAD_POSTS_REQUEST,
   });
   store.dispatch(END);
   await store.sagaTask.toPromise();

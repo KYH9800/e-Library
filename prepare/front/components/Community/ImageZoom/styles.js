@@ -23,7 +23,7 @@ export const Overlay = styled.div`
 `;
 
 export const Header = styled.header`
-  height: 44px;
+  height: 55px;
   background: white;
   position: relative;
   padding: 0;
@@ -32,12 +32,17 @@ export const Header = styled.header`
     margin: 0;
     font-size: 17px;
     color: #333;
-    line-height: 44px;
+    line-height: 55px;
+  }
+  svg {
+    font-size: 27px;
+    color: black;
+    border: 1px solid;
   }
 `;
 
 export const SlickWrapper = styled.div`
-  height: calc(100% - 100px);
+  height: calc(100%);
   background: #090909;
   div {
     text-align: center;
