@@ -19,6 +19,9 @@ const UserProfile = () => {
         <Link href="/userprofilePage">
           <a>내 프로필</a>
         </Link>
+        <Link href={`/post/${me.id}`}>
+          <a>내 게시글</a>
+        </Link>
         <button onClick={onLogout}>로그아웃</button>
         <span>{me.nickname}님</span>
       </h3>

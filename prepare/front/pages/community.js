@@ -33,24 +33,22 @@ const Community = () => {
   const id = me?.id;
 
   useEffect(() => {
-    // comopnentDidMount()
     function onScroll() {
-      // 얼마나 내렸는지 // 화면에 보이는 길이 // 총 길이
-      // console.log(window.scrollY, document.documentElement.clientHeight, document.documentElement.scrollHeight);
-      if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 500) {
+      if (window.pageYOffset + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
         if (hasMorePosts && !loadPostsLoading) {
+          const lastId = mainPosts[mainPosts.length - 1]?.id;
           dispatch({
             type: LOAD_POSTS_REQUEST,
+            lastId,
           });
         }
       }
     }
     window.addEventListener('scroll', onScroll);
-    // componentWillUnmount()
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
-  }, [hasMorePosts, loadPostsLoading]);
+  }, [hasMorePosts, loadPostsLoading, mainPosts]);
 
   const onClickAddPost = () => {
     if (me) {
@@ -91,36 +89,7 @@ const Community = () => {
         <title>e도서관 | 커뮤니티</title>
       </Head>
       <MainWrapper>
-        <h1>커뮤니티</h1>
-        <Nav>
-          <ul>
-            <Link href="">
-              <li>
-                <span>전체게시판</span>
-              </li>
-            </Link>
-            <Link href="">
-              <li>
-                <span>자유게시판</span>
-              </li>
-            </Link>
-            <Link href="">
-              <li>
-                <span>모임 공지</span>
-              </li>
-            </Link>
-            <Link href="">
-              <li>
-                <span>독 후 감</span>
-              </li>
-            </Link>
-            <Link href="">
-              <li>
-                <span>건의게시판</span>
-              </li>
-            </Link>
-          </ul>
-        </Nav>
+        <h1>전체게시판</h1>
         <CreactPostBtn>
           <div>
             <button onClick={onClickAddPost}>글쓰기</button>
@@ -128,32 +97,30 @@ const Community = () => {
         </CreactPostBtn>
         <PostWrapper>
           {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
-          {mainPosts.map((post, index) => {
-            return (
-              <ListWrapper key={post.id}>
-                <Link href={`post/${post.id}`}>
-                  <div key={post.id}>
-                    <ul>
-                      <li>
-                        <Num>{index + 1}</Num>
-                        <Title>
-                          <span>[{post.category}]</span> <p>{post.title}</p>
-                        </Title>
-                        <Count>조회수: {post.count}</Count>
-                        <Id>작성자: {post.User.nickname}</Id>
-                      </li>
-                    </ul>
-                  </div>
-                </Link>
-                {id && post.User.id === id ? (
-                  <>
-                    <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
-                    <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
-                  </>
-                ) : null}
-              </ListWrapper>
-            );
-          })}
+          {mainPosts.map((post, index) => (
+            <ListWrapper key={post.id}>
+              <Link href={`post/${post.id}`}>
+                <div>
+                  <ul>
+                    <li>
+                      <Num>{index + 1}</Num>
+                      <Title>
+                        <span>[{post.category}]</span> <p>{post.title}</p>
+                      </Title>
+                      <Count>조회수: {post.count}</Count>
+                      <Id>작성자: {post.User.nickname}</Id>
+                    </li>
+                  </ul>
+                </div>
+              </Link>
+              {id && post.User.id === id ? (
+                <>
+                  <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
+                  <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
+                </>
+              ) : null}
+            </ListWrapper>
+          ))}
         </PostWrapper>
       </MainWrapper>
     </AppLayout>
@@ -178,3 +145,34 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
 });
 
 export default Community;
+/*
+<Nav>
+<ul>
+  <Link href="">
+    <li>
+      <span>전체게시판</span>
+    </li>
+  </Link>
+  <Link href="">
+    <li>
+      <span>자유게시판</span>
+    </li>
+  </Link>
+  <Link href="">
+    <li>
+      <span>모임 공지</span>
+    </li>
+  </Link>
+  <Link href="">
+    <li>
+      <span>독 후 감</span>
+    </li>
+  </Link>
+  <Link href="">
+    <li>
+      <span>건의게시판</span>
+    </li>
+  </Link>
+</ul>
+</Nav>
+ */

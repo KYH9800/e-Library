@@ -22,26 +22,35 @@ const MainHomeMenu = () => {
           </Link>
         </h1>
         <ul>
-          <Link href="/books">
-            <a>
-              <li>
-                <div>책추천 및 구매</div>
-              </li>
-            </a>
-          </Link>
           <Link href="/community">
-            <a>
-              <li>
-                <div>커뮤니티</div>
-              </li>
-            </a>
+            <li>
+              <span>전체게시판</span>
+            </li>
+          </Link>
+          <Link href={`/`}>
+            <li>
+              <span>자유게시판</span>
+            </li>
+          </Link>
+          <Link href={`/`}>
+            <li>
+              <span>모임 공지</span>
+            </li>
+          </Link>
+          <Link href={`/`}>
+            <li>
+              <span>독 후 감</span>
+            </li>
+          </Link>
+          <Link href={`/`}>
+            <li>
+              <span>건의게시판</span>
+            </li>
           </Link>
           <Link href="/chatRoom">
-            <a>
-              <li>
-                <div>실시간 대화방</div>
-              </li>
-            </a>
+            <li>
+              <span>자유대화방</span>
+            </li>
           </Link>
         </ul>
       </NavWrapper>

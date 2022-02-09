@@ -1,10 +1,12 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link';
+// import Link from 'next/link';
 import Router from 'next/router';
 import { wrapper } from '../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
+
+import { CKEditor } from '../components/CKEditor';
 
 import {
   Header,
@@ -190,7 +192,7 @@ const AddPost = () => {
               </button>
               <input type="file" name="image" multiple hidden ref={imageInput} onChange={onChangeImages} />
               <button type="button" onClick={onClickImageUpload}>
-                IMG
+                이미지
               </button>
             </div>
             <ImageWrapper>
@@ -205,12 +207,13 @@ const AddPost = () => {
             </ImageWrapper>
             <br />
             {imagePaths.map((v, i) => (
-              <div class="text_photo" key={i} style={{ display: 'inline-block' }} onClick={onRemoveImage(i)}>
+              <div className="text_photo" key={i} style={{ display: 'inline-block' }} onClick={onRemoveImage(i)}>
                 <p id="explain">삭제</p>
                 <img src={`http://localhost:3065/${v}`} style={{ width: '120px' }} alt={v} />
               </div>
             ))}
           </TextEdit>
+          <CKEditor />
           <BtnWrapper>
             <button type="submit">완료</button>
             <button
