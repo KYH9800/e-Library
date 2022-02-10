@@ -17,7 +17,7 @@ const MainHomeMenu = () => {
       </LoginSignupMenu>
       <NavWrapper>
         <h1>
-          <Link href="/">
+          <Link href="/community">
             <a>e도서관</a>
           </Link>
         </h1>
@@ -29,28 +29,28 @@ const MainHomeMenu = () => {
               </li>
             </a>
           </Link>
-          <Link href={`/`}>
+          <Link href={`/community`}>
             <a>
               <li>
                 <span>자유게시판</span>
               </li>
             </a>
           </Link>
-          <Link href={`/`}>
+          <Link href={`/community`}>
             <a>
               <li>
                 <span>모임 공지</span>
               </li>
             </a>
           </Link>
-          <Link href={`/`}>
+          <Link href={`/community`}>
             <a>
               <li>
                 <span>독 후 감</span>
               </li>
             </a>
           </Link>
-          <Link href={`/`}>
+          <Link href={`/community`}>
             <a>
               <li>
                 <span>건의게시판</span>

@@ -11,7 +11,7 @@ import { MainWrapper } from '../../style/communitySt';
 import AppLayout from '../../components/AppLayout';
 import PostForm from '../../components/Community/postForm'; // props 넘겨주기
 
-import { LOAD_POST_REQUEST } from '../../reducers/post';
+import { LOAD_POST_REQUEST, LOAD_POSTS_REQUEST } from '../../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 
 //* 여기서 dispatch LOAD_POST 시, post.id의 게시글을 불러오면 된다. (SSR, getServerSideProps)
@@ -55,6 +55,9 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
   }
   store.dispatch({
     type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch({
+    type: LOAD_POSTS_REQUEST,
   });
   store.dispatch({
     type: LOAD_POST_REQUEST,

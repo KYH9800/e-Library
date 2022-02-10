@@ -107,6 +107,7 @@ const reducer = (state = initialState, action) =>
         draft.addPostLoading = false;
         draft.addPostDone = true;
         draft.mainPosts = draft.mainPosts.concat(action.data);
+        //! singPosts의 Comments 동기화 해야됨...
         break;
       case ADD_POST_FAILURE:
         draft.addPostLoading = false;
@@ -120,13 +121,10 @@ const reducer = (state = initialState, action) =>
         break;
       case ADD_COMMENT_SUCCESS:
         console.log('ADD_COMMENT_SUCCESS: ', action.data);
-        console.log('ADD_COMMENT_SUCCESS-02: ', mainPosts);
-        draft.mainPosts = draft.mainPosts.Comments.unshift(action.data);
-        // const post = draft.mainPosts.find((v) => v.id === action.data.PostId);
-        // action.data.unshift(post.Comments);
+        const post = draft.mainPosts.find((v) => v.id === action.data.PostId);
+        post.Comments.unshift(action.data);
         draft.addCommentLoading = false;
         draft.addCommentDone = true;
-        // draft.mainPosts = draft.mainPosts.concat(action.data);
         break;
       case ADD_COMMENT_FAILURE:
         draft.addCommentLoading = false;
