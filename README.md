@@ -13,17 +13,23 @@
 6. 회원가입 후 로그인된 사용자만 글을 쓰고 댓글을 작성할 수 있습니다.
 
 1. 회원가입
-- 약관 동의
+
+약관 동의
+
 ![image](https://user-images.githubusercontent.com/61128538/153403470-330a9735-768c-4d75-bab9-c0d8dd233d4a.png)
-- 회원 정보 입력
+
+회원 정보 입력
 ![image](https://user-images.githubusercontent.com/61128538/153403564-4361cc81-7a9b-407d-8ac6-37fc1707e5a5.png)
 
 2. 로그인
-- 로그인 전
+
+로그인 전
 ![image](https://user-images.githubusercontent.com/61128538/153403692-95924e83-08a5-4339-ad98-40f32b496c37.png)
-- 로그인 정보 입력
+
+로그인 정보 입력
 ![image](https://user-images.githubusercontent.com/61128538/153403618-bebfeda0-d451-48d5-846a-1a132e478a15.png)
-- 로그인 후
+
+로그인 후
 ![image](https://user-images.githubusercontent.com/61128538/153403732-760853f0-af0a-4da0-8499-45cb2d834f96.png)
 
 3. 커뮤니티 전체 게시글 (무한 스크롤 가능)
