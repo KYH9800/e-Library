@@ -23,34 +23,46 @@ const MainHomeMenu = () => {
         </h1>
         <ul>
           <Link href="/community">
-            <li>
-              <span>전체게시판</span>
-            </li>
+            <a>
+              <li>
+                <span>전체게시판</span>
+              </li>
+            </a>
           </Link>
           <Link href={`/`}>
-            <li>
-              <span>자유게시판</span>
-            </li>
+            <a>
+              <li>
+                <span>자유게시판</span>
+              </li>
+            </a>
           </Link>
           <Link href={`/`}>
-            <li>
-              <span>모임 공지</span>
-            </li>
+            <a>
+              <li>
+                <span>모임 공지</span>
+              </li>
+            </a>
           </Link>
           <Link href={`/`}>
-            <li>
-              <span>독 후 감</span>
-            </li>
+            <a>
+              <li>
+                <span>독 후 감</span>
+              </li>
+            </a>
           </Link>
           <Link href={`/`}>
-            <li>
-              <span>건의게시판</span>
-            </li>
+            <a>
+              <li>
+                <span>건의게시판</span>
+              </li>
+            </a>
           </Link>
           <Link href="/chatRoom">
-            <li>
-              <span>자유대화방</span>
-            </li>
+            <a>
+              <li>
+                <span>자유대화방</span>
+              </li>
+            </a>
           </Link>
         </ul>
       </NavWrapper>

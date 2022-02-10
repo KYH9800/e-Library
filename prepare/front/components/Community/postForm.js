@@ -1,11 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
 import { TextWrapper, ButtonWrapper, Category, Title, UserNickname, Content, ImageWrapper } from '../style/postFormSt';
 import PostImages from './postImage';
 
+import CommentForm from './comment';
+
 const PostForm = ({ post }) => {
+  const { me } = useSelector((state) => state.user);
   console.log('PostForm의 넘겨받은 Props: ', post);
+
   return (
     <>
       <TextWrapper>
@@ -31,7 +36,7 @@ const PostForm = ({ post }) => {
             <button>목록으로</button>
           </Link>
         </ButtonWrapper>
-        {/* 로그인 된 사용자만 보이도록 댓글창 추가 */}
+        {me ? <CommentForm post={post} /> : null}
       </TextWrapper>
     </>
   );

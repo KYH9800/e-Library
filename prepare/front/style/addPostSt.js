@@ -93,7 +93,7 @@ export const TextEdit = styled.div`
     // todo
   }
   button {
-    width: 70px;
+    width: 90px;
     color: black;
   }
   #editor {

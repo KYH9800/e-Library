@@ -39,3 +39,24 @@ export const LayoutMain = styled.div`
 export const LayoutFooter = styled.div`
   background-color: rgb(60, 65, 67);
 `;
+
+/* ckeditor
+.ck {
+  margin: auto;
+  width: 651px;
+  height: 150px;
+  .ck-toolbar_grouping {
+    margin: auto;
+    width: 651px;
+  }
+  p {
+      color: black;
+  }
+  h2 {
+      color: black;
+  }
+  li {
+    color: black;
+  }
+}
+*/

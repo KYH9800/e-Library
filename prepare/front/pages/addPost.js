@@ -6,8 +6,6 @@ import { wrapper } from '../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
 
-import { CKEditor } from '../components/CKEditor';
-
 import {
   Header,
   Main,
@@ -27,6 +25,8 @@ import useInput from '../hooks/useInput';
 import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
+// import Editor from '../components/CKEditor';
+
 const AddPost = () => {
   const dispatch = useDispatch();
   const { me, addPostError } = useSelector((state) => state.user);
@@ -36,6 +36,11 @@ const AddPost = () => {
   const [title, onChangeTitle] = useInput('');
   const [category, setCategory] = useState();
   const [content, setContent] = useState('');
+  // const [editorLoaded, setEditorLoaded] = useState(false);
+  // const [data, setData] = useState('');
+  // useEffect(() => {
+  //   setEditorLoaded(true);
+  // }, []);
 
   // onSubmit
   const onSubmit = useCallback(
@@ -142,57 +147,9 @@ const AddPost = () => {
           <ContentWrapper></ContentWrapper>
           <TextEdit>
             <div className="editor-menu">
-              <button
-                type="button"
-                onClick={() => {
-                  setStyle('bold');
-                }}
-              >
-                <b>B</b>
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setStyle('italic');
-                }}
-              >
-                <i>I</i>
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setStyle('underline');
-                }}
-              >
-                <u>U</u>
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setStyle('strikeThrough');
-                }}
-              >
-                <s>S</s>
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setStyle('insertOrderedList');
-                }}
-              >
-                OL
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  setStyle('insertUnorderedList');
-                }}
-              >
-                UL
-              </button>
               <input type="file" name="image" multiple hidden ref={imageInput} onChange={onChangeImages} />
               <button type="button" onClick={onClickImageUpload}>
-                이미지
+                이미지 삽입
               </button>
             </div>
             <ImageWrapper>
@@ -213,7 +170,13 @@ const AddPost = () => {
               </div>
             ))}
           </TextEdit>
-          <CKEditor />
+          {/* <Editor
+            name="description"
+            onChange={(data) => {
+              setContent(data);
+            }}
+            editorLoaded={editorLoaded}
+          /> */}
           <BtnWrapper>
             <button type="submit">완료</button>
             <button

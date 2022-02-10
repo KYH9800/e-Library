@@ -70,3 +70,60 @@ export const ButtonWrapper = styled.div`
     background-color: #3c3c3c;
   }
 `;
+
+// Comment
+export const Comment = styled.div`
+  display: inline-flex;
+  textarea {
+    width: 700px;
+    height: 70px;
+    border: 1px solid #222222;
+    padding: 10px;
+    background-color: #e0e0e0;
+    color: black;
+  }
+  button {
+    background-color: #222222;
+    color: #999999;
+    width: 100px;
+    height: 70px;
+    border: 1px solid #222222;
+  }
+  button:hover {
+    background-color: #2e2e2e;
+  }
+  button:active {
+    background-color: #3c3c3c;
+  }
+`;
+export const CommentWrapper = styled.div`
+  text-align: center;
+  padding: 20px 0px 20px 0px;
+  margin: auto;
+  margin-top: 30px;
+  width: 800px;
+  font-size: 16px;
+  span {
+    margin: auto;
+    width: 800px;
+    display: block;
+    display: block;
+    border: 1px solid gray;
+  }
+  div {
+    text-align: left;
+    margin: 15px 0px 0px 0px;
+    p {
+      padding: 0px 5px 10px 10px;
+      margin-bottom: 5px;
+    }
+    a {
+      padding: 0px 5px 0px 5px;
+      display: block;
+      color: gray;
+    }
+    a:hover {
+      color: white;
+    }
+  }
+`;

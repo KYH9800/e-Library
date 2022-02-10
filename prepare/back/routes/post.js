@@ -72,6 +72,36 @@ router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => {
   res.json(req.files.map((v) => v.filename)); // 어디로 업로드 됬는지에 대한 파일명들을 프론트로 전송
 }); // 먼저 파일명만 return 해준다. -> v.filename, 추후 배포 시 이미지는 지우지 않는다.(자산이다)
 
+// POST post/1/comment
+router.post('/:postId/comment', isLoggedIn, async (req, res, next) => {
+  try {
+    const post = await Post.findOne({
+      where: { id: req.params.postId },
+    });
+    if (!post) {
+      return res.status(403).send('존재하지 않는 게시글입니다.');
+    }
+    const comment = await Comment.create({
+      content: req.body.content,
+      PostId: parseInt(req.params.postId, 10),
+      UserId: req.user.id,
+    });
+    const fullComment = await Comment.findOne({
+      where: { id: comment.id },
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'nickname'],
+        },
+      ],
+    });
+    res.status(201).json(fullComment);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
 // GET /post/1
 router.get('/:postId', async (req, res, next) => {
   try {
@@ -90,6 +120,9 @@ router.get('/:postId', async (req, res, next) => {
         {
           model: User,
           attributes: ['id', 'nickname'],
+        },
+        {
+          model: Comment,
         },
       ],
     });
