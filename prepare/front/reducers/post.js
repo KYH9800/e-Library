@@ -15,6 +15,9 @@ export const initialState = {
   addPostLoading: false,
   addPostDone: false,
   addPostError: null,
+  addCommentLoading: false,
+  addCommentDone: false,
+  addCommentError: null,
   updatePostLoading: false,
   updatePostDone: false,
   updatePostError: null,
@@ -38,6 +41,10 @@ export const LOAD_POST_FAILURE = 'LOAD_POST_FAILURE';
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
+
+export const ADD_COMMENT_REQUEST = 'ADD_COMMENT_REQUEST';
+export const ADD_COMMENT_SUCCESS = 'ADD_COMMENT_SUCCESS';
+export const ADD_COMMENT_FAILURE = 'ADD_COMMENT_FAILURE';
 
 export const UPDATE_POST_REQUEST = 'UPDATE_POST_REQUEST';
 export const UPDATE_POST_SUCCESS = 'UPDATE_POST_SUCCESS';
@@ -104,6 +111,26 @@ const reducer = (state = initialState, action) =>
       case ADD_POST_FAILURE:
         draft.addPostLoading = false;
         draft.addPostError = action.error;
+        break;
+      //* ADD_COMMENT
+      case ADD_COMMENT_REQUEST:
+        draft.addCommentLoading = true;
+        draft.addCommentDone = false;
+        draft.addCommentError = null;
+        break;
+      case ADD_COMMENT_SUCCESS:
+        console.log('ADD_COMMENT_SUCCESS: ', action.data);
+        console.log('ADD_COMMENT_SUCCESS-02: ', mainPosts);
+        draft.mainPosts = draft.mainPosts.Comments.unshift(action.data);
+        // const post = draft.mainPosts.find((v) => v.id === action.data.PostId);
+        // action.data.unshift(post.Comments);
+        draft.addCommentLoading = false;
+        draft.addCommentDone = true;
+        // draft.mainPosts = draft.mainPosts.concat(action.data);
+        break;
+      case ADD_COMMENT_FAILURE:
+        draft.addCommentLoading = false;
+        draft.addCommentError = action.error;
         break;
       //* UPDATE_POST
       case UPDATE_POST_REQUEST:

@@ -57,13 +57,13 @@ const MainHomeMenu = () => {
               </li>
             </a>
           </Link>
-          <Link href="/chatRoom">
+          {/* <Link href="/chatRoom">
             <a>
               <li>
                 <span>자유대화방</span>
               </li>
             </a>
-          </Link>
+          </Link> */}
         </ul>
       </NavWrapper>
     </div>

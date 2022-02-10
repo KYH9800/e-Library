@@ -98,13 +98,16 @@ export const Comment = styled.div`
 `;
 export const CommentWrapper = styled.div`
   text-align: center;
-  padding: 20px 0px 20px 0px;
   margin: auto;
   margin-top: 30px;
   width: 800px;
   font-size: 16px;
+`;
+
+export const CommentMap = styled.div`
   span {
     margin: auto;
+    margin-top: 15px;
     width: 800px;
     display: block;
     display: block;

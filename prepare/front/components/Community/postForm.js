@@ -2,7 +2,16 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
 
-import { TextWrapper, ButtonWrapper, Category, Title, UserNickname, Content, ImageWrapper } from '../style/postFormSt';
+import {
+  TextWrapper,
+  ButtonWrapper,
+  Category,
+  Title,
+  UserNickname,
+  Content,
+  ImageWrapper,
+  CommentMap,
+} from '../style/postFormSt';
 import PostImages from './postImage';
 
 import CommentForm from './comment';
@@ -37,6 +46,18 @@ const PostForm = ({ post }) => {
           </Link>
         </ButtonWrapper>
         {me ? <CommentForm post={post} /> : null}
+        <CommentMap>
+          <span>
+            {post.Comments.map((v) => {
+              return (
+                <div>
+                  <a>{v.UserId}</a>
+                  <p>{v.content}</p>
+                </div>
+              );
+            })}
+          </span>
+        </CommentMap>
       </TextWrapper>
     </>
   );
