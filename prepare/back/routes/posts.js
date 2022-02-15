@@ -46,7 +46,7 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// GET /post/UserId
+// GET /post/category
 router.get('/:postId', (req, res, next) => {
   // todo
 });

@@ -2,10 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 
-import { wrapper } from '../../store/configureStore';
-import { END } from 'redux-saga';
-import axios from 'axios';
-
 import {
   TextWrapper,
   ButtonWrapper,
@@ -14,20 +10,33 @@ import {
   UserNickname,
   Content,
   ImageWrapper,
-  CommentMap,
+  CommentFrom,
+  ContentWrapper,
 } from '../style/postFormSt';
 import PostImages from './postImage';
 
-import { LOAD_POSTS_REQUEST, LOAD_POST_REQUEST } from '../../reducers/post';
-
 import CommentForm from './comment';
+import { LOAD_POST_REQUEST, REMOVE_COMMENT_REQUEST } from '../../reducers/post';
+import { useCallback } from 'react';
 
 const PostForm = ({ post }) => {
   const dispatch = useDispatch();
   const { me } = useSelector((state) => state.user);
-  const { mainPosts } = useSelector((state) => state.post);
-  console.log('mainPosts: ', mainPosts);
-  console.log('PostForm의 넘겨받은 Props: ', post);
+  const { removeCommentError } = useSelector((state) => state.post);
+  console.log('PostForm의 넘겨받은 Props: ', post); // singlePosts
+
+  const onRemoveComment = useCallback((comment) => () => {
+    console.log('data', comment.id);
+    if (confirm('댓글을 삭제 하시겠습니까? 삭제 후 댓글은 복구되지 않습니다.') == true) {
+      dispatch({
+        type: REMOVE_COMMENT_REQUEST,
+        data: comment.id,
+      });
+      if (!removeCommentError) {
+        window.location.replace(`/post/${comment.PostId}`); // 삭제 완료 시 해당 페이지로 새로고침
+      }
+    }
+  });
 
   return (
     <>
@@ -55,41 +64,28 @@ const PostForm = ({ post }) => {
           </Link>
         </ButtonWrapper>
         {me ? <CommentForm post={post} /> : null}
-        <CommentMap>
+        <CommentFrom>
           <span>
             {post.Comments.map((v) => {
               return (
-                <div>
-                  <a>{v.UserId}</a>
-                  <p>{v.content}</p>
+                <div key={v.id}>
+                  <span>{v.User.nickname}</span>
+                  <ContentWrapper>
+                    <p>{v.content}</p>
+                    {me?.id === v.User.id ? (
+                      <button type="button" onClick={onRemoveComment(v)}>
+                        댓글 삭제
+                      </button>
+                    ) : null}
+                  </ContentWrapper>
                 </div>
               );
             })}
           </span>
-        </CommentMap>
+        </CommentFrom>
       </TextWrapper>
     </>
   );
 };
-
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
-  // console.log('getServerSideProps req: ', req);
-  const cookie = req ? req.headers.cookie : '';
-  axios.defaults.headers.Cookie = '';
-  if (req && cookie) {
-    axios.defaults.headers.Cookie = cookie;
-  }
-  store.dispatch({
-    type: LOAD_MY_INFO_REQUEST,
-  });
-  store.dispatch({
-    type: LOAD_POSTS_REQUEST,
-  });
-  store.dispatch({
-    type: LOAD_POST_REQUEST,
-  });
-  store.dispatch(END);
-  await store.sagaTask.toPromise();
-});
 
 export default PostForm;

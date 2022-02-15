@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
@@ -9,6 +9,11 @@ import UserProfile from '../UserProfile';
 
 const MainHomeMenu = () => {
   const { me } = useSelector((state) => state.user);
+  const { mainPosts } = useSelector((state) => state.post);
+
+  const categoryClick = useCallback((category) => () => {
+    console.log('category: ', category);
+  });
 
   return (
     <div>
@@ -29,7 +34,7 @@ const MainHomeMenu = () => {
               </li>
             </a>
           </Link>
-          <Link href={`/community`}>
+          <Link href={`community/category`}>
             <a>
               <li>
                 <span>자유게시판</span>

@@ -123,6 +123,12 @@ router.get('/:postId', async (req, res, next) => {
         },
         {
           model: Comment,
+          include: [
+            {
+              model: User,
+              attributes: ['id', 'nickname'],
+            },
+          ],
         },
       ],
     });
@@ -162,6 +168,21 @@ router.patch('/:postId', isLoggedIn, upload.none(), async (req, res, next) => {
     next(err);
   }
 }); // PATCH /post
+
+router.delete('/:postId/comment', isLoggedIn, async (req, res, next) => {
+  try {
+    await Comment.destroy({
+      where: {
+        id: req.params.postId,
+        UserId: req.user.id,
+      },
+    });
+    res.status(200).json(parseInt(req.params.postId, 10));
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 
 // DELETE /post/1
 router.delete('/:postId', isLoggedIn, async (req, res, next) => {

@@ -24,6 +24,9 @@ export const initialState = {
   removePostLoading: false,
   removePostDone: false,
   removePostError: null,
+  removeCommentLoading: false,
+  removeCommentDone: false,
+  removeCommentError: null,
   uploadImagesLoading: false,
   uploadImagesDone: false,
   uploadImagesError: null,
@@ -53,6 +56,10 @@ export const UPDATE_POST_FAILURE = 'UPDATE_POST_FAILURE';
 export const REMOVE_POST_REQUEST = 'REMOVE_POST_REQUEST';
 export const REMOVE_POST_SUCCESS = 'REMOVE_POST_SUCCESS';
 export const REMOVE_POST_FAILURE = 'REMOVE_POST_FAILURE';
+
+export const REMOVE_COMMENT_REQUEST = 'REMOVE_COMMENT_REQUEST';
+export const REMOVE_COMMENT_SUCCESS = 'REMOVE_COMMENT_SUCCESS';
+export const REMOVE_COMMENT_FAILURE = 'REMOVE_COMMENT_FAILURE';
 
 export const UPLOAD_IMAGES_REQUEST = 'UPLOAD_IMAGES_REQUEST';
 export const UPLOAD_IMAGES_SUCCESS = 'UPLOAD_IMAGES_SUCCESS';
@@ -87,7 +94,7 @@ const reducer = (state = initialState, action) =>
         draft.loadPostsError = null;
         break;
       case LOAD_POSTS_SUCCESS:
-        console.log('reducer mainPosts: ', draft.mainPosts);
+        // console.log('reducer mainPosts: ', draft.mainPosts);
         draft.loadPostsLoading = false;
         draft.loadPostsDone = true;
         draft.mainPosts = draft.mainPosts.concat(action.data);
@@ -120,7 +127,8 @@ const reducer = (state = initialState, action) =>
         draft.addCommentError = null;
         break;
       case ADD_COMMENT_SUCCESS:
-        console.log('ADD_COMMENT_SUCCESS: ', action.data);
+        // console.log('ADD_COMMENT_SUCCESS: ', action.data);
+        // console.log('sdgfasg: ', state.mainPosts);
         const post = draft.mainPosts.find((v) => v.id === action.data.PostId);
         post.Comments.unshift(action.data);
         draft.addCommentLoading = false;
@@ -160,6 +168,23 @@ const reducer = (state = initialState, action) =>
       case REMOVE_POST_FAILURE:
         draft.removePostLoading = false;
         draft.removePostError = action.error;
+        break;
+      //* REMOVE_COMMENT
+      case REMOVE_COMMENT_REQUEST:
+        draft.removeCommentLoading = true;
+        draft.removeCommentDone = false;
+        draft.removeCommentError = null;
+        break;
+      case REMOVE_COMMENT_SUCCESS:
+        console.log('delete comment: ', action.data);
+        console.log('mainPosts: ', state.mainPosts.Comments);
+        draft.mainPosts = draft.mainPosts.filter((v) => v.Comments.id !== action.data); //! error
+        draft.removeCommentLoading = false;
+        draft.removeCommentDone = true;
+        break;
+      case REMOVE_COMMENT_FAILURE:
+        draft.removeCommentLoading = false;
+        draft.removeCommentError = action.error;
         break;
       //* UPLOAD_IMAGES
       case UPLOAD_IMAGES_REQUEST:

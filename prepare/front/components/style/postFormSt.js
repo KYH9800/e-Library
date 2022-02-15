@@ -104,29 +104,48 @@ export const CommentWrapper = styled.div`
   font-size: 16px;
 `;
 
-export const CommentMap = styled.div`
-  span {
-    margin: auto;
-    margin-top: 15px;
-    width: 800px;
-    display: block;
-    display: block;
-    border: 1px solid gray;
-  }
+export const CommentFrom = styled.div`
+  margin: auto;
+  margin-top: 15px;
+  width: 800px;
+  display: block;
+  display: block;
+  border: 1px solid gray;
   div {
     text-align: left;
-    margin: 15px 0px 0px 0px;
-    p {
-      padding: 0px 5px 10px 10px;
-      margin-bottom: 5px;
-    }
-    a {
+    padding: 15px 0px 0px 0px;
+    span {
       padding: 0px 5px 0px 5px;
       display: block;
       color: gray;
     }
-    a:hover {
-      color: white;
-    }
+  }
+  div:hover {
+    background-color: #3c3c3c;
+  }
+`;
+export const ContentWrapper = styled.div`
+  display: flex;
+  /* align-items: center; */
+  button {
+    position: unset;
+    margin-right: 15px;
+    background-color: #222222;
+    color: #999999;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #222222;
+  }
+  button:hover {
+    background-color: #2e2e2e;
+  }
+  button:active {
+    background-color: #3c3c3c;
+  }
+  p {
+    padding: 0px 5px 10px 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    width: 700px;
   }
 `;

@@ -26,6 +26,9 @@ import {
   ADD_COMMENT_REQUEST,
   ADD_COMMENT_SUCCESS,
   ADD_COMMENT_FAILURE,
+  REMOVE_COMMENT_REQUEST,
+  REMOVE_COMMENT_SUCCESS,
+  REMOVE_COMMENT_FAILURE,
 } from '../reducers/post';
 import { ADD_POST_TO_ME, REMOVE_POST_OF_ME } from '../reducers/user';
 
@@ -144,6 +147,27 @@ function* removePost(action) {
   }
 }
 
+function removeCommentAPI(data) {
+  return axios.delete(`/post/${data}/comment`); // data: post.id
+}
+
+function* removeComment(action) {
+  try {
+    const result = yield call(removeCommentAPI, action.data);
+    console.log('result', result);
+    // yield delay(1000);
+    yield put({
+      type: REMOVE_COMMENT_SUCCESS,
+      data: result.data,
+    });
+  } catch (err) {
+    yield put({
+      type: REMOVE_COMMENT_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
+
 function uploadImagesAPI(data) {
   return axios.post(`/post/images`, data); // data: post.id
 }
@@ -206,6 +230,9 @@ function* watchUpdatePost() {
 function* watchAddComment() {
   yield takeLatest(ADD_COMMENT_REQUEST, addComment);
 }
+function* watchRemoveComment() {
+  yield takeLatest(REMOVE_COMMENT_REQUEST, removeComment);
+}
 
 export default function* postSaga() {
   yield all([
@@ -216,5 +243,6 @@ export default function* postSaga() {
     fork(watchUploadImages),
     fork(watchUpdatePost),
     fork(watchAddComment),
+    fork(watchRemoveComment),
   ]);
 }

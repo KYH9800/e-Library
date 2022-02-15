@@ -19,12 +19,17 @@ const CommentForm = ({ post }) => {
   }, [addCommentDone]);
 
   const onCommentSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log('postId: ', post.id, 'commentText: ', commentText, 'id: ', id);
-    dispatch({
-      type: ADD_COMMENT_REQUEST,
-      data: { content: commentText, postId: post.id, userId: id },
-    });
+    if (!commentText) {
+      e.preventDefault();
+      alert('댓글을 입력해주세요.');
+    } else {
+      dispatch({
+        type: ADD_COMMENT_REQUEST,
+        data: { content: commentText, postId: post.id, userId: id },
+      });
+    }
   };
 
   return (
