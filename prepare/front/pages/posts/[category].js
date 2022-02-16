@@ -1,39 +1,48 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Router from 'next/router';
 import Head from 'next/head';
-import { END } from 'redux-saga';
+import Router, { useRouter } from 'next/router';
+import Link from 'next/link';
 import { wrapper } from '../../store/configureStore';
+import { END } from 'redux-saga';
 import axios from 'axios';
 
-import { MainWrapper } from '../../style/communitySt';
-
+import {
+  MainWrapper,
+  CreactPostBtn,
+  PostWrapper,
+  ListWrapper,
+  UpdateBtn,
+  DeleteBtn,
+  Num,
+  Title,
+  Count,
+  Id,
+} from '../../style/communitySt';
 import AppLayout from '../../components/AppLayout';
-// import PostForm from '../../components/Community/postForm'; // props 넘겨주기
-import { LOAD_POST_REQUEST, LOAD_CATEGORY_POSTS_REQUEST } from '../../reducers/post';
+
+import { LOAD_CATEGORY_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 
-//* 여기서 dispatch LOAD_POST 시, post.id의 게시글을 불러오면 된다. (SSR, getServerSideProps)
-
-const Post = () => {
+const Category = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { category } = router.query;
-  console.log('category: ', category);
-
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
   const { me } = useSelector((state) => state.user);
-  console.log('LOAD_POSTS_REQUEST_MainPosts: ', mainPosts);
   const id = me?.id;
+  console.log('LOAD_CATEGORY_POSTS_REQUEST: ', mainPosts);
+  console.log('페이지에서 받아온 category: ', category);
 
   useEffect(() => {
     function onScroll() {
       if (window.pageYOffset + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
         if (hasMorePosts && !loadPostsLoading) {
-          const lastId = mainPosts[mainPosts.length - 1]?.id;
+          // const lastId = mainPosts[mainPosts.length - 1]?.id;
           dispatch({
             type: LOAD_CATEGORY_POSTS_REQUEST,
-            lastId,
+            lastId: mainPosts[mainPosts.length - 1] && mainPosts[mainPosts.length - 1].id,
+            data: category,
           });
         }
       }
@@ -122,11 +131,11 @@ const Post = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, params }) => {
-  console.log('store: ', req);
+  // console.log('getServerSideProps req: ', req);
   const cookie = req ? req.headers.cookie : '';
-  axios.defaults.headers.Cookie = ''; // 서버에서 다른 사람과 cookie가 공유되는 문제를 방지하고자 초기화를 해준다.
+  axios.defaults.headers.Cookie = '';
   if (req && cookie) {
-    axios.defaults.headers.Cookie = cookie; // 서버에서 요청일때랑 cookie가 있으면 설정한 cookie를 넣어준다.
+    axios.defaults.headers.Cookie = cookie;
   }
   store.dispatch({
     type: LOAD_MY_INFO_REQUEST,
@@ -139,4 +148,4 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
   await store.sagaTask.toPromise();
 });
 
-export default Post;
+export default Category;

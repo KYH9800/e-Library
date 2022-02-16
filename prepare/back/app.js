@@ -13,7 +13,6 @@ const path = require('path');
 const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts');
 const userRouter = require('./routes/user');
-const categoryRouter = require('./routes/category');
 
 const db = require('./models').sequelize;
 const passportConfig = require('./passport');
@@ -53,9 +52,9 @@ server.get('/', (req, res) => {
 });
 
 server.use('/posts', postsRouter);
-// server.use('/category', categoryRouter);
 server.use('/post', postRouter);
 server.use('/user', userRouter);
+
 /* 이 사이에 보이지 않는 error 처리 미들웨어가 존재 */
 server.listen(3065, () => {
   console.log('서버를 실행중입니다.');

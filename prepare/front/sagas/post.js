@@ -29,6 +29,9 @@ import {
   REMOVE_COMMENT_REQUEST,
   REMOVE_COMMENT_SUCCESS,
   REMOVE_COMMENT_FAILURE,
+  LOAD_CATEGORY_POSTS_REQUEST,
+  LOAD_CATEGORY_POSTS_SUCCESS,
+  LOAD_CATEGORY_POSTS_FAILURE,
 } from '../reducers/post';
 import { ADD_POST_TO_ME, REMOVE_POST_OF_ME } from '../reducers/user';
 
@@ -48,6 +51,29 @@ function* loadPosts(action) {
   } catch (err) {
     yield put({
       type: LOAD_POSTS_FAILURE,
+      error: err.response.data,
+    });
+  }
+}
+
+function loadCategoryPostsAPI(data, lastId) {
+  // console.log('category saga data: ', data);
+  return axios.get(`/posts/${encodeURIComponent(data)}?lastId=${lastId || 0}`);
+}
+
+function* loadCategoryPosts(action) {
+  try {
+    const result = yield call(loadCategoryPostsAPI, action.data, action.lastId);
+    console.log('result', result);
+    // yield delay(1000);
+    yield put({
+      type: LOAD_CATEGORY_POSTS_SUCCESS,
+      data: result.data,
+    });
+  } catch (err) {
+    console.error(err);
+    yield put({
+      type: LOAD_CATEGORY_POSTS_FAILURE,
       error: err.response.data,
     });
   }
@@ -212,6 +238,9 @@ function* updatePost(action) {
 function* watchLoadPosts() {
   yield takeLatest(LOAD_POSTS_REQUEST, loadPosts);
 }
+function* watchLoadCategoryPosts() {
+  yield takeLatest(LOAD_CATEGORY_POSTS_REQUEST, loadCategoryPosts);
+}
 function* watchLoadPost() {
   yield takeLatest(LOAD_POST_REQUEST, loadPost);
 }
@@ -238,6 +267,7 @@ export default function* postSaga() {
   yield all([
     fork(watchLoadPosts),
     fork(watchLoadPost),
+    fork(watchLoadCategoryPosts),
     fork(watchAddPost),
     fork(watchRemovePost),
     fork(watchUploadImages),
