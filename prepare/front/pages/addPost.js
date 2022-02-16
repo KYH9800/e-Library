@@ -67,7 +67,7 @@ const AddPost = () => {
         });
         // error 없으면 community 목록으로 이동
         if (!addPostError) {
-          Router.push('/community');
+          Router.push('/');
         }
       }
     },
@@ -76,7 +76,7 @@ const AddPost = () => {
 
   useEffect(() => {
     if (!me) {
-      Router.push('/community');
+      Router.push('/');
     }
   }, [me]);
 
@@ -183,7 +183,7 @@ const AddPost = () => {
               type="button"
               onClick={() => {
                 if (confirm('작성 중인 게시글은 저장되지 않습니다. 작성을 취소하시겠습니까?') == true) {
-                  Router.push('/community');
+                  Router.push('/');
                 }
               }}
             >

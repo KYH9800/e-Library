@@ -3,8 +3,8 @@ const { Op } = require('sequelize');
 
 const { Post, Image, User, Comment } = require('../models');
 
-// GET /posts
-router.get('/', async (req, res, next) => {
+// GET /category/자유게시글
+router.get('/:category', async (req, res, next) => {
   console.log('req.query.lastId: ', req.query.lastId);
   try {
     const where = {};
@@ -45,5 +45,3 @@ router.get('/', async (req, res, next) => {
     next(error);
   }
 });
-
-module.exports = router;

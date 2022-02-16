@@ -1,149 +1,146 @@
-import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-import { END } from 'redux-saga';
-import { wrapper } from '../store/configureStore';
-import axios from 'axios';
+import React, { useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
+import Router from 'next/router';
+import Link from 'next/link';
+import { wrapper } from '../store/configureStore';
+import { END } from 'redux-saga';
+import axios from 'axios';
 
-import { Wrapper, Introduce, BoaderBox, BoardListWrapper, ListBox } from '../style/indexSt';
-
+import {
+  MainWrapper,
+  CreactPostBtn,
+  PostWrapper,
+  ListWrapper,
+  UpdateBtn,
+  DeleteBtn,
+  Num,
+  Title,
+  Count,
+  Id,
+} from '../style/communitySt';
 import AppLayout from '../components/AppLayout';
 
-import { LOAD_MY_INFO_REQUEST, LOAD_MY_INFO_SUCCESS } from '../reducers/user';
+import { LOAD_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../reducers/post';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
-const Home = () => {
-  // const dispatch = useDispatch();
+const Community = () => {
+  const dispatch = useDispatch();
+  const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
+  const { me } = useSelector((state) => state.user);
+  console.log('LOAD_POSTS_REQUEST_MainPosts: ', mainPosts);
+  const id = me?.id;
 
-  const quotes = [
-    '추천도서1',
-    '추천도서2',
-    '추천도서3',
-    '추천도서4',
-    '추천도서5',
-    '추천도서6',
-    '추천도서7',
-    '추천도서8',
-    '추천도서9',
-    '추천도서10',
-  ];
-  const popularBooks = [
-    '인기도서1',
-    '인기도서2',
-    '인기도서3',
-    '인기도서4',
-    '인기도서5',
-    '인기도서6',
-    '인기도서7',
-    '인기도서8',
-    '인기도서9',
-    '인기도서10',
-  ];
-  const realTimeGroups = [
-    '카테고리 모임1',
-    '카테고리 모임2',
-    '카테고리 모임3',
-    '카테고리 모임4',
-    '카테고리 모임5',
-    '카테고리 모임6',
-    '카테고리 모임7',
-    '카테고리 모임8',
-    '카테고리 모임9',
-    '카테고리 모임10',
-  ];
+  useEffect(() => {
+    function onScroll() {
+      if (window.pageYOffset + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
+        if (hasMorePosts && !loadPostsLoading) {
+          const lastId = mainPosts[mainPosts.length - 1]?.id;
+          dispatch({
+            type: LOAD_POSTS_REQUEST,
+            lastId,
+          });
+        }
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
+  }, [hasMorePosts, loadPostsLoading, mainPosts]);
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: LOAD_MY_INFO_REQUEST,
-  //   });
-  // }, []);
+  const onClickAddPost = () => {
+    if (me) {
+      Router.push('/addPost');
+    } else {
+      alert('로그인 후 이용 가능합니다.'); // 안전장치
+      Router.push('/login');
+    }
+  };
+
+  const onRemovePost = useCallback(
+    (post) => () => {
+      // console.log('postId: ', post.id);
+      if (confirm('게시글을 삭제 하시겠습니까? 삭제 후 게시글은 복구되지 않습니다.') == true) {
+        dispatch({
+          type: REMOVE_POST_REQUEST,
+          data: post.id,
+        });
+      }
+    },
+    [],
+  );
+
+  const onClickUpdate = useCallback(
+    (post) => () => {
+      if (me) {
+        Router.push(`/post/updatePost/${post}`);
+      } else {
+        alert('회원님의 글만 수정이 가능합니다.'); // 안전장치
+      }
+    },
+    [],
+  );
 
   return (
     <AppLayout>
       <Head>
-        <title>e도서관</title>
+        <title>e도서관 | 커뮤니티</title>
       </Head>
-      <Wrapper>
-        <Introduce>
-          <h1>지금 있는 곳에서 책을 읽고 사람들과 공유하세요</h1>
-          <p>
-            <span>e도서관</span>에 오신 여러분을 환영합니다.
-          </p>
-        </Introduce>
-        <BoaderBox>
-          <h2>"책은 내 마음 속의 언 바다를 깨는 도끼와도 같다."</h2>
-          <p>프란츠 카프카(유대계의 독일인 작가)</p>
-        </BoaderBox>
-        <BoardListWrapper>
-          <ListBox>
-            <ul>
-              <h1>추천 도서</h1>
-              {quotes.map((quote, index) => {
-                return (
-                  <li key={quote}>
-                    <a>
-                      {index + 1}. {quote}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-            <ul>
-              <h1>인기 도서</h1>
-              {popularBooks.map((popularBook, index) => {
-                return (
-                  <li key={popularBook}>
-                    <a>
-                      {index + 1}. {popularBook}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-            <ul>
-              <h1>최신 모임 현황</h1>
-              {realTimeGroups.map((realTimeGroup, index) => {
-                return (
-                  <li key={realTimeGroup}>
-                    <a>
-                      {index + 1}. {realTimeGroup}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </ListBox>
-        </BoardListWrapper>
-      </Wrapper>
+      <MainWrapper>
+        <h1>전체게시판</h1>
+        <CreactPostBtn>
+          <div>
+            <button onClick={onClickAddPost}>글쓰기</button>
+          </div>
+        </CreactPostBtn>
+        <PostWrapper>
+          {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
+          {mainPosts.map((post, index) => (
+            <ListWrapper key={post.id}>
+              <Link href={`post/${post.id}`}>
+                <div>
+                  <ul>
+                    <li>
+                      <Num>{index + 1}</Num>
+                      <Title>
+                        <span>[{post.category}]</span> <p>{post.title}</p>
+                      </Title>
+                      <Count>조회수: {post.count}</Count>
+                      <Id>작성자: {post.User.nickname}</Id>
+                    </li>
+                  </ul>
+                </div>
+              </Link>
+              {id && post.User.id === id ? (
+                <>
+                  <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
+                  <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
+                </>
+              ) : null}
+            </ListWrapper>
+          ))}
+        </PostWrapper>
+      </MainWrapper>
     </AppLayout>
   );
 };
 
-// getServerSideProps: 브라우저는 개입 못함, 순전히 Front Server에서 실해됨
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, res, ...ets }) => {
-  console.log('getServerSideProps req.headers: ', req.headers);
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
+  // console.log('getServerSideProps req: ', req);
   const cookie = req ? req.headers.cookie : '';
-  console.log('cookie: ', cookie);
-  axios.defaults.headers.Cookie = ''; // 서버에서 다른 사람과 cookie가 공유되는 문제를 방지하고자 초기화를 해준다.
+  axios.defaults.headers.Cookie = '';
   if (req && cookie) {
-    axios.defaults.headers.Cookie = cookie; // 서버에서 요청일때랑 cookie가 있으면 설정한 cookie를 넣어준다.
-    console.log('axios.defaults.headers.Cookie: ', axios.defaults.headers.Cookie);
+    axios.defaults.headers.Cookie = cookie;
   }
   store.dispatch({
     type: LOAD_MY_INFO_REQUEST,
+  });
+  store.dispatch({
+    type: LOAD_POSTS_REQUEST,
   });
   store.dispatch(END);
   await store.sagaTask.toPromise();
 });
 
-export default Home;
-
-//! 1. 새로고침 시 action에 대한 요청을 END통해 기다리지를 못함, 서버에 request 요청이 안감
-//? 2. cookie는 있음 1번이 문제임 request에서 success까지 기다리지를 못함
-
-/*
-getServerSideProps에 찍은 콘솔은 프론트 서버에서 뜹니다.
-쿠키가 제대로 전달이 되었다면 HYDRATE 부분이 문제거나 next-redux-wrapper쪽 문제일 것 같은데요.
-에러 분석은 프론트서버에서 하셔야할 것 같고요.
-브라우저 콘솔 보시면 4. WrapperApp created... 이게 있는데 이게 프론트 서버 콘솔에도 찍혀있을 겁니다.
-여기서 1,2,3,4단계 모두 콘솔에 찍힐텐데 중간에 state가 사라지는 지점이 있을겁니다. 그걸 보셔야 합니다.
-*/
+export default Community;

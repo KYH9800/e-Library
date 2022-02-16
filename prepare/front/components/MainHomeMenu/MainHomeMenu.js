@@ -22,19 +22,19 @@ const MainHomeMenu = () => {
       </LoginSignupMenu>
       <NavWrapper>
         <h1>
-          <Link href="/community">
+          <Link href="/">
             <a>e도서관</a>
           </Link>
         </h1>
         <ul>
-          <Link href="/community">
+          <Link href="/">
             <a>
               <li>
                 <span>전체게시판</span>
               </li>
             </a>
           </Link>
-          <Link href={`community/category`}>
+          <Link href={`posts/${'자유게시글'}`}>
             <a>
               <li>
                 <span>자유게시판</span>

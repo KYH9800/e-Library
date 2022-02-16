@@ -59,7 +59,7 @@ const PostForm = ({ post }) => {
           })}
         </Content>
         <ButtonWrapper>
-          <Link href="/community">
+          <Link href="/">
             <button>목록으로</button>
           </Link>
         </ButtonWrapper>

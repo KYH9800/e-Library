@@ -35,7 +35,7 @@ const Login = () => {
 
   useEffect(() => {
     if (me) {
-      Router.push('/community');
+      Router.push('/');
       console.log('me data', me);
     }
   });

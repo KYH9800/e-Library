@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import Head from 'next/head';
 import { END } from 'redux-saga';
 import { wrapper } from '../../store/configureStore';
@@ -10,7 +10,7 @@ import { MainWrapper } from '../../style/communitySt';
 
 import AppLayout from '../../components/AppLayout';
 // import PostForm from '../../components/Community/postForm'; // props 넘겨주기
-import { LOAD_POST_REQUEST, LOAD_POSTS_REQUEST } from '../../reducers/post';
+import { LOAD_POST_REQUEST, LOAD_CATEGORY_POSTS_REQUEST } from '../../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 
 //* 여기서 dispatch LOAD_POST 시, post.id의 게시글을 불러오면 된다. (SSR, getServerSideProps)
@@ -19,9 +19,8 @@ const Post = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { category } = router.query;
-  const { singlePost } = useSelector((state) => state.post);
+  console.log('category: ', category);
 
-  const dispatch = useDispatch();
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
   const { me } = useSelector((state) => state.user);
   console.log('LOAD_POSTS_REQUEST_MainPosts: ', mainPosts);
@@ -33,7 +32,7 @@ const Post = () => {
         if (hasMorePosts && !loadPostsLoading) {
           const lastId = mainPosts[mainPosts.length - 1]?.id;
           dispatch({
-            type: LOAD_POSTS_REQUEST,
+            type: LOAD_CATEGORY_POSTS_REQUEST,
             lastId,
           });
         }
@@ -133,11 +132,8 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
     type: LOAD_MY_INFO_REQUEST,
   });
   store.dispatch({
-    type: LOAD_POSTS_REQUEST,
-  });
-  store.dispatch({
-    type: LOAD_POST_REQUEST,
-    data: params.id,
+    type: LOAD_CATEGORY_POSTS_REQUEST,
+    data: params.category,
   });
   store.dispatch(END);
   await store.sagaTask.toPromise();
