@@ -48,6 +48,10 @@ export const LOAD_CATEGORY_POSTS_REQUEST = 'LOAD_CATEGORY_POSTS_REQUEST';
 export const LOAD_CATEGORY_POSTS_SUCCESS = 'LOAD_CATEGORY_POSTS_SUCCESS';
 export const LOAD_CATEGORY_POSTS_FAILURE = 'LOAD_CATEGORY_POSTS_FAILURE';
 
+export const LOAD_USER_POSTS_REQUEST = 'LOAD_USER_POSTS_REQUEST';
+export const LOAD_USER_POSTS_SUCCESS = 'LOAD_USER_POSTS_SUCCESS';
+export const LOAD_USER_POSTS_FAILURE = 'LOAD_USER_POSTS_FAILURE';
+
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAILURE = 'ADD_POST_FAILURE';
@@ -111,18 +115,21 @@ const reducer = (state = initialState, action) =>
         draft.loadPostsLoading = false;
         draft.loadPostsError = action.error;
         break;
-      //* LOAD_POSTS
+      //* LOAD_CATEGORY_POSTS, LOAD_USER_POSTS
+      case LOAD_USER_POSTS_REQUEST:
       case LOAD_CATEGORY_POSTS_REQUEST:
         draft.loadPostsLoading = true;
         draft.loadPostsDone = false;
         draft.loadPostsError = null;
         break;
+      case LOAD_USER_POSTS_SUCCESS:
       case LOAD_CATEGORY_POSTS_SUCCESS:
         draft.loadPostsLoading = false;
         draft.loadPostsDone = true;
         draft.mainPosts = draft.mainPosts.concat(action.data);
         draft.hasMorePosts = action.data.length === 10; // 10개의 게시글을 불러온다
         break;
+      case LOAD_USER_POSTS_FAILURE:
       case LOAD_CATEGORY_POSTS_FAILURE:
         draft.loadPostsLoading = false;
         draft.loadPostsError = action.error;
@@ -201,7 +208,7 @@ const reducer = (state = initialState, action) =>
       case REMOVE_COMMENT_SUCCESS:
         console.log('delete comment: ', action.data);
         console.log('mainPosts: ', state.mainPosts.Comments);
-        draft.mainPosts = draft.mainPosts.filter((v) => v.Comments.id !== action.data); //! error
+        draft.mainPosts = draft.mainPosts.filter((v) => v.Comments.id !== action.data);
         draft.removeCommentLoading = false;
         draft.removeCommentDone = true;
         break;

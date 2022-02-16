@@ -19,7 +19,7 @@ const UserProfile = () => {
         <Link href="/userprofilePage">
           <a>내 프로필</a>
         </Link>
-        <Link href={`/post/${me.id}`}>
+        <Link href={`/user/${me.id}`}>
           <a>내 게시글</a>
         </Link>
         <button onClick={onLogout}>로그아웃</button>
