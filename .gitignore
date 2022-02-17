@@ -10,8 +10,8 @@ node_modules/
 react-nodebird.pem
 
 # aws-ec2-access-key
-react-nodebird-aws.cer
-react-nodebird-aws.pem
+e-Library.pem
+e-Library-aws.pem
 node_modules
 .next
 .env
