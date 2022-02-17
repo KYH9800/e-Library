@@ -32,7 +32,7 @@ passportConfig();
 server.use(morgan('dev')); // 프론트에서 백엔드로 어떤 요청을 보냈는가 확인
 server.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3060',
     credentials: true,
   })
 );
