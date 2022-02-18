@@ -16,7 +16,7 @@ import {
 import PostImages from './postImage';
 
 import CommentForm from './comment';
-import { LOAD_POST_REQUEST, REMOVE_COMMENT_REQUEST } from '../../reducers/post';
+import { REMOVE_COMMENT_REQUEST } from '../../reducers/post';
 import { useCallback } from 'react';
 
 const PostForm = ({ post }) => {

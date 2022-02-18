@@ -25,7 +25,7 @@ import useInput from '../hooks/useInput';
 import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
-// import Editor from '../components/CKEditor';
+import { backURL } from '../config/config';
 
 const AddPost = () => {
   const dispatch = useDispatch();
@@ -117,10 +117,6 @@ const AddPost = () => {
     [],
   );
 
-  const setStyle = (style) => {
-    console.log(style);
-  };
-
   const handleInput = (e) => {
     setContent(e.target.innerText);
   };
@@ -166,7 +162,7 @@ const AddPost = () => {
             {imagePaths.map((v, i) => (
               <div className="text_photo" key={i} style={{ display: 'inline-block' }} onClick={onRemoveImage(i)}>
                 <p id="explain">삭제</p>
-                <img src={`http://localhost:3065/${v}`} style={{ width: '120px' }} alt={v} />
+                <img src={`${backURL}/${v}`} style={{ width: '120px' }} alt={v} />
               </div>
             ))}
           </TextEdit>

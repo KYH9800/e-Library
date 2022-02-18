@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { PlusOutlined } from '@ant-design/icons';
 
 import ImagesZoom from './ImageZoom';
+import { backURL } from '../../config/config';
 
 const PostImages = ({ images }) => {
   // console.log('images: ', images);
   const [showImagesZoom, setShowImagesZoom] = useState(false);
-  let backURL = `http://localhost:3065/`;
+  // let backURL = `http://localhost:3065/`;
 
   const onZoom = useCallback(() => {
     setShowImagesZoom(true);
