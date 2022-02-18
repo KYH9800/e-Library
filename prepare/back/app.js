@@ -2,6 +2,8 @@ const express = require('express');
 const server = express();
 
 const cors = require('cors');
+const hpp = require('hpp'); // node에서 production server 할 떄는 필수
+const helmet = require('helmet'); // node에서 production server 할 떄는 필수
 
 const session = require('express-session');
 const passport = require('passport');
@@ -29,14 +31,26 @@ db.sync({
 
 passportConfig();
 
-server.use(morgan('dev')); // 프론트에서 백엔드로 어떤 요청을 보냈는가 확인
-server.use(
-  cors({
-    origin: 'http://localhost:3060',
-    credentials: true,
-  })
-);
-
+// 배포모드일 때와 개발모드일 때 실헹되는 코드를 다르게 한다.
+if (process.env.NODE_ENV === 'production') {
+  server.use(morgan('combined'));
+  server.use(hpp());
+  server.use(helmet());
+  server.use(
+    cors({
+      origin: 'http://localhost:3060',
+      credentials: true,
+    })
+  );
+} else {
+  server.use(morgan('dev')); // 프론트에서 백엔드로 어떤 요청을 보냈는가 확인
+  app.use(
+    cors({
+      origin: 'true',
+      credentials: true, // default: false
+    })
+  );
+}
 // front에서 받아온 data를 req.body안으로 넣어준다, json 형식으로
 server.use('/', express.static(path.join(__dirname, 'uploads')));
 server.use(express.json());
