@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
   server.use(helmet());
   server.use(
     cors({
-      origin: 'http://localhost:3060',
+      origin: ['http://localhost:3060', 'http://13.124.161.143'],
       credentials: true,
     })
   );
