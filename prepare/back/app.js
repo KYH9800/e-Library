@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 server.use(
   cors({
-    origin: ['http://localhost:3060', 'http://15.165.53.15', 'http://coding-factory.site/'],
+    origin: ['http://localhost:3060', 'http://15.165.53.15', 'http://www.coding-factory.site'],
     credentials: true,
   })
 );
@@ -57,11 +57,11 @@ server.use(
     resave: false,
     saveUninitialized: false,
     // proxy: true, // nginx express session cookie
-    // cookie: {
-    //   httpOnly: true,
-    //   secure: true,
-    //   domain: process.env.NODE_ENV === 'production' && 'http://13.124.161.143',
-    // },
+    cookie: {
+      httpOnly: true,
+      secure: false,
+      domain: process.env.NODE_ENV === 'production' && '.coding-factory.site',
+    },
   })
 ); // 세션 활성화
 server.use(passport.initialize()); // passport 구동
