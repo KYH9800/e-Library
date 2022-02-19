@@ -66,7 +66,7 @@ server.use(
     cookie: {
       httpOnly: true,
       secure: true,
-      // domain: process.env.NODE_ENV === 'production' && '.coding-factory.site',
+      domain: process.env.NODE_ENV === 'production' && 'http://13.124.161.143',
     },
   })
 ); // 세션 활성화
