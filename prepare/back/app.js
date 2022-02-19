@@ -36,15 +36,22 @@ if (process.env.NODE_ENV === 'production') {
   server.use(morgan('combined'));
   server.use(hpp());
   server.use(helmet());
+  server.use(
+    cors({
+      origin: 'http://www.coding-factory.site',
+      credentials: true,
+    })
+  );
 } else {
   server.use(morgan('dev')); // 프론트에서 백엔드로 어떤 요청을 보냈는가 확인
+  server.use(
+    cors({
+      origin: true,
+      credentials: true,
+    })
+  );
 }
-server.use(
-  cors({
-    origin: ['http://localhost:3060', 'http://15.165.53.15', 'http://www.coding-factory.site'],
-    credentials: true,
-  })
-);
+
 // front에서 받아온 data를 req.body안으로 넣어준다, json 형식으로
 server.use('/', express.static(path.join(__dirname, 'uploads')));
 server.use(express.json());
