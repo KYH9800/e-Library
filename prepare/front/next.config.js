@@ -13,8 +13,8 @@ module.exports = withBundleAnalyzer({
       devtool: prod ? 'hidden-source-map' : 'eval', // 배포면 'hidden-source-map'(배포 환경에서 소스코드를 숨겨준다) 아니라면 'eval'
       plugins: [...config.plugins, new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /^\.\/ko$/)], // googling: 'webpack moment locale tree shaking'
       // vercel
-      poweredByHeader: process.env.NODE_ENV === 'development',
-      reactStrictMode: process.env.NODE_ENV === 'development',
+      // poweredByHeader: process.env.NODE_ENV === 'development',
+      // reactStrictMode: process.env.NODE_ENV === 'development',
     };
   },
 });

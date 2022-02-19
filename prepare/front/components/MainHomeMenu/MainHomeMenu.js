@@ -10,10 +10,10 @@ import UserProfile from '../UserProfile';
 const MainHomeMenu = () => {
   const { me } = useSelector((state) => state.user);
   const { mainPosts } = useSelector((state) => state.post);
-  console.log(
-    'category list mainPosts: ',
-    mainPosts.map((v) => v.category),
-  );
+  // console.log(
+  //   'category list mainPosts: ',
+  //   mainPosts.map((v) => v.category),
+  // );
 
   return (
     <div>
