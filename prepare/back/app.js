@@ -62,12 +62,12 @@ server.use(
     secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
-    proxy: true, // nginx express session cookie
-    cookie: {
-      httpOnly: true,
-      secure: true,
-      domain: process.env.NODE_ENV === 'production' && 'http://13.124.161.143',
-    },
+    // proxy: true, // nginx express session cookie
+    // cookie: {
+    //   httpOnly: true,
+    //   secure: true,
+    //   domain: process.env.NODE_ENV === 'production' && 'http://13.124.161.143',
+    // },
   })
 ); // 세션 활성화
 server.use(passport.initialize()); // passport 구동
