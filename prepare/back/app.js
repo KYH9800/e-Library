@@ -37,10 +37,11 @@ if (process.env.NODE_ENV === 'production') {
   server.use(hpp());
   server.use(helmet());
   server.use(
-    cors({
-      origin: 'http://13.124.161.143',
-      credentials: true,
-    })
+    cors()
+    // {
+    //   origin: 'http://13.124.161.143',
+    //   credentials: true,
+    // }
   );
 } else {
   server.use(morgan('dev')); // 프론트에서 백엔드로 어떤 요청을 보냈는가 확인
