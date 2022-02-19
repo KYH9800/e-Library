@@ -57,7 +57,19 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
-server.use(session({ secret: process.env.COOKIE_SECRET, resave: false, saveUninitialized: false })); // 세션 활성화
+server.use(
+  session({
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    proxy: true, // nginx express session cookie
+    cookie: {
+      httpOnly: true,
+      secure: true,
+      // domain: process.env.NODE_ENV === 'production' && '.coding-factory.site',
+    },
+  })
+); // 세션 활성화
 server.use(passport.initialize()); // passport 구동
 server.use(passport.session()); // 세션 연결
 
