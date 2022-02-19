@@ -47,10 +47,10 @@ const Signup = () => {
   const onCheckHandler = useCallback((checked, id) => {
     if (checked) {
       setCheckedInputs([...checkedInputs, id]);
-      console.log('체크 반영 완료');
+      // console.log('체크 반영 완료');
     } else {
       setCheckedInputs(checkedInputs.filter((el) => el !== id));
-      console.log('체크 해제 반영 완료');
+      // console.log('체크 해제 반영 완료');
     }
   });
 
@@ -78,12 +78,12 @@ const Signup = () => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      console.log(password, passwordCheck);
+      // console.log(password, passwordCheck);
       if (password !== passwordCheck) {
         alert('비밀번호가 일치하지 않습니다.');
         return setPasswordError(true);
       }
-      console.log('server로 보낼 정보: ', email, nickname, password);
+      // console.log('server로 보낼 정보: ', email, nickname, password);
       dispatch({
         type: SIGNUP_REQUEST,
         data: { email, nickname, password, passwordCheck },
