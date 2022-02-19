@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 server.use(
   cors({
-    origin: ['http://localhost:3060', 'http://13.124.161.143'],
+    origin: ['http://localhost:3060', 'http://15.165.53.15', 'e-library.gq'],
     credentials: true,
   })
 );
