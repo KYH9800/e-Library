@@ -68,6 +68,7 @@ server.use(
     cookie: {
       httpOnly: true,
       secure: true,
+      sameSite: process.env.NODE_ENV === 'development' ? false : 'none',
       domain: process.env.NODE_ENV === 'production' && '.coding-factory.site',
     },
   })

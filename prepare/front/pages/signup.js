@@ -54,7 +54,7 @@ const Signup = () => {
     }
   });
 
-  const onClickAgree = () => {
+  const onClickAgree = useCallback(() => {
     if (
       checkedInputs.includes('ageCheck') &&
       checkedInputs.includes('usingListCheck') &&
@@ -64,7 +64,7 @@ const Signup = () => {
     } else {
       alert('[필수]약관을 모두 동의 해주셔야 가입절차가 진행됩니다.');
     }
-  };
+  });
 
   // 회원가입 정보 입력 절차
   const onChangePasswordCheck = useCallback(

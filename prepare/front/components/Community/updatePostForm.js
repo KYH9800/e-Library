@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link';
 import Router from 'next/router';
 import { wrapper } from '../../store/configureStore';
 import { END } from 'redux-saga';

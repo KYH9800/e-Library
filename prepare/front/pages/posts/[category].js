@@ -53,14 +53,14 @@ const Category = () => {
     };
   }, [hasMorePosts, loadPostsLoading, mainPosts]);
 
-  const onClickAddPost = () => {
+  const onClickAddPost = useCallback(() => {
     if (me) {
       Router.push('/addPost');
     } else {
       alert('로그인 후 이용 가능합니다.'); // 안전장치
       Router.push('/login');
     }
-  };
+  });
 
   const onRemovePost = useCallback(
     (post) => () => {
@@ -90,6 +90,8 @@ const Category = () => {
     <AppLayout>
       <Head>
         <title>e도서관 | 커뮤니티</title>
+        <meta property="og:image" content="https://coding-factory.site/favicon.ico" />
+        <meta property="og:url" content={`https://coding-factory.site/posts/${category}`} />
       </Head>
       <MainWrapper>
         <h1>전체게시판</h1>
