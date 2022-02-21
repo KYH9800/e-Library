@@ -1,4 +1,3 @@
-import { dummyUser } from '../public/user/user';
 import produce from 'immer';
 // 초기 state
 export const initialState = {
