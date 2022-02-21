@@ -59,20 +59,31 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
-server.use(
-  session({
-    secret: process.env.COOKIE_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    proxy: true, // nginx express session cookie
-    cookie: {
-      httpOnly: true,
-      secure: true,
-      sameSite: process.env.NODE_ENV === 'development' ? false : 'none',
-      domain: process.env.NODE_ENV === 'production' && '.coding-factory.site',
-    },
-  })
-); // 세션 활성화
+if (process.env.NODE_ENV === 'production') {
+  server.use(
+    session({
+      secret: process.env.COOKIESCRET,
+      resave: false,
+      saveUninitialized: false,
+      proxy: true, // nginx express session cookie
+      cookie: {
+        httpOnly: true,
+        secure: true,
+        sameSite: process.env.NODE_ENV === 'development' ? false : 'none',
+        domain: process.env.NODE_ENV === 'production' && '.coding-factory.site',
+      },
+    })
+  ); // 세션 활성화
+} else {
+  server.use(
+    session({
+      secret: process.env.COOKIESCRET,
+      resave: false,
+      saveUninitialized: false,
+    })
+  ); // 세션 활성화
+}
+
 server.use(passport.initialize()); // passport 구동
 server.use(passport.session()); // 세션 연결
 
