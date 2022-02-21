@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
   server.use(helmet());
   server.use(
     cors({
-      origin: 'https://www.coding-factory.site',
+      origin: 'https://coding-factory.site',
       credentials: true,
     })
   );
@@ -66,7 +66,7 @@ server.use(
     // proxy: true, // nginx express session cookie
     cookie: {
       httpOnly: true,
-      secure: false,
+      secure: true,
       domain: process.env.NODE_ENV === 'production' && '.coding-factory.site',
     },
   })
