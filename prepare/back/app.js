@@ -33,6 +33,7 @@ passportConfig();
 
 // 배포모드일 때와 개발모드일 때 실헹되는 코드를 다르게 한다.
 if (process.env.NODE_ENV === 'production') {
+  server.set('trust proxy', 1);
   server.use(morgan('combined'));
   server.use(hpp());
   server.use(helmet());
@@ -63,7 +64,7 @@ server.use(
     secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: false,
-    // proxy: true, // nginx express session cookie
+    proxy: true, // nginx express session cookie
     cookie: {
       httpOnly: true,
       secure: true,
