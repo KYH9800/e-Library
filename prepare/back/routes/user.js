@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const { Op } = require('sequelize');
 
 const { isLoggedIn, isNotLoggedIn } = require('./middleware');
-
 const { User, Post, Comment, Image } = require('../models');
 
 // GET /user

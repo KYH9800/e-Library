@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 import Link from 'next/link';
-import { wrapper } from '../../store/configureStore';
+import { wrapper } from '../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
 
@@ -18,31 +18,27 @@ import {
   Title,
   Count,
   Id,
-} from '../../style/communitySt';
-import AppLayout from '../../components/AppLayout';
+} from '../style/communitySt';
+import AppLayout from '../components/AppLayout';
 
-import { LOAD_USER_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../../reducers/post';
-import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
+import { LOAD_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../reducers/post';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
-const User = () => {
+const Community = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const { id } = router.query;
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
   const { me } = useSelector((state) => state.user);
-  const userId = me?.id;
-  console.log('LOAD_USER_POSTS_REQUEST: ', mainPosts);
-  console.log('페이지에서 받아온 user id: ', id);
+  // console.log('LOAD_POSTS_REQUEST_MainPosts: ', mainPosts);
+  const id = me?.id;
 
   useEffect(() => {
     function onScroll() {
       if (window.pageYOffset + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
         if (hasMorePosts && !loadPostsLoading) {
-          // const lastId = mainPosts[mainPosts.length - 1]?.id;
+          const lastId = mainPosts[mainPosts.length - 1]?.id;
           dispatch({
-            type: LOAD_USER_POSTS_REQUEST,
-            lastId: mainPosts[mainPosts.length - 1] && mainPosts[mainPosts.length - 1].id,
-            data: id,
+            type: LOAD_POSTS_REQUEST,
+            lastId,
           });
         }
       }
@@ -53,14 +49,14 @@ const User = () => {
     };
   }, [hasMorePosts, loadPostsLoading, mainPosts]);
 
-  const onClickAddPost = () => {
+  const onClickAddPost = useCallback(() => {
     if (me) {
       Router.push('/addPost');
     } else {
       alert('로그인 후 이용 가능합니다.'); // 안전장치
       Router.push('/login');
     }
-  };
+  });
 
   const onRemovePost = useCallback(
     (post) => () => {
@@ -116,7 +112,7 @@ const User = () => {
                   </ul>
                 </div>
               </Link>
-              {userId && post.User.id === userId ? (
+              {id && post.User.id === id ? (
                 <>
                   <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
                   <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
@@ -130,7 +126,7 @@ const User = () => {
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, params }) => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req }) => {
   // console.log('getServerSideProps req: ', req);
   const cookie = req ? req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
@@ -141,11 +137,10 @@ export const getServerSideProps = wrapper.getServerSideProps((store) => async ({
     type: LOAD_MY_INFO_REQUEST,
   });
   store.dispatch({
-    type: LOAD_USER_POSTS_REQUEST,
-    data: params.id,
+    type: LOAD_POSTS_REQUEST,
   });
   store.dispatch(END);
   await store.sagaTask.toPromise();
 });
 
-export default User;
+export default Community;

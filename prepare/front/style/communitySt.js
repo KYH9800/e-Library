@@ -5,32 +5,7 @@ export const MainWrapper = styled.div`
   h1 {
     user-select: none;
     text-align: center;
-    margin: 50px;
-    font-size: 35px;
-  }
-`;
-export const Nav = styled.div`
-  ul {
-    background-color: #303030;
-    list-style: none;
-    margin: 10px 0px 10px 0px;
-    text-align: center;
-    li {
-      padding: 12px 0px 12px 0px;
-      display: inline-block;
-      font-size: 23px;
-      width: 175px;
-    }
-    li span {
-      color: rgb(233 233 233);
-      user-select: none;
-    }
-    li:hover {
-      background: #383838;
-    }
-    li:active {
-      background: #464646;
-    }
+    font-size: 230%;
   }
 `;
 export const CreactPostBtn = styled.div`

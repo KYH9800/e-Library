@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Op, where } = require('sequelize');
+const { Op } = require('sequelize');
 
 const { Post, Image, User, Comment } = require('../models');
 
@@ -50,12 +50,6 @@ router.get('/', async (req, res, next) => {
 router.get('/:category', async (req, res, next) => {
   console.log('req.params.category: ', req.params.category);
   try {
-    // const posts = await Post.findOne({
-    //   where: {
-    //     category: decodeURIComponent(req.params.category),
-    //   },
-    // });
-    // res.status(200).json(posts);
     const where = {};
     if (parseInt(req.query.lastId, 10)) {
       // 초기 로딩이 아닐 때

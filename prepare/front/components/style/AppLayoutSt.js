@@ -27,19 +27,11 @@ body {
 }
 `;
 
-export const LayoutHeader = styled.div`
-  height: 127px;
-  margin: auto;
-  width: 1200px;
-`;
 export const LayoutMain = styled.div`
   margin: auto;
+  margin-top: 10%;
   width: 1200px;
 `;
-export const LayoutFooter = styled.div`
-  background-color: rgb(60, 65, 67);
-`;
-
 /* ckeditor
 .ck {
   margin: auto;

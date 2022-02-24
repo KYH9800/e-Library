@@ -43,6 +43,7 @@ function loadUserPostsAPI(data, lastId) {
 }
 
 function* loadUserPosts(action) {
+  console.log('이거 확인해봐: ', action.data, action.lastId);
   try {
     const result = yield call(loadUserPostsAPI, action.data, action.lastId);
     yield put({

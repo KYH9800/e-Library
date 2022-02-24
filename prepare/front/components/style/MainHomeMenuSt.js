@@ -45,42 +45,49 @@ export const LoginSignupMenu = styled.div`
 // nav wrapper
 export const NavWrapper = styled.div`
   background-color: rgb(46 49 51 / 81%);
-  height: 90px;
   user-select: none;
   h1 {
     position: fixed;
     margin: 8px;
     margin-left: 25px;
     a {
-      padding: 16px;
       font-family: '궁서체';
-      font-size: 50px;
+      font-size: 130%;
       color: rgb(167 164 158);
     }
   }
   ul {
     list-style: none;
-    /* margin: 0px; */
     text-align: center;
     a {
       color: rgb(233 233 233);
     }
     li {
       display: inline-block;
-      font-size: 23px;
-      width: 200px;
-      padding: 27px 0px 27px 0px;
+      font-size: 130%;
+      width: 15%;
+      padding: 1.4% 0% 1.4% 0%;
     }
     li:hover {
       background: rgb(62 60 59 / 35%);
     }
   }
 `;
+
+export const LayoutHeader = styled.div`
+  /* height: 127px; */
+  margin: auto;
+  width: 80%;
+`;
+
 export const FooterComponent = styled.div`
   background-color: rgb(60, 65, 67);
+  padding-top: 5px;
   margin: auto;
   width: 1200px;
-  height: 266px;
+  height: 100%;
+  position: relative;
+  bottom: 0;
   header {
     user-select: none;
     text-align: center;
@@ -112,8 +119,5 @@ export const FooterComponent = styled.div`
     a:hover {
       color: #fffdfd;
     }
-  }
-  div {
-    border-top: 1px solid white;
   }
 `;

@@ -34,7 +34,7 @@ const UpdatePostForm = ({ post }) => {
 
   useEffect(() => {
     if (!me) {
-      Router.push('/');
+      Router.push('/community');
     }
   }, [me]);
 
@@ -47,7 +47,7 @@ const UpdatePostForm = ({ post }) => {
 
   const onClickCancle = useCallback(() => {
     if (confirm('취소 시 수정된 게시글은 복구되지 않습니다.\n취소하고 목록으로 이동 하시겠습니까?') === true) {
-      Router.push('/');
+      Router.push('/community');
     }
   });
 
