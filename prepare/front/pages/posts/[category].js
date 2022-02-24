@@ -10,7 +10,6 @@ import axios from 'axios';
 import {
   MainWrapper,
   CreactPostBtn,
-  PostWrapper,
   ListWrapper,
   UpdateBtn,
   DeleteBtn,
@@ -18,6 +17,7 @@ import {
   Title,
   Count,
   Id,
+  List,
 } from '../../style/communitySt';
 import AppLayout from '../../components/AppLayout';
 
@@ -100,10 +100,10 @@ const Category = () => {
             <button onClick={onClickAddPost}>글쓰기</button>
           </div>
         </CreactPostBtn>
-        <PostWrapper>
-          {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
+        {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
+        <ListWrapper>
           {mainPosts.map((post, index) => (
-            <ListWrapper key={post.id}>
+            <List>
               <Link href={`post/${post.id}`}>
                 <div>
                   <ul>
@@ -124,9 +124,9 @@ const Category = () => {
                   <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
                 </>
               ) : null}
-            </ListWrapper>
+            </List>
           ))}
-        </PostWrapper>
+        </ListWrapper>
       </MainWrapper>
     </AppLayout>
   );

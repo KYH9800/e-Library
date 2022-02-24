@@ -10,8 +10,8 @@ import axios from 'axios';
 import {
   MainWrapper,
   CreactPostBtn,
-  PostWrapper,
   ListWrapper,
+  List,
   UpdateBtn,
   DeleteBtn,
   Num,
@@ -90,14 +90,12 @@ const Community = () => {
       <MainWrapper>
         <h1>전체게시판</h1>
         <CreactPostBtn>
-          <div>
-            <button onClick={onClickAddPost}>글쓰기</button>
-          </div>
+          <button onClick={onClickAddPost}>글쓰기</button>
         </CreactPostBtn>
-        <PostWrapper>
-          {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
+        {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
+        <ListWrapper>
           {mainPosts.map((post, index) => (
-            <ListWrapper key={post.id}>
+            <List>
               <Link href={`post/${post.id}`}>
                 <div>
                   <ul>
@@ -118,9 +116,9 @@ const Community = () => {
                   <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
                 </>
               ) : null}
-            </ListWrapper>
+            </List>
           ))}
-        </PostWrapper>
+        </ListWrapper>
       </MainWrapper>
     </AppLayout>
   );

@@ -47,12 +47,16 @@ export const NavWrapper = styled.div`
   background-color: rgb(46 49 51 / 81%);
   user-select: none;
   h1 {
-    position: fixed;
-    margin: 8px;
-    margin-left: 25px;
+    /* top: 0; */
+    /* right: 0; */
+    left: 0;
+    position: absolute;
+    text-align: center;
+    margin: 1%;
+    margin-left: 3%;
     a {
       font-family: '궁서체';
-      font-size: 130%;
+      font-size: 110%;
       color: rgb(167 164 158);
     }
   }
@@ -74,46 +78,26 @@ export const NavWrapper = styled.div`
   }
 `;
 
-export const LayoutHeader = styled.div`
-  /* height: 127px; */
+export const LayoutHeader = styled.header`
   margin: auto;
-  width: 80%;
+  width: 100%;
 `;
 
-export const FooterComponent = styled.div`
+export const FooterComponent = styled.footer`
   background-color: rgb(60, 65, 67);
-  padding-top: 5px;
+  padding-top: 1%;
+  padding-bottom: 1%;
   margin: auto;
-  width: 1200px;
-  height: 100%;
-  position: relative;
+  position: unset;
   bottom: 0;
-  header {
-    user-select: none;
-    text-align: center;
-    display: flex;
-  }
-  header a {
-    font-family: '고딕';
-    font-size: 16px;
-    color: #edeaf5;
-    margin-top: 15px;
-    padding: 5px 5px 5px 7px;
-    text-align: center;
-    display: block;
-    width: 150px;
-    span {
-      color: rgb(200 199 196);
-    }
-  }
-  header a:hover {
-    background: #1615157d;
-  }
+  width: 100%;
+  left: 0;
   p {
-    margin-top: 15px;
+    margin-left: 10%;
+    margin-top: 1%;
     color: #858585;
     a {
-      margin-left: 3px;
+      margin-left: 1%;
       color: #858585;
     }
     a:hover {

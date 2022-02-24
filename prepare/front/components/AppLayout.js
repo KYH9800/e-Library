@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { GlobalStyle, LayoutHeader, LayoutMain } from './style/AppLayoutSt';
+import { GlobalStyle, Main } from './style/AppLayoutSt';
 
 import MainHomeMenu from './MainHomeMenu/MainHomeMenu';
 import MainHomeFooter from './MainHomeMenu/MainHomeFooter';
@@ -11,9 +11,9 @@ const AppLayout = ({ children }) => {
     <>
       <GlobalStyle />
       <MainHomeMenu />
-      <LayoutMain>
+      <Main>
         <div>{children}</div>
-      </LayoutMain>
+      </Main>
       <MainHomeFooter />
     </>
   );

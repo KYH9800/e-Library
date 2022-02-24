@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 // LoginSignupMenu
 export const MainWrapper = styled.div`
+  color: white;
+  margin: auto;
+  /* position: inherit; */
   h1 {
     user-select: none;
     text-align: center;
@@ -10,6 +13,7 @@ export const MainWrapper = styled.div`
 `;
 export const CreactPostBtn = styled.div`
   text-align: right;
+  margin-right: 15%;
   user-select: none;
   button {
     background-color: #222222;
@@ -26,45 +30,51 @@ export const CreactPostBtn = styled.div`
     background-color: #3c3c3c;
   }
 `;
-export const PostWrapper = styled.div`
-  margin: 15px 0px 150px 0px;
-  h3 {
-    font-size: 13px;
-    text-align: center;
-    color: #fb6363;
-    border-bottom: 1px solid #525252;
-    padding: 22px 0px 22px 0px;
-    margin: 10px 0px 10px 0px;
-    background-color: #303030;
-  }
+
+export const ListWrapper = styled.div`
+  align-items: center;
+  border-bottom: 1px solid #525252;
+  background-color: #222222;
+  width: 70%;
+  margin: auto;
+  margin-top: 1%;
   div {
-    /* padding: 16px 0px 7px 5px; */
-    display: flex;
+    /* padding: 40px 0px 21px 5px; */
   }
   ul {
-    display: inline-flex;
-    margin: 0px 0px 0px 15px; /* auto */
     list-style: none;
-    padding-left: 0px;
-    margin-bottom: 0px;
+    margin: 0px;
   }
   ul li {
-    user-select: none;
-    text-align: center;
     display: flex;
-    color: #d3d3d3;
+    padding: 25px 0px 25px 0px;
+
+    span {
+      padding: 0px 30px 0px 0px;
+    }
+  }
+`;
+
+export const List = styled.div`
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  :hover {
+    background-color: #2e2e2e;
+  }
+  :active {
+    background-color: #3c3c3c;
   }
 `;
 
 export const UpdateBtn = styled.button`
   color: #c0c0ff;
-  margin: 33px 5px 33px 5px;
   background-color: #535353;
-  width: 100px;
-  height: 30px;
+  width: 7%;
+  height: 7%;
   border: 1px solid #707070;
   font-size: 15px;
-  float: right;
+  /* float: right; */
   :hover {
     background-color: #2e2e2e;
   }
@@ -75,66 +85,12 @@ export const UpdateBtn = styled.button`
 
 export const DeleteBtn = styled.button`
   color: #ff3e3e;
-  margin: 33px 5px 33px 5px;
   background-color: #535353;
-  width: 100px;
-  height: 30px;
+  width: 7%;
+  height: 7%;
   border: 1px solid #707070;
   font-size: 15px;
-  float: right;
-  :hover {
-    background-color: #2e2e2e;
-  }
-  :active {
-    background-color: #3c3c3c;
-  }
-`;
-
-export const ListWrapper = styled.div`
-  border-bottom: 1px solid #525252;
-  display: inline-flex;
-  background-color: #222222;
-  :hover {
-    background-color: #2e2e2e;
-  }
-  :active {
-    background-color: #3c3c3c;
-  }
-  div {
-    padding: 40px 0px 21px 5px;
-  }
-`;
-
-export const ChatWrapper = styled.div`
-  margin: 15px 0px 150px 0px;
-  h3 {
-    font-size: 13px;
-    text-align: center;
-    color: #fb6363;
-    border-bottom: 1px solid #525252;
-    padding: 22px 0px 22px 0px;
-    margin: 10px 0px 10px 0px;
-    background-color: #303030;
-  }
-  div {
-    padding: 16px 0px 6px 0px;
-    display: flex;
-  }
-  ul {
-    margin-left: 25px;
-  }
-  ul li {
-    user-select: none;
-    text-align: center;
-    display: flex;
-    color: #d3d3d3;
-  }
-`;
-
-export const ChatListWrapper = styled.div`
-  border-bottom: 1px solid #525252;
-  display: inline-flex;
-  background-color: #222222;
+  /* float: right; */
   :hover {
     background-color: #2e2e2e;
   }
@@ -144,25 +100,22 @@ export const ChatListWrapper = styled.div`
 `;
 
 export const Num = styled.span`
-  width: 55px;
-  text-align: left;
+  width: 10px;
 `;
 export const Title = styled.span`
-  width: 595px;
-  text-align: left;
+  width: 500px;
   display: flex;
   span {
-    width: 85px;
     color: #fb6363;
+  }
+  p {
+    margin: 0px;
   }
 `;
 export const Count = styled.span`
   width: 100px;
-  text-align: left;
 `;
 export const Id = styled.span`
   width: 165px;
   margin-right: 15px;
-  text-align: left;
 `;
-// margin: 0px 10px 0px 10px;
