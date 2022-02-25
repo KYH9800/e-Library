@@ -114,16 +114,16 @@ const Category = () => {
                       </Title>
                       <Count>조회수: {post.count}</Count>
                       <Id>작성자: {post.User.nickname}</Id>
+                      {id && post.User.id === id ? (
+                        <>
+                          <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
+                          <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
+                        </>
+                      ) : null}
                     </li>
                   </ul>
                 </div>
               </Link>
-              {id && post.User.id === id ? (
-                <>
-                  <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
-                  <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
-                </>
-              ) : null}
             </List>
           ))}
         </ListWrapper>

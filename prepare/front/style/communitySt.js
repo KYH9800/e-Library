@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const MainWrapper = styled.div`
   color: white;
   margin: auto;
-  /* position: inherit; */
   h1 {
     user-select: none;
     text-align: center;
@@ -38,9 +37,6 @@ export const ListWrapper = styled.div`
   width: 70%;
   margin: auto;
   margin-top: 1%;
-  div {
-    /* padding: 40px 0px 21px 5px; */
-  }
   ul {
     list-style: none;
     margin: 0px;
@@ -56,7 +52,6 @@ export const ListWrapper = styled.div`
 `;
 
 export const List = styled.div`
-  display: flex;
   align-items: center;
   border-bottom: 1px solid gray;
   :hover {

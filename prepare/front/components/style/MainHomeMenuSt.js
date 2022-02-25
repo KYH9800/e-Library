@@ -41,6 +41,11 @@ export const LoginSignupMenu = styled.div`
   h3 a:hover {
     background-color: black;
   }
+
+  // 반응형
+  @media (max-width: 1425px) {
+    /* display: none; */
+  }
 `;
 // nav wrapper
 export const NavWrapper = styled.div`
