@@ -28,6 +28,10 @@ export const CreactPostBtn = styled.div`
   button:active {
     background-color: #3c3c3c;
   }
+  // 1080px
+  @media (max-width: 1080px) {
+    margin-right: 0%;
+  }
 `;
 
 export const ListWrapper = styled.div`
@@ -44,9 +48,17 @@ export const ListWrapper = styled.div`
   ul li {
     display: flex;
     padding: 25px 0px 25px 0px;
-
     span {
       padding: 0px 30px 0px 0px;
+    }
+  }
+  // 1080px
+  @media (max-width: 1080px) {
+    width: 100%;
+  }
+  @media (max-width: 750px) {
+    ul li {
+      padding: 15px 0px 15px 0px;
     }
   }
 `;
@@ -101,10 +113,11 @@ export const DeleteBtn = styled.button`
 `;
 
 export const Num = styled.span`
-  width: 10px;
+  width: 3%;
 `;
+
 export const Title = styled.span`
-  width: 500px;
+  width: 60%;
   display: flex;
   span {
     color: #fb6363;
@@ -112,11 +125,35 @@ export const Title = styled.span`
   p {
     margin: 0px;
   }
+  // 1650px
+  @media (max-width: 1650px) {
+    width: 55%;
+  }
+  // 1280px
+  @media (max-width: 1280px) {
+    width: 50%;
+  }
+  @media (max-width: 750px) {
+    width: 45%;
+  }
 `;
+
 export const Count = styled.span`
-  width: 100px;
+  width: 10%;
+  @media (max-width: 750px) {
+    width: 13%;
+  }
 `;
+
 export const Id = styled.span`
-  width: 165px;
-  margin-right: 15px;
+  width: 10%;
+  margin-right: 1%;
+  // 반응형
+  @media (max-width: 1650px) {
+    width: 13%;
+  }
+  // 1280px
+  @media (max-width: 1280px) {
+    width: 18%;
+  }
 `;
