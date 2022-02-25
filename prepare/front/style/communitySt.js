@@ -65,6 +65,12 @@ export const List = styled.div`
   :active {
     background-color: #3c3c3c;
   }
+  h1 {
+    font-size: 15px;
+    margin: 0;
+    padding: 10px;
+    color: gray;
+  }
 `;
 
 export const UpdateBtn = styled.button`

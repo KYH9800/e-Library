@@ -100,8 +100,8 @@ const Category = () => {
             <button onClick={onClickAddPost}>글쓰기</button>
           </div>
         </CreactPostBtn>
-        {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
         <ListWrapper>
+          <List>{mainPosts.length === 0 && <h1>존재하는 게시글이 없습니다.</h1>}</List>
           {mainPosts.map((post, index) => (
             <List>
               <Link href={`post/${post.id}`}>
