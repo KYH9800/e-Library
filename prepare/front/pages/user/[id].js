@@ -112,16 +112,16 @@ const User = () => {
                       </Title>
                       <Count>조회수: {post.count}</Count>
                       <Id>작성자: {post.User.nickname}</Id>
+                      {userId && post.User.id === userId ? (
+                        <>
+                          <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
+                          <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
+                        </>
+                      ) : null}
                     </li>
                   </ul>
                 </div>
               </Link>
-              {userId && post.User.id === userId ? (
-                <>
-                  <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
-                  <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
-                </>
-              ) : null}
             </List>
           ))}
         </ListWrapper>
