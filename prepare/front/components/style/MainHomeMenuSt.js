@@ -43,7 +43,7 @@ export const LoginSignupMenu = styled.div`
   }
 
   // 반응형
-  @media (max-width: 1425px) {
+  @media (max-width: 945px) {
     /* display: none; */
   }
 `;
