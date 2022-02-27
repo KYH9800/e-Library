@@ -40,7 +40,7 @@ export const Box = styled.div`
     line-height: 24px;
     /* color: rgb(200 199 196); */
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     form {
       width: 97%;
       padding: 5% 3%;
@@ -83,7 +83,7 @@ export const EmailInputTag = styled.div`
     background-color: rgb(205 205 204);
     transition: all 150ms ease-out 0s;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     input {
       width: 95%;
       height: 35px;
@@ -116,7 +116,7 @@ export const PasswordInputTag = styled.div`
     background-color: rgb(205 205 204);
     transition: all 150ms ease-out 0s;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     input {
       width: 95%;
       height: 35px;
@@ -164,7 +164,7 @@ export const CheckSaveId = styled.div`
     margin: 0px 8px;
     font-weight: 600;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     label input {
       width: 17px;
       height: 17px;
@@ -195,7 +195,7 @@ export const ButtonRapper = styled.div`
   button:hover {
     background: rgb(41 96 229);
   }
-  @media (max-width: 400px) {
+  @media (max-width: 450px) {
     text-align: center;
     button {
       width: 90%;
