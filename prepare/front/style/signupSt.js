@@ -68,7 +68,7 @@ const NextBox = styled.div`
   button:hover {
     background: rgb(41 96 229);
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     padding: 0px;
     button {
       width: 100%;
@@ -87,7 +87,7 @@ export const Wrapper01 = styled(NextBox)`
   label {
     padding-bottom: 10px;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     width: 97%;
   }
 `;
@@ -121,10 +121,10 @@ export const Wrapper02 = styled(NextBox)`
     margin-top: 31px;
   }
 
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     width: 97%;
     input {
-      width: 95%;
+      width: 100%;
       height: 35px;
       font-size: 11px;
     }

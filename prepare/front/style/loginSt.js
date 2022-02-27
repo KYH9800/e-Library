@@ -40,10 +40,10 @@ export const Box = styled.div`
     line-height: 24px;
     /* color: rgb(200 199 196); */
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     form {
-      width: 97%;
-      padding: 5% 3%;
+      width: 90%;
+      padding: 12% 3% 12%;
     }
     h1 {
       font-size: 20px;
@@ -83,9 +83,9 @@ export const EmailInputTag = styled.div`
     background-color: rgb(205 205 204);
     transition: all 150ms ease-out 0s;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     input {
-      width: 95%;
+      width: 100%;
       height: 35px;
       font-size: 11px;
     }
@@ -116,9 +116,9 @@ export const PasswordInputTag = styled.div`
     background-color: rgb(205 205 204);
     transition: all 150ms ease-out 0s;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     input {
-      width: 95%;
+      width: 100%;
       height: 35px;
       font-size: 11px;
     }
@@ -165,7 +165,7 @@ export const CheckSaveId = styled.div`
     font-weight: 600;
     text-align: right;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     label input {
       width: 17px;
       height: 17px;
@@ -196,7 +196,7 @@ export const ButtonRapper = styled.div`
   button:hover {
     background: rgb(41 96 229);
   }
-  @media (max-width: 450px) {
+  @media (max-width: 500px) {
     text-align: center;
     button {
       width: 90%;
