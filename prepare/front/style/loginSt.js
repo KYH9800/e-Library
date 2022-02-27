@@ -8,8 +8,8 @@ export const HomeLogo = styled.h1`
   text-align: center;
   margin-top: 13%;
   a {
-    font-size: 110%;
-    font-family: '궁서체';
+    font-size: 130%;
+    font-family: '고딕';
     color: rgb(167 164 158);
   }
 `;
@@ -23,22 +23,22 @@ export const Box = styled.div`
     flex-direction: column;
     margin: 0px auto;
     padding: 5% 3%;
-    border: 1px solid rgb(200 199 196);
+    border: 1px solid rgb(36 36 36);
   }
   h1 {
     padding-bottom: 24px;
     font-size: 30px;
     line-height: 48px;
     letter-spacing: -0.5px;
-    border-bottom: 1px solid rgb(200 199 196);
-    color: rgb(200 199 196);
+    border-bottom: 1px solid rgb(36 36 36);
+    /* color: rgb(200 199 196); */
   }
   h2 {
     padding: 14px 8px 45px;
     color: rgb(34, 34, 34);
     font-size: 14px;
     line-height: 24px;
-    color: rgb(200 199 196);
+    /* color: rgb(200 199 196); */
   }
   @media (max-width: 400px) {
     form {
@@ -68,7 +68,7 @@ export const EmailInputTag = styled.div`
     -webkit-tap-highlight-color: transparent;
     outline: none;
     touch-action: manipulation;
-    color: rgb(200 199 196);
+    /* color: rgb(200 199 196); */
   }
   input {
     width: 460px;
@@ -102,7 +102,7 @@ export const PasswordInputTag = styled.div`
     -webkit-tap-highlight-color: transparent;
     outline: none;
     touch-action: manipulation;
-    color: rgb(200 199 196);
+    /* color: rgb(200 199 196); */
   }
   input {
     width: 460px;

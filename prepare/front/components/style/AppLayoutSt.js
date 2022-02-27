@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 html, body {
+  /* background-color: gray; */
   font-family: '고딕';
   line-height: 1.5;
   margin: 0;

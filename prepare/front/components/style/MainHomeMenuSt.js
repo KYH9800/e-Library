@@ -57,7 +57,7 @@ export const NavWrapper = styled.div`
     margin: 1%;
     margin-left: 3%;
     a {
-      font-family: '궁서체';
+      font-family: '고딕';
       font-size: 110%;
       color: rgb(167 164 158);
     }

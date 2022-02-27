@@ -8,6 +8,7 @@ import axios from 'axios';
 import { wrapper } from '../store/configureStore';
 
 import { Box, EmailInputTag, PasswordInputTag, CheckSaveId, ButtonRapper, HomeLogo } from '../style/loginSt';
+import { GlobalStyle } from '../components/style/AppLayoutSt';
 // import AppLayout from '../components/AppLayout';
 import useInput from '../hooks/useInput';
 
@@ -50,6 +51,7 @@ const Login = () => {
       <Head>
         <title>e도서관 | 로그인</title>
       </Head>
+      <GlobalStyle />
       <HomeLogo>
         <Link href="/community">
           <a>e-도서관</a>
