@@ -161,8 +161,9 @@ export const CheckSaveId = styled.div`
     align-items: center;
   }
   div a {
-    margin: 0px 20px;
+    margin: 0px 8px;
     font-weight: 600;
+    text-align: right;
   }
   @media (max-width: 450px) {
     label input {
@@ -171,7 +172,7 @@ export const CheckSaveId = styled.div`
     }
     div a {
       font-size: 12px;
-      margin: 0px 8px;
+      margin: 0px 20px;
       font-weight: 500;
     }
   }
