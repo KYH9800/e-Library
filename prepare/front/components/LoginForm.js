@@ -8,7 +8,7 @@ const LoginForm = () => {
         <Link href="/signup">
           <a>회원가입</a>
         </Link>
-        <Link href="/login">
+        <Link href="/">
           <a>로그인</a>
         </Link>
       </h3>

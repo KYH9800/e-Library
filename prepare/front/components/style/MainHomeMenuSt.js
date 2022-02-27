@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 // LoginSignupMenu
 export const LoginSignupMenu = styled.div`
   background-color: rgb(28 28 28 / 83%);
@@ -42,8 +41,8 @@ export const LoginSignupMenu = styled.div`
     background-color: black;
   }
 
-  // 반응형
-  @media (max-width: 945px) {
+  // 모바일
+  @media (max-width: 360px) {
     /* display: none; */
   }
 `;
@@ -52,8 +51,6 @@ export const NavWrapper = styled.div`
   background-color: rgb(46 49 51 / 81%);
   user-select: none;
   h1 {
-    /* top: 0; */
-    /* right: 0; */
     left: 0;
     position: absolute;
     text-align: center;

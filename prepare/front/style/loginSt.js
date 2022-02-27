@@ -1,14 +1,28 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const GlobalHomeStyle = createGlobalStyle`
+background-color: gray;
+`;
+
+export const HomeLogo = styled.h1`
+  text-align: center;
+  margin-top: 13%;
+  a {
+    font-size: 110%;
+    font-family: '궁서체';
+    color: rgb(167 164 158);
+  }
+`;
 
 export const Box = styled.div`
   display: flex;
   align-items: center;
-  margin: 75px 0px 100px 0px;
+  margin: 25px 0px 100px 0px;
   form {
     display: flex;
     flex-direction: column;
     margin: 0px auto;
-    padding: 97px 55px;
+    padding: 5% 3%;
     border: 1px solid rgb(200 199 196);
   }
   h1 {
@@ -25,6 +39,22 @@ export const Box = styled.div`
     font-size: 14px;
     line-height: 24px;
     color: rgb(200 199 196);
+  }
+  @media (max-width: 400px) {
+    form {
+      width: 97%;
+      padding: 5% 3%;
+    }
+    h1 {
+      font-size: 20px;
+      padding-bottom: 3%;
+      line-height: 30px;
+    }
+    h2 {
+      text-align: center;
+      padding: 7px 8px 30px;
+      font-size: 11px;
+    }
   }
 `;
 export const EmailInputTag = styled.div`
@@ -53,6 +83,13 @@ export const EmailInputTag = styled.div`
     background-color: rgb(205 205 204);
     transition: all 150ms ease-out 0s;
   }
+  @media (max-width: 400px) {
+    input {
+      width: 95%;
+      height: 35px;
+      font-size: 11px;
+    }
+  }
 `;
 export const PasswordInputTag = styled.div`
   display: inline-flex;
@@ -78,6 +115,13 @@ export const PasswordInputTag = styled.div`
     border-radius: 2px;
     background-color: rgb(205 205 204);
     transition: all 150ms ease-out 0s;
+  }
+  @media (max-width: 400px) {
+    input {
+      width: 95%;
+      height: 35px;
+      font-size: 11px;
+    }
   }
 `;
 export const CheckSaveId = styled.div`
@@ -120,10 +164,22 @@ export const CheckSaveId = styled.div`
     margin: 0px 8px;
     font-weight: 600;
   }
+  @media (max-width: 400px) {
+    label input {
+      width: 17px;
+      height: 17px;
+    }
+    div a {
+      font-size: 12px;
+      margin: 0px 8px;
+      font-weight: 500;
+    }
+  }
 `;
 export const ButtonRapper = styled.div`
   margin: 5px;
   button {
+    margin-bottom: 1%;
     width: 450px;
     height: 55px;
     border: 1px solid rgb(50, 108, 249);
@@ -138,5 +194,15 @@ export const ButtonRapper = styled.div`
   }
   button:hover {
     background: rgb(41 96 229);
+  }
+  @media (max-width: 400px) {
+    text-align: center;
+    button {
+      width: 90%;
+      height: 36px;
+    }
+    span {
+      font-size: 13px;
+    }
   }
 `;

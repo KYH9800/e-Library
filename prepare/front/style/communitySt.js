@@ -61,6 +61,11 @@ export const ListWrapper = styled.div`
       padding: 15px 0px 15px 0px;
     }
   }
+
+  // 모바일
+  @media (max-width: 360px) {
+    /* display: none; */
+  }
 `;
 
 export const List = styled.div`
@@ -94,6 +99,9 @@ export const UpdateBtn = styled.button`
   :active {
     background-color: #3c3c3c;
   }
+  @media (max-width: 750px) {
+    width: 12%;
+  }
 `;
 
 export const DeleteBtn = styled.button`
@@ -109,6 +117,9 @@ export const DeleteBtn = styled.button`
   }
   :active {
     background-color: #3c3c3c;
+  }
+  @media (max-width: 750px) {
+    width: 12%;
   }
 `;
 
@@ -134,14 +145,14 @@ export const Title = styled.span`
     width: 50%;
   }
   @media (max-width: 750px) {
-    width: 45%;
+    width: 65%;
   }
 `;
 
 export const Count = styled.span`
   width: 10%;
   @media (max-width: 750px) {
-    width: 13%;
+    display: none;
   }
 `;
 
@@ -155,5 +166,8 @@ export const Id = styled.span`
   // 1280px
   @media (max-width: 1280px) {
     width: 18%;
+  }
+  @media (max-width: 750px) {
+    display: none;
   }
 `;

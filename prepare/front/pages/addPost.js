@@ -166,13 +166,6 @@ const AddPost = () => {
               </div>
             ))}
           </TextEdit>
-          {/* <Editor
-            name="description"
-            onChange={(data) => {
-              setContent(data);
-            }}
-            editorLoaded={editorLoaded}
-          /> */}
           <BtnWrapper>
             <button type="submit">완료</button>
             <button

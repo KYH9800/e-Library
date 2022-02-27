@@ -23,7 +23,7 @@ const MainHomeMenu = () => {
         </LoginSignupMenu>
         <NavWrapper>
           <h1>
-            <Link href="/">
+            <Link href="/community">
               <a>e도서관</a>
             </Link>
           </h1>
