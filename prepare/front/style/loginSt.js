@@ -161,7 +161,7 @@ export const CheckSaveId = styled.div`
     align-items: center;
   }
   div a {
-    margin: 0px 8px;
+    margin: 0px 20px;
     font-weight: 600;
   }
   @media (max-width: 450px) {
