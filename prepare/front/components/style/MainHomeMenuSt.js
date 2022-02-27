@@ -106,4 +106,7 @@ export const FooterComponent = styled.footer`
       color: #fffdfd;
     }
   }
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;

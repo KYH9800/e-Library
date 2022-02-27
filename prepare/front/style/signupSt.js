@@ -3,22 +3,20 @@ import styled from 'styled-components';
 export const CheckBoxRapper = styled.div`
   border-top: 1px solid rgb(200 199 196);
   padding-top: 25px;
-  p {
-    color: rgb(200 199 196);
-  }
 `;
 /* 약관동의 */
 export const Box = styled.div`
   display: flex;
   align-items: center;
-  margin: 75px 0px 100px 0px;
+  margin: 25px 0px 100px 0px;
+  /* margin: 0px auto; */
 `;
 export const Ptag = styled.div`
   margin-bottom: 32px;
   p {
     font-size: 12px;
     line-height: 20px;
-    color: rgb(233 233 233);
+    color: rgb(124 124 124);
   }
 `;
 const NextBox = styled.div`
@@ -27,14 +25,14 @@ const NextBox = styled.div`
     font-size: 30px;
     line-height: 48px;
     letter-spacing: -0.5px;
-    color: rgb(200 199 196);
+    /* color: rgb(200 199 196); */
   }
   h2 {
     padding: 32px 0px 48px;
-    color: rgb(141 141 141);
     font-size: 14px;
     line-height: 24px;
     border-top: 1px solid rgb(200 199 196);
+    /* color: rgb(141 141 141); */
   }
   label {
     display: inline-flex;
@@ -70,18 +68,27 @@ const NextBox = styled.div`
   button:hover {
     background: rgb(41 96 229);
   }
+  @media (max-width: 450px) {
+    padding: 0px;
+    button {
+      width: 100%;
+      height: 36px;
+    }
+  }
 `;
+
 export const Wrapper01 = styled(NextBox)`
   display: flex;
   flex-direction: column;
   margin: 0px auto;
   padding: 55px 60px;
   border: 1px solid rgb(200 199 196);
+  padding: 5% 3%;
   label {
     padding-bottom: 10px;
   }
-  p {
-    color: white;
+  @media (max-width: 450px) {
+    width: 97%;
   }
 `;
 /* 회원가입 정보 입력 칸 */
@@ -91,9 +98,10 @@ export const Wrapper02 = styled(NextBox)`
   margin: 0px auto;
   padding: 55px 60px;
   border: 1px solid rgb(200 199 196);
+  padding: 5% 3%;
+
   label {
     font-weight: 500;
-    color: white;
     margin-top: 10px;
   }
   input {
@@ -111,5 +119,14 @@ export const Wrapper02 = styled(NextBox)`
   }
   button {
     margin-top: 31px;
+  }
+
+  @media (max-width: 450px) {
+    width: 97%;
+    input {
+      width: 95%;
+      height: 35px;
+      font-size: 11px;
+    }
   }
 `;
