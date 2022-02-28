@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
 // import Link from 'next/link';
@@ -12,6 +12,7 @@ import {
   ImageWrapper,
   CommentFrom,
   ContentWrapper,
+  CommentBtn,
 } from '../style/postFormSt';
 import PostImages from './postImage';
 
@@ -21,9 +22,9 @@ import { useCallback } from 'react';
 
 const PostForm = ({ post }) => {
   const dispatch = useDispatch();
+  const [toggle, setToggle] = useState(false);
   const { me } = useSelector((state) => state.user);
   const { removeCommentError } = useSelector((state) => state.post);
-  console.log('PostForm의 넘겨받은 Props: ', post); // singlePosts
 
   const onRemoveComment = useCallback((comment) => () => {
     console.log('data', comment.id);
@@ -41,6 +42,14 @@ const PostForm = ({ post }) => {
   const onClickBack = useCallback(() => {
     Router.back();
   });
+
+  const onClickToggle = () => {
+    if (toggle === true) {
+      setToggle(false);
+    } else {
+      setToggle(true);
+    }
+  };
 
   return (
     <>
@@ -65,26 +74,35 @@ const PostForm = ({ post }) => {
         <ButtonWrapper>
           <button onClick={onClickBack}>목록으로</button>
         </ButtonWrapper>
-        {me ? <CommentForm post={post} /> : null}
-        <CommentFrom>
-          <span>
-            {post.Comments.map((v) => {
-              return (
-                <div key={v.id}>
-                  <span>{v.User.nickname}</span>
-                  <ContentWrapper>
-                    <p>{v.content}</p>
-                    {me?.id === v.User.id ? (
-                      <button type="button" onClick={onRemoveComment(v)}>
-                        삭제
-                      </button>
-                    ) : null}
-                  </ContentWrapper>
-                </div>
-              );
-            })}
-          </span>
-        </CommentFrom>
+        <CommentBtn>
+          <a type="button" onClick={onClickToggle}>
+            댓글 {post.Comments.length}개의 모두보기
+          </a>
+        </CommentBtn>
+        {toggle ? (
+          <>
+            {me ? <CommentForm post={post} /> : null}
+            <CommentFrom>
+              <span>
+                {post.Comments.map((v) => {
+                  return (
+                    <div key={v.id}>
+                      <span>{v.User.nickname}</span>
+                      <ContentWrapper>
+                        <p>{v.content}</p>
+                        {me?.id === v.User.id ? (
+                          <button type="button" onClick={onRemoveComment(v)}>
+                            삭제
+                          </button>
+                        ) : null}
+                      </ContentWrapper>
+                    </div>
+                  );
+                })}
+              </span>
+            </CommentFrom>
+          </>
+        ) : null}
       </TextWrapper>
     </>
   );

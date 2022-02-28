@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Comment, CommentWrapper } from '../style/postFormSt';
 import useInput from '../../hooks/useInput';
@@ -10,7 +10,6 @@ const CommentForm = ({ post }) => {
   const [commentText, onChangeCommentText, setCommentText] = useInput('');
   const { addCommentDone } = useSelector((state) => state.post);
   const id = useSelector((state) => state.user.me?.id);
-  console.log('댓글: ', commentText);
 
   useEffect(() => {
     if (addCommentDone) {
@@ -33,14 +32,16 @@ const CommentForm = ({ post }) => {
   };
 
   return (
-    <form type="submit" onSubmit={onCommentSubmit}>
-      <CommentWrapper>
-        <Comment>
-          <input type="text" value={commentText} onChange={onChangeCommentText} placeholder="댓글을 입력해주세요." />
-          <button type="submit">댓글 생성</button>
-        </Comment>
-      </CommentWrapper>
-    </form>
+    <>
+      <form type="submit" onSubmit={onCommentSubmit}>
+        <CommentWrapper>
+          <Comment>
+            <input type="text" value={commentText} onChange={onChangeCommentText} placeholder="댓글을 입력해주세요." />
+            <button type="submit">댓글 생성</button>
+          </Comment>
+        </CommentWrapper>
+      </form>
+    </>
   );
 };
 

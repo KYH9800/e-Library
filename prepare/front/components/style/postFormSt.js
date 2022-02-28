@@ -95,6 +95,21 @@ export const ButtonWrapper = styled.div`
   }
 `;
 
+export const CommentBtn = styled.div`
+  a {
+    color: #707070;
+    font-size: 12px;
+    /* background-color: #222222; */
+    /* border: 1px solid #222222; */
+    /* padding: 3px 1px 1px 1px; */
+    /* width: 102px; */
+    /* height: 23px; */
+  }
+  a:active {
+    color: black;
+  }
+`;
+
 // Comment
 export const Comment = styled.div`
   display: inline-flex;
