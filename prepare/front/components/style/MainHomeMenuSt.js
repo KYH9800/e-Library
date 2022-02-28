@@ -53,12 +53,16 @@ export const NavTop = styled.div`
 `;
 
 export const MenuWrapper = styled(Menu)`
-  background-color: #2f2f2ff5;
+  background-color: #232323;
   text-align: center;
   height: 775px;
   /* width: 360px; */
   a {
     color: white;
+  }
+  li {
+    margin: 0px 0px 0px -1px;
+    border-bottom: 1px solid black;
   }
   @media (min-width: 200px) {
     width: 200px;
