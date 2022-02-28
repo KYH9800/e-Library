@@ -48,6 +48,8 @@ export const ProfileWrapper = styled.div`
 export const Box = styled.div`
   margin: 0px auto;
   height: 200px;
+  border: 1px solid black;
+  margin: 0% 5% 0% 5%;
   h2 {
     margin: 20px 0px 20px 0px;
   }

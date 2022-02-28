@@ -25,8 +25,22 @@ export const Main = styled.main`
   margin: auto;
   height: 100%;
   margin-top: 5%;
-  padding-bottom: 65%;
-  @media (min-width: 1000px) {
-    padding-bottom: 35%;
+  @media (max-width: 1500px) {
+    padding-bottom: 55%;
+  }
+  @media (max-width: 650px) {
+    padding-bottom: 65%;
+  }
+  @media (max-width: 560px) {
+    padding-bottom: 85%;
+  }
+  @media (max-width: 470px) {
+    padding-bottom: 105%;
+  }
+  @media (max-width: 400px) {
+    padding-bottom: 125%;
+  }
+  @media (max-width: 320px) {
+    padding-bottom: 135%;
   }
 `;
