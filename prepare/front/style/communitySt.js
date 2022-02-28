@@ -7,7 +7,7 @@ export const MainWrapper = styled.div`
   h1 {
     user-select: none;
     text-align: center;
-    font-size: 230%;
+    font-size: 190%;
   }
 `;
 export const CreactPostBtn = styled.div`

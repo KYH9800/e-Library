@@ -36,7 +36,7 @@ const CommentForm = ({ post }) => {
     <form type="submit" onSubmit={onCommentSubmit}>
       <CommentWrapper>
         <Comment>
-          <textarea type="text" value={commentText} onChange={onChangeCommentText} placeholder="댓글을 입력해주세요." />
+          <input type="text" value={commentText} onChange={onChangeCommentText} placeholder="댓글을 입력해주세요." />
           <button type="submit">댓글 생성</button>
         </Comment>
       </CommentWrapper>

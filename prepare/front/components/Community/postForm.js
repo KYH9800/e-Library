@@ -74,7 +74,7 @@ const PostForm = ({ post }) => {
                     <p>{v.content}</p>
                     {me?.id === v.User.id ? (
                       <button type="button" onClick={onRemoveComment(v)}>
-                        댓글 삭제
+                        삭제
                       </button>
                     ) : null}
                   </ContentWrapper>

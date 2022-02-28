@@ -25,6 +25,6 @@ export const Main = styled.main`
   position: inherit;
   margin: auto;
   height: 100%;
-  margin-top: 10%;
+  margin-top: 5%;
   padding-bottom: 19%;
 `;
