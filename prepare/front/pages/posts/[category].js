@@ -86,6 +86,10 @@ const Category = () => {
     [],
   );
 
+  const onClickRouter = (postId) => () => {
+    Router.push(`/post/${postId}`);
+  };
+
   return (
     <AppLayout>
       <Head>
@@ -102,30 +106,33 @@ const Category = () => {
         </CreactPostBtn>
         <ListWrapper>
           <List>{mainPosts.length === 0 && <h1>존재하는 게시글이 없습니다.</h1>}</List>
-          {mainPosts.map((post, index) => (
-            <List>
-              <Link href={`post/${post.id}`}>
-                <div>
-                  <ul>
-                    <li>
-                      <Num>{index + 1}</Num>
-                      <Title>
-                        <span>[{post.category}]</span> <p>{post.title}</p>
-                      </Title>
-                      <Count>조회수: {post.count}</Count>
-                      <Id>작성자: {post.User.nickname}</Id>
-                      {id && post.User.id === id ? (
-                        <>
-                          <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
-                          <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
-                        </>
-                      ) : null}
-                    </li>
-                  </ul>
-                </div>
-              </Link>
-            </List>
-          ))}
+          {mainPosts.map((post, index) => {
+            console.log('이거 이서 이서: ', post.id);
+            return (
+              <>
+                <List onClick={onClickRouter(post.id)}>
+                  <div>
+                    <ul>
+                      <li>
+                        <Num>{index + 1}</Num>
+                        <Title>
+                          <span>[{post.category}]</span> <p>{post.title}</p>
+                        </Title>
+                        <Count>조회수: {post.count}</Count>
+                        <Id>작성자: {post.User.nickname}</Id>
+                        {id && post.User.id === id ? (
+                          <>
+                            <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
+                            <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
+                          </>
+                        ) : null}
+                      </li>
+                    </ul>
+                  </div>
+                </List>
+              </>
+            );
+          })}
         </ListWrapper>
       </MainWrapper>
     </AppLayout>
