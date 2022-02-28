@@ -30,7 +30,11 @@ export const CreactPostBtn = styled.div`
   }
   // 1080px
   @media (max-width: 1080px) {
-    margin-right: 0%;
+    margin-right: 1.2%;
+    button {
+      width: 130px;
+      height: 35px;
+    }
   }
 `;
 
