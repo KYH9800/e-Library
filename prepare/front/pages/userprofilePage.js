@@ -16,7 +16,7 @@ const UserProfilePage = () => {
 
   useEffect(() => {
     if (!me) {
-      Router.push('/login');
+      Router.push('/');
     }
   });
 
