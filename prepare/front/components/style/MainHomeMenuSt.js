@@ -1,5 +1,98 @@
 import styled from 'styled-components';
+import { Menu } from 'antd';
 // LoginSignupMenu
+export const LayoutHeader = styled.header`
+  margin: auto;
+  width: 100%;
+  @media (max-width: 850px) {
+    // 상단 메뉴 전체 레이아웃
+    height: 75px;
+    background-color: rgb(46 49 51 / 81%);
+    display: inline-flex;
+    h1 {
+      display: none;
+    }
+  }
+`;
+
+// 모바일 로그인 CSS
+export const LoginWrapper = styled.div`
+  @media (max-width: 850px) {
+    h3 {
+      display: none;
+    }
+  }
+`;
+
+export const MobileVarWrapper = styled.div`
+  @media (min-width: 850px) {
+    display: none;
+  }
+`;
+
+export const NavTop = styled.div`
+  display: none;
+  @media (max-width: 850px) {
+    display: flex;
+    .CloseOutlined {
+      svg {
+        width: 43px;
+        height: 69px;
+      }
+    }
+    .menuOutlined {
+      svg {
+        margin: 43% 0% 0% 5%;
+        width: 43px;
+        height: 36px;
+      }
+    }
+  }
+`;
+
+export const MenuWrapper = styled(Menu)`
+  background-color: #2f2f2ff5;
+  text-align: center;
+  /* width: 360px; */
+  height: 775px;
+  a {
+    color: white;
+  }
+  @media (min-width: 200px) {
+    width: 200px;
+  }
+  @media (min-width: 300px) {
+    width: 300px;
+  }
+  @media (min-width: 350px) {
+    width: 350px;
+  }
+  @media (min-width: 420px) {
+    width: 415px;
+  }
+  @media (min-width: 450px) {
+    width: 450px;
+  }
+  @media (min-width: 550px) {
+    width: 550px;
+  }
+  @media (min-width: 650px) {
+    width: 650px;
+  }
+  @media (min-width: 800px) {
+    width: 800px;
+  }
+`;
+
+export const MobileLoginWrapper = styled.div`
+  text-align: center;
+  margin: 7%;
+  li {
+    background-color: #000000;
+    border: 1px solid black;
+  }
+`;
+
 export const LoginSignupMenu = styled.div`
   background-color: rgb(28 28 28 / 83%);
   height: 37px;
@@ -42,8 +135,8 @@ export const LoginSignupMenu = styled.div`
   }
 
   // 모바일
-  @media (max-width: 360px) {
-    /* display: none; */
+  @media (max-width: 850px) {
+    background-color: #ffffff00;
   }
 `;
 // nav wrapper
@@ -78,11 +171,11 @@ export const NavWrapper = styled.div`
       background: rgb(62 60 59 / 35%);
     }
   }
-`;
-
-export const LayoutHeader = styled.header`
-  margin: auto;
-  width: 100%;
+  @media (max-width: 850px) {
+    display: none;
+    width: 5%;
+    background-color: #ffffff00;
+  }
 `;
 
 export const FooterComponent = styled.footer`
