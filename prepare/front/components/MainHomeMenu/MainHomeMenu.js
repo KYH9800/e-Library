@@ -95,7 +95,6 @@ const MainHomeMenu = () => {
         </NavWrapper>
 
         <MobileVarWrapper>
-          {/* <MobileView> */}
           <NavTop>
             <div type="primary" onClick={toggleChange}>
               {toggleBar ? <MenuOutlined className="menuOutlined" /> : <CloseOutlined className="CloseOutlined" />}
@@ -172,7 +171,6 @@ const MainHomeMenu = () => {
               )}
             </MenuWrapper>
           )}
-          {/* </MobileView> */}
         </MobileVarWrapper>
       </LayoutHeader>
     </nav>
