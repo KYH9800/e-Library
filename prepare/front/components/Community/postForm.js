@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link';
-
+import Router from 'next/router';
+// import Link from 'next/link';
 import {
   TextWrapper,
   ButtonWrapper,
@@ -38,6 +38,10 @@ const PostForm = ({ post }) => {
     }
   });
 
+  const onClickBack = useCallback(() => {
+    Router.back();
+  });
+
   return (
     <>
       <TextWrapper>
@@ -59,9 +63,7 @@ const PostForm = ({ post }) => {
           })}
         </Content>
         <ButtonWrapper>
-          <Link href="/">
-            <button>목록으로</button>
-          </Link>
+          <button onClick={onClickBack}>목록으로</button>
         </ButtonWrapper>
         {me ? <CommentForm post={post} /> : null}
         <CommentFrom>

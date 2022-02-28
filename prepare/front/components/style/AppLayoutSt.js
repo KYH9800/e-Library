@@ -4,8 +4,7 @@ export const GlobalStyle = createGlobalStyle`
 *, *::before, *::after {
   box-sizing: border-box;
 }
-html, body {
-  /* background-color: gray; */
+body {
   font-family: '고딕';
   line-height: 1.5;
   margin: 0;

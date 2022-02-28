@@ -36,11 +36,6 @@ const AddPost = () => {
   const [title, onChangeTitle] = useInput('');
   const [category, setCategory] = useState();
   const [content, setContent] = useState('');
-  // const [editorLoaded, setEditorLoaded] = useState(false);
-  // const [data, setData] = useState('');
-  // useEffect(() => {
-  //   setEditorLoaded(true);
-  // }, []);
 
   // onSubmit
   const onSubmit = useCallback(
@@ -128,11 +123,11 @@ const AddPost = () => {
       </Header>
       <Main>
         <form onSubmit={onSubmit}>
-          <TitleWrapper>
-            <label htmlFor="title">글 제목</label>
-            <input type="text" value={title} onChange={onChangeTitle} placeholder="글의 제목을 작성해주세요" />
-          </TitleWrapper>
           <CategoryWrapper>
+            <TitleWrapper>
+              <label htmlFor="title">글 제목</label>
+              <input type="text" value={title} onChange={onChangeTitle} placeholder="글의 제목을 작성해주세요" />
+            </TitleWrapper>
             <SelectWraper defaultValue="카테고리" onChange={handleChange}>
               <Select.Option value="자유게시글">자유게시글</Select.Option>
               <Select.Option value="모임공지">모임공지</Select.Option>
@@ -140,7 +135,7 @@ const AddPost = () => {
               <Select.Option value="건의게시글">건의게시글</Select.Option>
             </SelectWraper>
           </CategoryWrapper>
-          <ContentWrapper></ContentWrapper>
+          <br />
           <TextEdit>
             <div className="editor-menu">
               <input type="file" name="image" multiple hidden ref={imageInput} onChange={onChangeImages} />

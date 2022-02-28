@@ -67,7 +67,6 @@ export const ListWrapper = styled.div`
       }
     }
   }
-
   // 모바일
   @media (max-width: 500px) {
     span {
@@ -102,6 +101,10 @@ export const List = styled.div`
       font-size: 12px;
     }
   }
+`;
+
+export const ListLink = styled.span`
+  display: contents;
 `;
 
 export const UpdateBtn = styled.button`

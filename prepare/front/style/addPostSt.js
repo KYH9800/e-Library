@@ -20,7 +20,8 @@ export const Main = styled.main`
 export const TitleWrapper = styled.div`
   display: inline;
   label {
-    padding: 8px 20px 9px 20px;
+    color: white;
+    padding: 9px 12px 8px 20px;
     border: 0px solid #3c4143;
     background-color: #3c4143;
   }
@@ -28,23 +29,56 @@ export const TitleWrapper = styled.div`
     background-color: #e3dada;
     width: 400px;
     height: 34px;
-    color: black;
     font-size: 15px;
     font-family: '고딕';
     font-weight: 500;
     padding: 0px 0px 0px 10px;
   }
+  @media (max-width: 800px) {
+    label {
+      font-size: 12px;
+      padding: 10px 11px 9px 10px;
+    }
+    input {
+      font-size: 12px;
+      width: 300px;
+    }
+  }
+  @media (max-width: 600px) {
+    label {
+      padding: 10px 8px 9px 11px;
+    }
+    input {
+      width: 200px;
+    }
+  }
+  @media (max-width: 600px) {
+    label {
+      padding: 10px 5px 9px 6px;
+    }
+    input {
+      width: 145px;
+    }
+  }
 `;
 
 export const CategoryWrapper = styled.div`
-  display: inline;
+  padding-bottom: 2%;
 `;
 
 export const SelectWraper = styled(Select)`
+  position: relative;
+  z-index: 1;
   width: 160px;
   margin: 3px 2px 3px 2px;
   div {
     background-color: black;
+  }
+  @media (max-width: 800px) {
+    width: 120px;
+  }
+  @media (max-width: 600px) {
+    width: 100px;
   }
 `;
 
@@ -76,23 +110,21 @@ export const ContentWrapper = styled.div`
     font-weight: 500;
     padding: 12px 8px 10px 8px;
   }
-  /* label {
-    padding: 10px 295px 10px 295px;
-    border: 5px solid #3c4143;
-    background-color: #3c4143;
-  } */
 `;
 
 export const TextEdit = styled.div`
+  width: 651px;
   color: black;
   text-align: start;
-  width: 651px;
   margin: auto;
   margin-top: 15px;
   #editor-menu {
-    // todo
+    button {
+      margin: auto;
+    }
   }
   button {
+    margin: auto;
     width: 90px;
     color: black;
   }
@@ -121,6 +153,10 @@ export const TextEdit = styled.div`
     font-size: 22px;
     color: red;
   }
+  // TextEdit
+  @media (max-width: 695px) {
+    width: 100%;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -134,6 +170,7 @@ export const BtnWrapper = styled.div`
   margin: 35px;
   button {
     background-color: #222222;
+    margin: 2px;
     width: 150px;
     height: 50px;
     border: 1px solid #222222;
@@ -145,5 +182,21 @@ export const BtnWrapper = styled.div`
   }
   button:active {
     background-color: #3c3c3c;
+  }
+
+  @media (max-width: 800px) {
+    button {
+      width: 25%;
+      height: 36px;
+      margin: 2px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    button {
+      width: 25%;
+      height: 36px;
+      margin: 2px;
+    }
   }
 `;

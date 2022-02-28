@@ -86,6 +86,10 @@ const User = () => {
     [],
   );
 
+  const onClickMyPost = useCallback((postId) => () => {
+    Router.push(`/post/${postId}`);
+  });
+
   return (
     <AppLayout>
       <Head>
@@ -102,26 +106,26 @@ const User = () => {
         <ListWrapper>
           {mainPosts.map((post, index) => (
             <List>
-              <Link href={`post/${post.id}`}>
-                <div>
-                  <ul>
-                    <li>
-                      <Num>{index + 1}</Num>
-                      <Title>
-                        <span>[{post.category}]</span> <p>{post.title}</p>
-                      </Title>
-                      <Count>조회수: {post.count}</Count>
-                      <Id>작성자: {post.User.nickname}</Id>
-                      {userId && post.User.id === userId ? (
-                        <>
-                          <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
-                          <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
-                        </>
-                      ) : null}
-                    </li>
-                  </ul>
-                </div>
-              </Link>
+              {/* <Link href={`post/${post.id}`}> */}
+              <div onClick={onClickMyPost(post.id)}>
+                <ul>
+                  <li>
+                    <Num>{index + 1}</Num>
+                    <Title>
+                      <span>[{post.category}]</span> <p>{post.title}</p>
+                    </Title>
+                    <Count>조회수: {post.count}</Count>
+                    <Id>작성자: {post.User.nickname}</Id>
+                    {userId && post.User.id === userId ? (
+                      <>
+                        <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
+                        <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
+                      </>
+                    ) : null}
+                  </li>
+                </ul>
+              </div>
+              {/* </Link> */}
             </List>
           ))}
         </ListWrapper>

@@ -89,6 +89,11 @@ export const MenuWrapper = styled(Menu)`
 export const MobileLoginWrapper = styled.div`
   text-align: center;
   margin: 7%;
+  div {
+    color: #aba6a6;
+    margin-top: 15%;
+    margin-bottom: 5%;
+  }
   li {
     background-color: #000000;
     border: 1px solid black;

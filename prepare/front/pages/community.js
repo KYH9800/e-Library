@@ -12,6 +12,7 @@ import {
   CreactPostBtn,
   ListWrapper,
   List,
+  ListLink,
   UpdateBtn,
   DeleteBtn,
   Num,
@@ -96,27 +97,33 @@ const Community = () => {
         <ListWrapper>
           {mainPosts.map((post, index) => (
             <List key={post.id}>
-              <Link href={`post/${post.id}`}>
-                <div>
-                  <ul>
-                    <li>
-                      <Num>{index + 1}</Num>
-                      <Title>
-                        <span>[{post.category}]</span>{' '}
-                        <p>{post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}</p>
-                      </Title>
-                      {/* <Count>조회수: {post.count}</Count> */}
-                      <Id>작성자: {post.User.nickname}</Id>
-                      {id && post.User.id === id ? (
-                        <>
-                          <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
-                          <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
-                        </>
-                      ) : null}
-                    </li>
-                  </ul>
-                </div>
-              </Link>
+              <div>
+                <ul>
+                  <li>
+                    <Link href={`post/${post.id}`}>
+                      <ListLink>
+                        <Num>{index + 1}</Num>
+                        <Title>
+                          <span>[{post.category}]</span>{' '}
+                          <p>{post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}</p>
+                        </Title>
+                        {/* <Count>조회수: {post.count}</Count> */}
+                        <Id>작성자: {post.User.nickname}</Id>
+                      </ListLink>
+                    </Link>
+                    {id && post.User.id === id ? (
+                      <>
+                        <UpdateBtn type="button" onClick={onClickUpdate(post.id)}>
+                          수정
+                        </UpdateBtn>
+                        <DeleteBtn type="button" onClick={onRemovePost(post)}>
+                          삭제
+                        </DeleteBtn>
+                      </>
+                    ) : null}
+                  </li>
+                </ul>
+              </div>
             </List>
           ))}
         </ListWrapper>
