@@ -144,11 +144,15 @@ export const Comment = styled.div`
   @media (max-width: 585px) {
     input {
       width: 300px;
+      height: 30px;
+    }
+    button {
+      height: 30px;
     }
   }
   @media (max-width: 470px) {
     input {
-      width: 200px;
+      width: 220px;
     }
   }
 `;
@@ -170,6 +174,7 @@ export const CommentFrom = styled.div`
       padding: 0px 5px 0px 5px;
       display: block;
       color: gray;
+      font-size: 12px;
     }
   }
   div:hover {
@@ -189,7 +194,7 @@ export const ContentWrapper = styled.div`
     background-color: #fbbaba;
     color: #000000;
     width: 100px;
-    height: 30px;
+    height: 34px;
     border: 1px solid #222222;
   }
   button:hover {
@@ -199,15 +204,20 @@ export const ContentWrapper = styled.div`
     background-color: #fbbaba;
   }
   p {
+    padding: 1%;
+    margin: 0%;
     margin-left: 1%;
-    font-size: 16px;
+    font-size: 12px;
     width: 700px;
   }
   @media (max-width: 700px) {
+    /* align-items: center; */
     p {
       width: 600px;
+      font-size: 11px;
     }
     button {
+      height: 34px;
       font-size: 11px;
     }
   }

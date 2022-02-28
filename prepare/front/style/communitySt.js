@@ -62,13 +62,17 @@ export const ListWrapper = styled.div`
   }
   @media (max-width: 750px) {
     ul li {
-      padding: 15px 0px 15px 0px;
+      span {
+        padding: 0px 15px 0px 0px;
+      }
     }
   }
 
   // 모바일
-  @media (max-width: 360px) {
-    /* display: none; */
+  @media (max-width: 500px) {
+    span {
+      padding: 0px 16px 0px 0px;
+    }
   }
 `;
 
@@ -86,6 +90,17 @@ export const List = styled.div`
     margin: 0;
     padding: 10px;
     color: gray;
+  }
+  @media (max-width: 500px) {
+    ul {
+      padding-left: 15px;
+      list-style: none;
+      margin-bottom: 0;
+    }
+    li {
+      align-items: center;
+      font-size: 12px;
+    }
   }
 `;
 
@@ -129,6 +144,7 @@ export const DeleteBtn = styled.button`
 
 export const Num = styled.span`
   width: 3%;
+  padding: 0;
 `;
 
 export const Title = styled.span`
@@ -150,6 +166,11 @@ export const Title = styled.span`
   }
   @media (max-width: 750px) {
     width: 65%;
+    align-items: center;
+    span {
+      font-size: 12px;
+      /* padding-right: 1%; */
+    }
   }
 `;
 

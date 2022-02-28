@@ -102,9 +102,10 @@ const Community = () => {
                     <li>
                       <Num>{index + 1}</Num>
                       <Title>
-                        <span>[{post.category}]</span> <p>{post.title}</p>
+                        <span>[{post.category}]</span>{' '}
+                        <p>{post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}</p>
                       </Title>
-                      <Count>조회수: {post.count}</Count>
+                      {/* <Count>조회수: {post.count}</Count> */}
                       <Id>작성자: {post.User.nickname}</Id>
                       {id && post.User.id === id ? (
                         <>
