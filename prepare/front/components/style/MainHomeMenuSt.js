@@ -32,17 +32,19 @@ export const MobileVarWrapper = styled.div`
 
 export const NavTop = styled.div`
   display: none;
+  color: white;
   @media (max-width: 850px) {
     display: flex;
     .CloseOutlined {
       svg {
         width: 43px;
         height: 69px;
+        margin: 5% 0% 0% 30%;
       }
     }
     .menuOutlined {
       svg {
-        margin: 43% 0% 0% 5%;
+        margin: 45% 0% 0% 30%;
         width: 43px;
         height: 36px;
       }
@@ -53,8 +55,8 @@ export const NavTop = styled.div`
 export const MenuWrapper = styled(Menu)`
   background-color: #2f2f2ff5;
   text-align: center;
-  /* width: 360px; */
   height: 775px;
+  /* width: 360px; */
   a {
     color: white;
   }
@@ -136,7 +138,8 @@ export const LoginSignupMenu = styled.div`
 
   // 모바일
   @media (max-width: 850px) {
-    background-color: #ffffff00;
+    /* background-color: #ffffff00; */
+    display: none;
   }
 `;
 // nav wrapper

@@ -95,7 +95,7 @@ const Community = () => {
         {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
         <ListWrapper>
           {mainPosts.map((post, index) => (
-            <List>
+            <List key={post.id}>
               <Link href={`post/${post.id}`}>
                 <div>
                   <ul>

@@ -94,7 +94,7 @@ const Category = () => {
         <meta property="og:url" content={`https://coding-factory.site/posts/${category}`} />
       </Head>
       <MainWrapper>
-        <h1>전체게시판</h1>
+        <h1>{category}</h1>
         <CreactPostBtn>
           <div>
             <button onClick={onClickAddPost}>글쓰기</button>

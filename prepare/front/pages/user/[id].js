@@ -92,7 +92,7 @@ const User = () => {
         <title>e도서관 | 커뮤니티</title>
       </Head>
       <MainWrapper>
-        <h1>전체게시판</h1>
+        <h1>{me.nickname}님의 게시글</h1>
         <CreactPostBtn>
           <div>
             <button onClick={onClickAddPost}>글쓰기</button>
