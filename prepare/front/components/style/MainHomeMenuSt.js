@@ -192,8 +192,8 @@ export const NavWrapper = styled.div`
 
 export const FooterComponent = styled.footer`
   background-color: rgb(60, 65, 67);
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   margin: auto;
   position: unset;
   bottom: 0;
