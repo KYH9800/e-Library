@@ -54,7 +54,7 @@ const Community = () => {
       Router.push('/addPost');
     } else {
       alert('로그인 후 이용 가능합니다.'); // 안전장치
-      Router.push('/login');
+      Router.push('/');
     }
   });
 
