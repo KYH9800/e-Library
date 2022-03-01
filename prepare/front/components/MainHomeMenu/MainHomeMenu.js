@@ -130,7 +130,7 @@ const MainHomeMenu = () => {
                 </Link>
               </Menu.Item>
               <Menu.Item key="questionPosts">
-                <Link href={`/posts/건의게시판`}>
+                <Link href={`/posts/건의게시글`}>
                   <a>건의게시판</a>
                 </Link>
               </Menu.Item>
