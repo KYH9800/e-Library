@@ -25,8 +25,8 @@ export const Main = styled.main`
   margin: auto;
   height: 100%;
   margin-top: 5%;
-  margin-bottom: 55%;
-  @media (max-width: 1500px) {
+  margin-bottom: 15%;
+  /* @media (max-width: 1500px) {
     padding-bottom: 55%;
   }
   @media (max-width: 650px) {
@@ -43,5 +43,5 @@ export const Main = styled.main`
   }
   @media (max-width: 320px) {
     padding-bottom: 135%;
-  }
+  } */
 `;
