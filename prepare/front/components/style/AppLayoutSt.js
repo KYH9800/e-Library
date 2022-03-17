@@ -12,7 +12,7 @@ body {
   min-height: 80%;
   position: relative; 
   nav {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
