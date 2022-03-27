@@ -6,7 +6,7 @@ background-color: gray;
 
 export const HomeLogo = styled.h1`
   text-align: center;
-  margin-top: 13%;
+  margin-top: 3%;
   a {
     font-size: 130%;
     font-family: '고딕';

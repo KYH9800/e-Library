@@ -11,6 +11,7 @@ import {
   MainWrapper,
   CreactPostBtn,
   ListWrapper,
+  ContentListTable,
   List,
   ListLink,
   UpdateBtn,
@@ -95,6 +96,12 @@ const Community = () => {
         </CreactPostBtn>
         {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
         <ListWrapper>
+          <ContentListTable>
+            <div className="num">순번</div>
+            <div className="category">카테고리</div>
+            <div className="subject">제목</div>
+            <div className="user">작성자</div>
+          </ContentListTable>
           {mainPosts.map((post, index) => (
             <List key={post.id}>
               <div>
@@ -108,7 +115,7 @@ const Community = () => {
                           <p>{post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}</p>
                         </Title>
                         {/* <Count>조회수: {post.count}</Count> */}
-                        <Id>작성자: {post.User.nickname}</Id>
+                        <Id>{post.User.nickname}</Id>
                       </ListLink>
                     </Link>
                     {id && post.User.id === id ? (

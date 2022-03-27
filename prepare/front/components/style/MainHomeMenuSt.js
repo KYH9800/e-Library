@@ -120,7 +120,7 @@ export const LoginSignupMenu = styled.div`
     background-color: rgb(199 199 199 / 83%);
   }
   button:hover {
-    background-color: black;
+    background-color: rgb(62 60 59 / 35%);
   }
   span {
     color: #5a5a5a;
@@ -138,12 +138,12 @@ export const LoginSignupMenu = styled.div`
     padding-right: 16px;
     padding-left: 16px;
     padding-top: 6px;
-    padding-bottom: 6px;
+    padding-bottom: 2px;
     float: right;
     text-decoration: none;
   }
   h3 a:hover {
-    background-color: black;
+    background-color: rgb(62 60 59 / 35%);
   }
 
   // 모바일
@@ -170,7 +170,6 @@ export const NavWrapper = styled.div`
     list-style: none;
     text-align: center;
     margin-left: 21%;
-    margin-right: 21%;
     a {
       color: black;
     }
@@ -192,9 +191,9 @@ export const NavWrapper = styled.div`
 `;
 
 export const FooterComponent = styled.footer`
-  background-color: rgb(60, 65, 67);
-  padding-top: 5%;
-  padding-bottom: 5%;
+  background-color: rgb(229 229 229);
+  padding-top: 1%;
+  padding-bottom: 1%;
   margin: auto;
   position: unset;
   bottom: 0;
@@ -203,10 +202,10 @@ export const FooterComponent = styled.footer`
   p {
     margin-left: 10%;
     margin-top: 1%;
-    color: #858585;
+    color: black;
     a {
       margin-left: 1%;
-      color: #858585;
+      color: black;
     }
     a:hover {
       color: #fffdfd;

@@ -20,13 +20,13 @@ export const CreactPostBtn = styled.div`
     height: 28px;
     border: 1px solid #dedbdb;
     font-size: 14px;
-    color: #999999;
+    color: #222222;
   }
   button:hover {
-    background-color: #2e2e2e;
+    background-color: #bababa;
   }
   button:active {
-    background-color: #3c3c3c;
+    background-color: #e6e6e6;
   }
   // 1080px
   @media (max-width: 1080px) {
@@ -39,9 +39,13 @@ export const CreactPostBtn = styled.div`
 `;
 
 export const ListWrapper = styled.div`
+  color: black;
   align-items: center;
-  border-bottom: 1px solid #525252;
-  background-color: #222222;
+  border-top: 1px solid #525252;
+  /* border-left: 1px solid #525252; */
+  /* border-right: 1px solid #525252; */
+
+  /* background-color: #222222; */
   width: 55%;
   margin: auto;
   margin-top: 1%;
@@ -51,9 +55,9 @@ export const ListWrapper = styled.div`
   }
   ul li {
     display: flex;
-    padding: 25px 0px 25px 0px;
+    padding: 10px 0px 7px 0px;
     span {
-      padding: 0px 30px 0px 0px;
+      padding: 0px 12px 0px 0px;
     }
   }
   // 1080px
@@ -63,26 +67,48 @@ export const ListWrapper = styled.div`
   @media (max-width: 750px) {
     ul li {
       span {
-        padding: 0px 15px 0px 0px;
+        padding: 0px 12px 0px 0px;
       }
     }
   }
   // 모바일
   @media (max-width: 500px) {
     span {
-      padding: 0px 16px 0px 0px;
+      padding: 0px 12px 0px 0px;
     }
+  }
+`;
+
+// 게시글 리스트 테이블
+export const ContentListTable = styled.div`
+  display: flex;
+  padding: 1% 0% 1% 0%;
+  border-bottom: 1px solid black;
+  background-color: #e2e2e2;
+  .num {
+    margin-left: 3%;
+  }
+  .category {
+    margin-left: 2%;
+    padding-left: 3px;
+  }
+  .subject {
+    margin-left: 4%;
+  }
+  .user {
+    margin-left: 38%;
+    padding-left: 3px;
   }
 `;
 
 export const List = styled.div`
   align-items: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #e5d9d9;
   :hover {
-    background-color: #2e2e2e;
+    background-color: #e0e0e0;
   }
   :active {
-    background-color: #3c3c3c;
+    background-color: white;
   }
   h1 {
     font-size: 15px;
@@ -108,13 +134,12 @@ export const ListLink = styled.span`
 `;
 
 export const UpdateBtn = styled.button`
-  color: #c0c0ff;
-  background-color: #535353;
-  width: 7%;
-  height: 7%;
-  border: 1px solid #707070;
-  font-size: 15px;
-  /* float: right; */
+  color: black;
+  background-color: #cccfff;
+  width: 8%;
+  height: 20px;
+  border: 1px solid #cccfff;
+  font-size: 13px;
   :hover {
     background-color: #2e2e2e;
   }
@@ -127,13 +152,12 @@ export const UpdateBtn = styled.button`
 `;
 
 export const DeleteBtn = styled.button`
-  color: #ff3e3e;
-  background-color: #535353;
-  width: 7%;
-  height: 7%;
-  border: 1px solid #707070;
-  font-size: 15px;
-  /* float: right; */
+  color: black;
+  background-color: #fa9abb;
+  width: 8%;
+  height: 20px;
+  border: 1px solid #fa9abb;
+  font-size: 13px;
   :hover {
     background-color: #2e2e2e;
   }
@@ -151,7 +175,7 @@ export const Num = styled.span`
 `;
 
 export const Title = styled.span`
-  width: 60%;
+  width: 50%;
   display: flex;
   span {
     color: #fb6363;
