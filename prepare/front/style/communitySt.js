@@ -86,17 +86,20 @@ export const ContentListTable = styled.div`
   border-bottom: 1px solid black;
   background-color: #e2e2e2;
   .num {
-    margin-left: 3%;
+    margin-left: 2.5%;
+    min-width: 3%;
   }
   .category {
-    margin-left: 2%;
+    margin-left: 3.8%;
     padding-left: 3px;
+    min-width: 9.5%;
   }
   .subject {
-    margin-left: 4%;
+    margin-left: 6.6%;
+    min-width: 33%;
   }
   .user {
-    margin-left: 38%;
+    margin-left: 4%;
     padding-left: 3px;
   }
 `;
@@ -130,10 +133,30 @@ export const List = styled.div`
 `;
 
 export const ListLink = styled.span`
-  display: contents;
+  display: flex;
+  padding: 1% 0% 1% 0%;
+  border-bottom: 1px solid black;
+  .num {
+    margin-left: 4%;
+    min-width: 2%;
+  }
+  .category {
+    margin-left: 3.3%;
+    padding-left: 3px;
+    min-width: 12.5%;
+  }
+  .subject {
+    margin-left: 3.7%;
+    min-width: 31%;
+  }
+  .user {
+    margin-left: 6%;
+    padding-left: 3px;
+  }
 `;
 
 export const UpdateBtn = styled.button`
+  margin-left: 10%;
   color: black;
   background-color: #cccfff;
   width: 8%;
@@ -166,60 +189,5 @@ export const DeleteBtn = styled.button`
   }
   @media (max-width: 750px) {
     width: 12%;
-  }
-`;
-
-export const Num = styled.span`
-  width: 3%;
-  padding: 0;
-`;
-
-export const Title = styled.span`
-  width: 50%;
-  display: flex;
-  span {
-    color: #fb6363;
-  }
-  p {
-    margin: 0px;
-  }
-  // 1650px
-  @media (max-width: 1650px) {
-    width: 55%;
-  }
-  // 1280px
-  @media (max-width: 1280px) {
-    width: 50%;
-  }
-  @media (max-width: 750px) {
-    width: 65%;
-    align-items: center;
-    span {
-      font-size: 12px;
-      /* padding-right: 1%; */
-    }
-  }
-`;
-
-export const Count = styled.span`
-  width: 10%;
-  @media (max-width: 750px) {
-    display: none;
-  }
-`;
-
-export const Id = styled.span`
-  width: 10%;
-  margin-right: 1%;
-  // 반응형
-  @media (max-width: 1650px) {
-    width: 13%;
-  }
-  // 1280px
-  @media (max-width: 1280px) {
-    width: 18%;
-  }
-  @media (max-width: 750px) {
-    display: none;
   }
 `;

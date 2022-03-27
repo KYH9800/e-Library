@@ -16,10 +16,6 @@ import {
   ListLink,
   UpdateBtn,
   DeleteBtn,
-  Num,
-  Title,
-  Count,
-  Id,
 } from '../style/communitySt';
 import AppLayout from '../components/AppLayout';
 
@@ -105,19 +101,14 @@ const Community = () => {
           {mainPosts.map((post, index) => (
             <List key={post.id}>
               <div>
-                <ul>
-                  <li>
-                    <Link href={`post/${post.id}`}>
-                      <ListLink>
-                        <Num>{index + 1}</Num>
-                        <Title>
-                          <span>[{post.category}]</span>{' '}
-                          <p>{post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}</p>
-                        </Title>
-                        {/* <Count>조회수: {post.count}</Count> */}
-                        <Id>{post.User.nickname}</Id>
-                      </ListLink>
-                    </Link>
+                <Link href={`post/${post.id}`}>
+                  <ListLink>
+                    <div className="num">{index + 1}</div>
+                    <div className="category">[{post.category}]</div>{' '}
+                    <div className="subject">
+                      {post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}
+                    </div>
+                    <div className="user">{post.User.nickname}</div>
                     {id && post.User.id === id ? (
                       <>
                         <UpdateBtn type="button" onClick={onClickUpdate(post.id)}>
@@ -128,8 +119,8 @@ const Community = () => {
                         </DeleteBtn>
                       </>
                     ) : null}
-                  </li>
-                </ul>
+                  </ListLink>
+                </Link>
               </div>
             </List>
           ))}
