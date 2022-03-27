@@ -7,8 +7,8 @@ export const LayoutHeader = styled.header`
   width: 100%;
   @media (max-width: 850px) {
     // 상단 메뉴 전체 레이아웃
-    height: 75px;
-    background-color: rgb(46 49 51 / 81%);
+    height: 55px;
+    background-color: rgb(195 195 195 / 81%);
     display: inline-flex;
     h1 {
       display: none;
@@ -38,15 +38,15 @@ export const NavTop = styled.div`
     display: flex;
     .CloseOutlined {
       svg {
-        width: 43px;
-        height: 69px;
-        margin: 5% 0% 0% 30%;
+        width: 40px;
+        height: 36px;
+        margin: 37% 0% 0% 30%;
       }
     }
     .menuOutlined {
       svg {
-        margin: 45% 0% 0% 30%;
-        width: 43px;
+        margin: 26% 0% 0% 30%;
+        width: 40px;
         height: 36px;
       }
     }
@@ -106,38 +106,38 @@ export const MobileLoginWrapper = styled.div`
 `;
 
 export const LoginSignupMenu = styled.div`
-  background-color: rgb(28 28 28 / 83%);
-  height: 37px;
+  background-color: rgb(199 199 199 / 83%);
+  height: 30px;
   margin-top: -8px;
   user-select: none;
   button {
-    color: white;
-    font-size: 15px;
-    padding: 8px 15px 6px 15px;
+    font-size: 14px;
+    padding: 6px 15px 3px 15px;
     border: 1px;
     float: right;
+    -webkit-text-decoration: none;
     text-decoration: none;
-    background-color: rgb(28 28 28 / 83%);
+    background-color: rgb(199 199 199 / 83%);
   }
   button:hover {
     background-color: black;
   }
   span {
-    color: white;
-    font-size: 15px;
+    color: #5a5a5a;
+    font-size: 14px;
     padding-right: 16px;
     padding-left: 16px;
-    padding-top: 8px;
+    padding-top: 6px;
     padding-bottom: 6px;
     float: right;
     text-decoration: none;
   }
   h3 a {
-    color: white;
-    font-size: 15px;
+    color: black;
+    font-size: 14px;
     padding-right: 16px;
     padding-left: 16px;
-    padding-top: 8px;
+    padding-top: 6px;
     padding-bottom: 6px;
     float: right;
     text-decoration: none;
@@ -154,31 +154,31 @@ export const LoginSignupMenu = styled.div`
 `;
 // nav wrapper
 export const NavWrapper = styled.div`
-  background-color: rgb(46 49 51 / 81%);
+  background-color: rgb(239 239 239 / 81%);
   user-select: none;
   h1 {
     left: 0;
     position: absolute;
-    text-align: center;
-    margin: 1%;
-    margin-left: 3%;
+    margin: 5px;
+    margin-left: 2%;
     a {
       font-family: '고딕';
-      font-size: 110%;
-      color: rgb(167 164 158);
+      color: rgb(91 91 91);
     }
   }
   ul {
     list-style: none;
     text-align: center;
+    margin-left: 21%;
+    margin-right: 21%;
     a {
-      color: rgb(233 233 233);
+      color: black;
     }
     li {
       display: inline-block;
       font-size: 130%;
-      width: 15%;
-      padding: 1.4% 0% 1.4% 0%;
+      width: 10%;
+      padding: 0.5% 0% 0.5% 0%;
     }
     li:hover {
       background: rgb(62 60 59 / 35%);

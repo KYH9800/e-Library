@@ -24,7 +24,7 @@ export const Main = styled.main`
   position: inherit;
   margin: auto;
   height: 100%;
-  margin-top: 5%;
+  margin-top: 6%;
   margin-bottom: 15%;
   /* @media (max-width: 1500px) {
     padding-bottom: 55%;

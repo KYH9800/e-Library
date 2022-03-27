@@ -14,9 +14,9 @@ export const ProfileWrapper = styled.div`
   button {
     width: 130px;
     height: 40px;
-    margin: 0px 10px 0px 0px;
-    font-size: 15px;
-    color: white;
+    margin: 6px 15px 3px 15px;
+    font-size: 14px;
+    /* color: white; */
     line-height: 24px;
     border: 1px solid rgb(56 56 56);
     background-color: rgb(56 56 56);

@@ -12,14 +12,14 @@ export const MainWrapper = styled.div`
 `;
 export const CreactPostBtn = styled.div`
   text-align: right;
-  margin-right: 15%;
+  margin-right: 22.5%;
   user-select: none;
   button {
-    background-color: #222222;
-    width: 150px;
-    height: 50px;
-    border: 1px solid #222222;
-    font-size: 15px;
+    background-color: #e6e6e6;
+    width: 94px;
+    height: 28px;
+    border: 1px solid #dedbdb;
+    font-size: 14px;
     color: #999999;
   }
   button:hover {
@@ -42,7 +42,7 @@ export const ListWrapper = styled.div`
   align-items: center;
   border-bottom: 1px solid #525252;
   background-color: #222222;
-  width: 70%;
+  width: 55%;
   margin: auto;
   margin-top: 1%;
   ul {
