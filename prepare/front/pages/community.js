@@ -100,7 +100,7 @@ const Community = () => {
           </ContentListTable>
           {mainPosts.map((post, index) => (
             <List key={post.id}>
-              <div>
+              <div className="menuListWrapper">
                 <Link href={`post/${post.id}`}>
                   <ListLink>
                     <div className="num">{index + 1}</div>
