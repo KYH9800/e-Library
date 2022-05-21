@@ -2,7 +2,6 @@ import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import Router, { useRouter } from 'next/router';
-import Link from 'next/link';
 import { wrapper } from '../../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
@@ -13,11 +12,9 @@ import {
   ListWrapper,
   UpdateBtn,
   DeleteBtn,
-  Num,
-  Title,
-  Count,
-  Id,
+  ListLink,
   List,
+  ContentListTable,
 } from '../../style/communitySt';
 import AppLayout from '../../components/AppLayout';
 
@@ -25,7 +22,7 @@ import { LOAD_CATEGORY_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../../reducers
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 
 const Category = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const router = useRouter();
   const { category } = router.query;
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
@@ -105,34 +102,49 @@ const Category = () => {
           </div>
         </CreactPostBtn>
         <ListWrapper>
-          <List>{mainPosts.length === 0 && <h1>존재하는 게시글이 없습니다.</h1>}</List>
-          {mainPosts.map((post, index) => {
-            console.log('이거 이서 이서: ', post.id);
-            return (
-              <>
-                <List onClick={onClickRouter(post.id)}>
-                  <div>
-                    <ul>
-                      <li>
-                        <Num>{index + 1}</Num>
-                        <Title>
-                          <span>[{post.category}]</span> <p>{post.title}</p>
-                        </Title>
-                        <Count>조회수: {post.count}</Count>
-                        <Id>작성자: {post.User.nickname}</Id>
-                        {id && post.User.id === id ? (
-                          <>
-                            <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
-                            <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
-                          </>
-                        ) : null}
-                      </li>
-                    </ul>
-                  </div>
-                </List>
-              </>
-            );
-          })}
+          {mainPosts.length === 0 ? (
+            <List>
+              <h1>존재하는 게시글이 없습니다.</h1>
+            </List>
+          ) : (
+            <>
+              <ContentListTable>
+                <div className="num">순번</div>
+                <div className="category">카테고리</div>
+                <div className="subject">제목</div>
+                <div className="user">작성자</div>
+              </ContentListTable>
+              {mainPosts.map((post, index) => {
+                console.log('이거 이서 이서: ', post.id);
+                return (
+                  <>
+                    <List onClick={onClickRouter(post.id)}>
+                      <div className="menuListWrapper">
+                        <ListLink>
+                          <div className="num">{index + 1}</div>
+                          <div className="category">[{post.category}]</div>{' '}
+                          <div className="subject">
+                            {post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}
+                          </div>
+                          <div className="user">{post.User.nickname}</div>
+                          {id && post.User.id === id ? (
+                            <>
+                              <UpdateBtn type="button" onClick={onClickUpdate(post.id)}>
+                                수정
+                              </UpdateBtn>
+                              <DeleteBtn type="button" onClick={onRemovePost(post)}>
+                                삭제
+                              </DeleteBtn>
+                            </>
+                          ) : null}
+                        </ListLink>
+                      </div>
+                    </List>
+                  </>
+                );
+              })}
+            </>
+          )}
         </ListWrapper>
       </MainWrapper>
     </AppLayout>

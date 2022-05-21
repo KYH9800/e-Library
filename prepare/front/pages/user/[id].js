@@ -13,10 +13,8 @@ import {
   ListWrapper,
   UpdateBtn,
   DeleteBtn,
-  Num,
-  Title,
-  Count,
-  Id,
+  ContentListTable,
+  ListLink,
   List,
 } from '../../style/communitySt';
 import AppLayout from '../../components/AppLayout';
@@ -104,30 +102,49 @@ const User = () => {
         </CreactPostBtn>
         {mainPosts.length === 0 && <h3>존재하는 게시글이 없습니다.</h3>}
         <ListWrapper>
-          {mainPosts.map((post, index) => (
+          {mainPosts.length === 0 ? (
             <List>
-              {/* <Link href={`post/${post.id}`}> */}
-              <div onClick={onClickMyPost(post.id)}>
-                <ul>
-                  <li>
-                    <Num>{index + 1}</Num>
-                    <Title>
-                      <span>[{post.category}]</span> <p>{post.title}</p>
-                    </Title>
-                    <Count>조회수: {post.count}</Count>
-                    <Id>작성자: {post.User.nickname}</Id>
-                    {userId && post.User.id === userId ? (
-                      <>
-                        <UpdateBtn onClick={onClickUpdate(post.id)}>수정</UpdateBtn>
-                        <DeleteBtn onClick={onRemovePost(post)}>삭제</DeleteBtn>
-                      </>
-                    ) : null}
-                  </li>
-                </ul>
-              </div>
-              {/* </Link> */}
+              <h1>존재하는 게시글이 없습니다.</h1>
             </List>
-          ))}
+          ) : (
+            <>
+              <ContentListTable>
+                <div className="num">순번</div>
+                <div className="category">카테고리</div>
+                <div className="subject">제목</div>
+                <div className="user">작성자</div>
+              </ContentListTable>
+              {mainPosts.map((post, index) => {
+                console.log('이거 이서 이서: ', post.id);
+                return (
+                  <>
+                    <List onClick={onClickMyPost(post.id)}>
+                      <div className="menuListWrapper">
+                        <ListLink>
+                          <div className="num">{index + 1}</div>
+                          <div className="category">[{post.category}]</div>{' '}
+                          <div className="subject">
+                            {post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}
+                          </div>
+                          <div className="user">{post.User.nickname}</div>
+                          {id && post.User.id === id ? (
+                            <>
+                              <UpdateBtn type="button" onClick={onClickUpdate(post.id)}>
+                                수정
+                              </UpdateBtn>
+                              <DeleteBtn type="button" onClick={onRemovePost(post)}>
+                                삭제
+                              </DeleteBtn>
+                            </>
+                          ) : null}
+                        </ListLink>
+                      </div>
+                    </List>
+                  </>
+                );
+              })}
+            </>
+          )}
         </ListWrapper>
       </MainWrapper>
     </AppLayout>

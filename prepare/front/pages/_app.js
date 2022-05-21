@@ -6,13 +6,13 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import { wrapper } from '../store/configureStore';
 
-const ELibrary = ({ Component }) => (
+const ELibrary = ({ Component, pageProps }) => (
   <>
     <Head>
       <meta charSet="utf-8" />
       <title>e도서관</title>
     </Head>
-    <Component />
+    <Component {...pageProps} />
   </>
 );
 
