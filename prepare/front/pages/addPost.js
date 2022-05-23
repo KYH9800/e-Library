@@ -117,10 +117,10 @@ const AddPost = () => {
 
   return (
     <AppLayout>
-      <Header>
-        <h1>글쓰기</h1>
-      </Header>
       <Main>
+        <Header>
+          <h1>글쓰기</h1>
+        </Header>
         <form onSubmit={onSubmit}>
           <CategoryWrapper>
             <TitleWrapper>

@@ -33,7 +33,7 @@ const Post = () => {
       </Head>
       {singlePost ? (
         <MainWrapper>
-          <h1>커뮤니티</h1>
+          <h1>{singlePost.User.nickname}님의 글</h1>
           <PostForm post={singlePost} />
         </MainWrapper>
       ) : (

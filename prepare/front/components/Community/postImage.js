@@ -21,41 +21,46 @@ const PostImages = ({ images }) => {
   if (images.length === 1) {
     return (
       <>
-        <img role="presentation" src={backURL + images[0].src} alt={backURL + images[0].src} onClick={onZoom} />
+        <img
+          role="presentation"
+          src={`${backURL}/${images[0].src}`}
+          alt={`${backURL}/${images[0].src}`}
+          onClick={onZoom}
+        />
         {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
       </>
     );
   }
-  // if (images.length === 2) {
-  //   return (
-  //     <>
-  //       <div>
-  //         <img
-  //           role="presentation"
-  //           src={backURL + images[0].src}
-  //           alt={backURL + images[0].src}
-  //           width="50%"
-  //           onClick={onZoom}
-  //         />
-  //         <img
-  //           role="presentation"
-  //           src={backURL + images[1].src}
-  //           alt={backURL + images[1].src}
-  //           width="50%"
-  //           onClick={onZoom}
-  //         />
-  //       </div>
-  //       {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
-  //     </>
-  //   );
-  // }
+  if (images.length === 2) {
+    return (
+      <>
+        <div>
+          <img
+            role="presentation"
+            src={`${backURL}/${images[0].src}`}
+            alt={`${backURL}/${images[0].src}`}
+            width="50%"
+            onClick={onZoom}
+          />
+          <img
+            role="presentation"
+            src={`${backURL}/${images[0].src}`}
+            alt={`${backURL}/${images[0].src}`}
+            width="50%"
+            onClick={onZoom}
+          />
+        </div>
+        {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}
+      </>
+    );
+  }
   return (
     <>
       <div>
         <img
           role="presentation"
-          src={backURL + images[0].src}
-          alt={backURL + images[0].src}
+          src={`${backURL}/${images[0].src}`}
+          alt={`${backURL}/${images[0].src}`}
           width="50%"
           onClick={onZoom}
         />

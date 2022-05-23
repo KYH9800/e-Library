@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Comment, CommentWrapper } from '../style/postFormSt';
+import { CommentFormWrapper } from '../style/postFormSt';
 import useInput from '../../hooks/useInput';
 
 import { ADD_COMMENT_REQUEST } from '../../reducers/post';
@@ -17,31 +17,32 @@ const CommentForm = ({ post }) => {
     }
   }, [addCommentDone]);
 
-  const onCommentSubmit = (e) => {
-    // e.preventDefault();
-    console.log('postId: ', post.id, 'commentText: ', commentText, 'id: ', id);
-    if (!commentText) {
-      e.preventDefault();
-      alert('댓글을 입력해주세요.');
-    } else {
-      dispatch({
-        type: ADD_COMMENT_REQUEST,
-        data: { content: commentText, postId: post.id, userId: id },
-      });
-    }
-  };
+  const onCommentSubmit = useCallback(
+    (e) => {
+      // e.preventDefault();
+      console.log('postId: ', post.id, 'commentText: ', commentText, 'id: ', id);
+      if (!commentText) {
+        e.preventDefault();
+        alert('댓글을 입력해주세요.');
+      } else {
+        dispatch({
+          type: ADD_COMMENT_REQUEST,
+          data: { content: commentText, postId: post.id, userId: id },
+        });
+      }
+    },
+    [commentText],
+  );
 
   return (
-    <>
+    <CommentFormWrapper>
       <form type="submit" onSubmit={onCommentSubmit}>
-        <CommentWrapper>
-          <Comment>
-            <input type="text" value={commentText} onChange={onChangeCommentText} placeholder="댓글을 입력해주세요." />
-            <button type="submit">댓글 생성</button>
-          </Comment>
-        </CommentWrapper>
+        <div>
+          <textarea type="text" value={commentText} onChange={onChangeCommentText} placeholder="댓글을 입력해주세요." />
+          <button type="submit">댓글 생성</button>
+        </div>
       </form>
-    </>
+    </CommentFormWrapper>
   );
 };
 

@@ -1,245 +1,144 @@
 import styled from 'styled-components';
 
-export const TextWrapper = styled.main`
-  margin: 3%;
-`;
+export const TextWrapper = styled.div`
+  position: relative;
+  margin-top: 22px;
+  table {
+    border: 1px solid black;
+    margin: 0 auto;
+    width: 830px;
+  }
+  th {
+    background-color: #d1d1d1;
+    border: 1px solid black;
+    padding: 3px 7px;
+    font-weight: 600;
+  }
+  // tr 라인 대체
+  #content-wrapper {
+    display: inline-flex;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 550px;
+    width: 830px;
+    padding: 5px 10px;
+    // 스크롤
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .category {
+    width: 13%;
+    color: #ff3e3e;
+  }
+  .title-word {
+    width: 5%;
+  }
+  .title {
+    text-align: start;
+    width: 69%;
+  }
+  .nickname {
+    width: 13%;
+    font-size: 13px;
+    line-height: 10px;
+  }
 
-export const ContentsBox = styled.div`
-  background-color: #e9e9e9;
-  padding: 20px;
-`;
+  // 목록으로 버튼
+  #turn-back-btn {
+    cursor: pointer;
+    float: right;
+    width: 75px;
+    margin-top: 2px;
+    border: 1px solid black;
+  }
+  #turn-back-btn:hover {
+    background-color: #d1d1d1;
+  }
 
-export const Category = styled.h2`
-  text-align: center;
-  margin: auto;
+  // 댓글
+  #comment-input {
+    margin-top: 60px;
+  }
 
-  user-select: none;
-  font-size: 20px;
-  color: #fb6363;
-  padding: 5px;
-  @media (min-width: 1000px) {
-    width: 800px;
-  }
-`;
-export const Title = styled.h2`
-  text-align: left;
-  padding: 5px 0px 3px 0px;
-  margin: auto;
-  font-size: 20px;
-  border-bottom: 1px solid black;
-  @media (min-width: 1000px) {
-    width: 800px;
-  }
-`;
-export const UserNickname = styled.h2`
-  font-size: 15px;
-  font-weight: 600;
-  color: #747474;
-  padding: 2px 0px 0px 0px;
-  text-align: right;
-  margin: auto;
-  /* width: 800px; */
-  span {
-    margin: 0px 5px 0px 10px;
-  }
-  @media (min-width: 1000px) {
-    width: 800px;
-  }
-`;
-export const Content = styled.p`
-  text-align: left;
-  padding: 20px 0px 20px 0px;
-  margin: auto;
-  color: black;
-  border-bottom: 1px solid black;
-  @media (min-width: 1000px) {
-    width: 800px;
-    font-size: 14px;
-  }
-  @media (max-width: 900px) {
-    font-size: 12px;
-  }
-`;
-export const ImageWrapper = styled.div`
-  text-align: center;
-  margin: auto;
-  img {
-    margin: 20px 0px 15px 0px;
-    width: 400px;
-  }
-  @media (min-width: 1000px) {
-    width: 800px;
-  }
-`;
-export const ButtonWrapper = styled.div`
-  margin: auto;
-  text-align: right;
-  user-select: none;
-  button {
-    background-color: #222222;
-    width: 150px;
-    height: 50px;
-    border: 1px solid #222222;
-    font-size: 15px;
-    color: #999999;
-  }
-  button:hover {
-    background-color: #2e2e2e;
-  }
-  button:active {
-    background-color: #3c3c3c;
-  }
-  @media (min-width: 1000px) {
-    width: 800px;
-  }
-  @media (max-width: 1000px) {
-    button {
-      width: 110px;
-      height: 38px;
-      font-size: 12px;
-    }
-  }
-`;
-
-export const CommentBtn = styled.div`
-  a {
+  #comments-btn-wrapper > span {
     color: #707070;
-    font-size: 12px;
-    /* background-color: #222222; */
-    /* border: 1px solid #222222; */
-    /* padding: 3px 1px 1px 1px; */
-    /* width: 102px; */
-    /* height: 23px; */
+    font-size: 13px;
+    font-weight: 500;
   }
-  a:active {
-    color: black;
+
+  // 댓글 리스트
+  #comment-lists {
+    padding: 1px 0;
+  }
+
+  #comment-lists .comment-user-name {
+    background-color: #f1f1f1;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-top: 5px;
+  }
+
+  #content-comments {
+    position: relative;
+  }
+
+  #content-comments > p {
+    background-color: #f1f1f1;
+    margin: 0;
+    height: auto;
+    line-height: 25px;
+    padding-left: 5px;
+  }
+
+  #content-comments > button {
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 60px;
+    height: 25px;
+    border: 1px solid #717171;
+    color: #ff3e3e;
+    font-weight: 600;
+  }
+  #content-comments > button:hover {
+    background-color: #d1d1d1;
   }
 `;
 
-// Comment
-export const Comment = styled.div`
-  display: inline-flex;
-  input {
-    width: 700px;
-    height: 70px;
-    border: 1px solid #222222;
-    padding: 10px;
-    background-color: #e0e0e0;
-    color: black;
+export const ImageWrapper = styled.div`
+  img {
+    display: block;
+    width: 250px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+    border: 1px solid #d1d1d1;
   }
-  button {
-    background-color: #222222;
-    color: #999999;
-    width: 100px;
-    height: 70px;
-    border: 1px solid #222222;
-  }
-  button:hover {
-    background-color: #2e2e2e;
-  }
-  button:active {
-    background-color: #3c3c3c;
-  }
-  @media (max-width: 1000px) {
-    input {
-      width: 600px;
-      height: 40px;
-      font-size: 12px;
-    }
-    button {
-      width: 75px;
-      height: 40px;
-      font-size: 12px;
-    }
-  }
-  @media (max-width: 850px) {
-    input {
-      width: 500px;
-    }
-  }
-  @media (max-width: 700px) {
-    input {
-      width: 400px;
-    }
-  }
-  @media (max-width: 585px) {
-    input {
-      width: 300px;
-      height: 30px;
-    }
-    button {
-      height: 30px;
-    }
-  }
-  @media (max-width: 470px) {
-    input {
-      width: 220px;
-    }
-  }
-`;
-export const CommentWrapper = styled.div`
-  text-align: center;
-  margin: auto;
-  margin-top: 30px;
-  font-size: 16px;
 `;
 
-export const CommentFrom = styled.div`
-  margin: auto;
-  margin-top: 15px;
-  display: block;
-  div {
-    text-align: left;
-    padding: 15px 0px 0px 0px;
-    span {
-      padding: 0px 5px 0px 5px;
-      display: block;
-      color: gray;
-      font-size: 12px;
-    }
+// components/Community/comment
+export const CommentFormWrapper = styled.div`
+  display: inline-block;
+  textarea {
+    display: block;
+    width: 830px;
+    height: 50px;
+    float: right;
+    outline: none;
+    padding: 2px 7px;
   }
-  div:hover {
-    background-color: #ebebeb;
-  }
-  @media (min-width: 1000px) {
-    width: 800px;
-  }
-`;
-export const ContentWrapper = styled.div`
-  display: flex;
-  border-top: 1px solid black;
-  color: black;
   button {
-    position: unset;
-    margin-right: 15px;
-    background-color: #fbbaba;
-    color: #000000;
-    width: 100px;
-    height: 34px;
-    border: 1px solid #222222;
+    cursor: pointer;
+    display: block;
+    float: right;
+    margin-top: 2px;
+    width: 75px;
+    height: 25px;
+    border: 1px solid black;
   }
   button:hover {
-    background-color: #f56b6b;
-  }
-  button:active {
-    background-color: #fbbaba;
-  }
-  p {
-    padding: 1%;
-    margin: 0%;
-    margin-left: 1%;
-    font-size: 12px;
-    width: 700px;
-  }
-  @media (max-width: 700px) {
-    /* align-items: center; */
-    p {
-      width: 600px;
-      font-size: 11px;
-    }
-    button {
-      height: 34px;
-      font-size: 11px;
-    }
+    background-color: #d1d1d1;
   }
 `;
