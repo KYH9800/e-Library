@@ -2,7 +2,7 @@
 
 사이트: https://coding-factory.site
 
-![image](https://user-images.githubusercontent.com/61128538/161949665-b180a189-c758-42d7-91d6-bffd8daa70cc.png)
+![image](https://user-images.githubusercontent.com/61128538/169918135-5bd35c9e-fa98-4b7b-89a3-b52d657bc187.png)
 
 # Itro
 
