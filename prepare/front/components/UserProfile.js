@@ -1,7 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
-
+// css
+import { UserProfileWrapper } from './style/MainHomeMenuSt';
+// components
 import { logoutAction } from '../reducers/user';
 
 const UserProfile = () => {
@@ -14,18 +16,18 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <>
-      <h3>
-        <Link href="/userprofilePage">
-          <a>내 프로필</a>
-        </Link>
-        <Link href={`/user/${me.id}`}>
-          <a>내 게시글</a>
-        </Link>
-        <button onClick={onLogout}>로그아웃</button>
-        <span>{me.nickname}님</span>
-      </h3>
-    </>
+    <UserProfileWrapper>
+      <span className="user-name">{me.nickname}님</span>
+      <Link href="/userprofilePage">
+        <a id="loginForm-btn">내 프로필</a>
+      </Link>
+      <Link href={`/user/${me.id}`}>
+        <a id="loginForm-btn">내 게시글</a>
+      </Link>
+      <span className="logout-btn" onClick={onLogout}>
+        로그아웃
+      </span>
+    </UserProfileWrapper>
   );
 };
 

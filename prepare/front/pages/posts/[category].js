@@ -5,17 +5,9 @@ import Router, { useRouter } from 'next/router';
 import { wrapper } from '../../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
+import Link from 'next/link';
 
-import {
-  MainWrapper,
-  CreactPostBtn,
-  ListWrapper,
-  UpdateBtn,
-  DeleteBtn,
-  ListLink,
-  List,
-  ContentListTable,
-} from '../../style/communitySt';
+import { MainWrapper } from '../../style/communitySt';
 import AppLayout from '../../components/AppLayout';
 
 import { LOAD_CATEGORY_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../../reducers/post';
@@ -83,10 +75,6 @@ const Category = () => {
     [],
   );
 
-  const onClickRouter = (postId) => () => {
-    Router.push(`/post/${postId}`);
-  };
-
   return (
     <AppLayout>
       <Head>
@@ -96,56 +84,59 @@ const Category = () => {
       </Head>
       <MainWrapper>
         <h1>{category}</h1>
-        <CreactPostBtn>
-          <div>
-            <button onClick={onClickAddPost}>글쓰기</button>
-          </div>
-        </CreactPostBtn>
-        <ListWrapper>
-          {mainPosts.length === 0 ? (
-            <List>
-              <h1>존재하는 게시글이 없습니다.</h1>
-            </List>
-          ) : (
-            <>
-              <ContentListTable>
-                <div className="num">순번</div>
-                <div className="category">카테고리</div>
-                <div className="subject">제목</div>
-                <div className="user">작성자</div>
-              </ContentListTable>
-              {mainPosts.map((post, index) => {
-                console.log('이거 이서 이서: ', post.id);
-                return (
-                  <>
-                    <List onClick={onClickRouter(post.id)}>
-                      <div className="menuListWrapper">
-                        <ListLink>
-                          <div className="num">{index + 1}</div>
-                          <div className="category">[{post.category}]</div>{' '}
-                          <div className="subject">
-                            {post.title.length > 10 ? post.title.substr(0, 10) + ' ...' : post.title}
-                          </div>
-                          <div className="user">{post.User.nickname}</div>
-                          {id && post.User.id === id ? (
-                            <>
-                              <UpdateBtn type="button" onClick={onClickUpdate(post.id)}>
-                                수정
-                              </UpdateBtn>
-                              <DeleteBtn type="button" onClick={onRemovePost(post)}>
-                                삭제
-                              </DeleteBtn>
-                            </>
-                          ) : null}
-                        </ListLink>
-                      </div>
-                    </List>
-                  </>
-                );
-              })}
-            </>
-          )}
-        </ListWrapper>
+        <div id="create-btn-wrapper">
+          <button id="create-btn" onClick={onClickAddPost}>
+            글쓰기
+          </button>
+        </div>
+        {mainPosts.length === 0 ? (
+          <div id="none-post">게시글이 존재하지 않습니다.</div>
+        ) : (
+          <table id="table-wrapper">
+            <thead>
+              <th>순번</th>
+              <th>카테고리</th>
+              <th>제목</th>
+              <th>작성자</th>
+              <th>작성일</th>
+            </thead>
+            {mainPosts.map((post, index) => (
+              <tbody key={post.id}>
+                <tr id="post-list">
+                  <Link href={`/post/${post.id}`}>
+                    <td id="num">{index + 1}</td>
+                  </Link>
+                  <Link href={`/post/${post.id}`}>
+                    <td id="category">[{post.category}]</td>
+                  </Link>
+                  <Link href={`/post/${post.id}`}>
+                    <td id="title">
+                      <a>{post.title.length > 35 ? post.title.substr(0, 35) + ' ...' : post.title}</a>
+                    </td>
+                  </Link>
+                  <Link href={`/post/${post.id}`}>
+                    <td id="nickname">{post.User.nickname}</td>
+                  </Link>
+                  <td id="date">
+                    {post.createdAt.substr(0, 10)} 작성
+                    <div id="option-btn-wrapper">
+                      {id && post.User.id === id ? (
+                        <div id="option-btn">
+                          <button type="button" onClick={onClickUpdate(post.id)}>
+                            수정
+                          </button>
+                          <button type="button" onClick={onRemovePost(post)}>
+                            삭제
+                          </button>
+                        </div>
+                      ) : null}
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        )}
       </MainWrapper>
     </AppLayout>
   );

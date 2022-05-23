@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { GlobalStyle, Main } from './style/AppLayoutSt';
+import { GlobalStyle, Wrapper } from './style/AppLayoutSt';
 
 import MainHomeMenu from './MainHomeMenu/MainHomeMenu';
 import MainHomeFooter from './MainHomeMenu/MainHomeFooter';
 
 const AppLayout = ({ children }) => {
   return (
-    <>
+    <Wrapper>
       <GlobalStyle />
       <MainHomeMenu />
-      <Main>
-        <div>{children}</div>
-      </Main>
-      <MainHomeFooter />
-    </>
+      <div id="wrapper">
+        <main>
+          <div>{children}</div>
+        </main>
+        <footer>
+          <MainHomeFooter />
+        </footer>
+      </div>
+    </Wrapper>
   );
 };
 

@@ -11,7 +11,6 @@ import {
   Main,
   TitleWrapper,
   CategoryWrapper,
-  ContentWrapper,
   BtnWrapper,
   SelectWraper,
   TextEdit,

@@ -5,43 +5,41 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 }
 body {
+  position: relative;
   font-family: '고딕';
-  line-height: 1.5;
   margin: 0;
   padding: 0;
-  min-height: 80%;
-  position: relative; 
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
 }
 `;
 
-export const Main = styled.main`
-  position: inherit;
-  margin: auto;
-  height: 100%;
-  margin-top: 6%;
-  margin-bottom: 15%;
-  /* @media (max-width: 1500px) {
-    padding-bottom: 55%;
+export const Wrapper = styled.div`
+  position: relative;
+  main {
+    position: relative;
+    left: 10px;
+    right: 0;
+    margin-top: 110px;
+    margin-bottom: 80px;
+    height: auto;
   }
-  @media (max-width: 650px) {
-    padding-bottom: 65%;
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    border-right: 1px solid #d1d1d1;
+    background-color: rgb(246 246 246);
+    width: 210px;
+    height: 100%;
   }
-  @media (max-width: 560px) {
-    padding-bottom: 85%;
+
+  @media (max-width: 1300px) {
+    main {
+      position: relative;
+      left: 0;
+      right: 0;
+    }
+    footer {
+      display: none;
+    }
   }
-  @media (max-width: 470px) {
-    padding-bottom: 105%;
-  }
-  @media (max-width: 400px) {
-    padding-bottom: 125%;
-  }
-  @media (max-width: 320px) {
-    padding-bottom: 135%;
-  } */
 `;

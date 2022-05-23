@@ -1,63 +1,62 @@
 import styled from 'styled-components';
 
 export const ProfileWrapper = styled.div`
-  margin: 75px 0px 250px 0px;
+  user-select: none;
   text-align: center;
-  input {
-    width: 250px;
-    height: 40px;
-    font-weight: 600;
-    font-size: 15px;
-    border: 1px solid rgb(56 56 56);
-    background-color: rgb(205 205 204);
+  width: 830px;
+  height: 300px;
+  margin: 13% auto;
+
+  #profile-wrapper {
+    border: 1px solid black;
+    width: 450px;
+    margin: 0 auto;
   }
-  button {
-    width: 130px;
-    height: 40px;
-    margin: 0px 10px 0px 0px;
-    font-size: 15px;
-    color: white;
-    line-height: 24px;
+
+  h1 {
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  h2 {
+    color: #6f6f6f;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .input-wrapper {
+    margin-bottom: 15px;
+  }
+
+  input {
+    width: 200px;
+    height: 25px;
+    font-size: 14px;
     border: 1px solid rgb(56 56 56);
-    background-color: rgb(56 56 56);
+    padding: 0 5px;
+    outline: none;
+  }
+
+  .btn-wrapper {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    cursor: pointer;
+    width: 70px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid black;
+    background-color: #fff;
+    margin: 0 1px;
   }
   button:hover {
-    border: 1px solid rgb(80 79 79);
-    background-color: rgb(80 79 79);
+    background-color: rgb(205 205 204);
   }
   button:active {
-    border: 1px solid rgb(56 56 56);
-    background-color: rgb(56 56 56);
-  }
-  @media (max-width: 500px) {
-    font-size: 12px;
-    input {
-      margin-top: 1%;
-      width: 40%;
-      height: 30px;
-    }
-    button {
-      padding: 3px 0px 0px 0px;
-      font-size: 11px;
-      width: 15%;
-      height: 30px;
-    }
-  }
-`;
-
-export const Box = styled.div`
-  margin: 0px auto;
-  height: 200px;
-  border: 1px solid black;
-  margin: 0% 5% 0% 5%;
-  h2 {
-    margin: 20px 0px 20px 0px;
-  }
-  div {
-    margin: 20px 0px 20px 0px;
-  }
-  @media (max-width: 500px) {
-    border: 1px solid black;
-    margin: 0% 5% 0% 5%;
+    background-color: #fff;
   }
 `;

@@ -6,7 +6,7 @@ import { END } from 'redux-saga';
 import axios from 'axios';
 import { wrapper } from '../store/configureStore';
 
-import { ProfileWrapper, Box } from '../style/userprofilePageSt';
+import { ProfileWrapper } from '../style/userprofilePageSt';
 
 import AppLayout from '../components/AppLayout';
 import useInput from '../hooks/useInput';
@@ -14,8 +14,8 @@ import { logoutAction, CHANGE_NICKNAME_REQUEST, LOAD_MY_INFO_REQUEST } from '../
 
 const UserProfilePage = () => {
   const dispatch = useDispatch();
-  const [nickname, setChangeNickname] = useInput('');
   const { me } = useSelector((state) => state.user);
+  const [nickname, setChangeNickname] = useInput(me.nickname || '');
 
   useEffect(() => {
     if (!me) {
@@ -44,29 +44,32 @@ const UserProfilePage = () => {
   }, []);
 
   return (
-    <>
-      <Head>
-        <title>e도서관 | 내 프로필</title>
-      </Head>
-      <AppLayout>
-        <ProfileWrapper>
-          <h1>내 프로필</h1>
-          <Box>
-            <form onSubmit={onSubmitClick}>
-              <h2>닉네임 변경하기</h2>
-              <div>
-                <input type="text" value={nickname} onChange={setChangeNickname} />
-                <button>변경하기</button>
-              </div>
-            </form>
-            <div>
-              <button onClick={onLogout}>로그아웃</button>
-              <button onClick={onClickBtn}>게시판</button>
+    <AppLayout>
+      <ProfileWrapper>
+        <Head>
+          <title>e도서관 | 내 프로필</title>
+        </Head>
+        <h1>내 프로필</h1>
+        <div id="profile-wrapper">
+          <form onSubmit={onSubmitClick}>
+            <h2>닉네임 변경</h2>
+            <div className="input-wrapper">
+              <input
+                type="text"
+                value={nickname}
+                onChange={setChangeNickname}
+                placeholder="변경할 닉네임을 입력해주세요."
+              />
+              <button>변경하기</button>
             </div>
-          </Box>
-        </ProfileWrapper>
-      </AppLayout>
-    </>
+          </form>
+          <div className="btn-wrapper">
+            <button onClick={onClickBtn}>게시판</button>
+            <button onClick={onLogout}>로그아웃</button>
+          </div>
+        </div>
+      </ProfileWrapper>
+    </AppLayout>
   );
 };
 
