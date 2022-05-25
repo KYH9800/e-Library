@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import Router from 'next/router';
+import Link from 'next/link';
 
 import useInput from '../hooks/useInput';
-import { Wrapper01, Wrapper02, Box, Ptag, CheckBoxRapper } from '../style/signupSt';
+import { SingupWrapper, Wrapper01 } from '../style/signupSt';
 
 import AppLayout from '../components/AppLayout';
 import { SIGNUP_REQUEST } from '../reducers/user';
@@ -94,133 +95,160 @@ const Signup = () => {
 
   return (
     <AppLayout>
-      <>
+      <SingupWrapper>
         <Head>
           <title>e도서관 | 회원가입</title>
         </Head>
-        {!nextSignupState ? (
-          <Box>
-            <Wrapper01>
+        <div id="home-logo">
+          <Link href="/community">
+            <a>e-게시판</a>
+          </Link>
+        </div>
+        <Wrapper01>
+          {!nextSignupState ? (
+            <div id="check-box">
+              <h1>회원가입</h1>
+              <h2>회원가입을 위해 서비스 이용약관에 동의 해주세요</h2>
+              <label id="all-check">
+                <input
+                  type="checkbox"
+                  id="allCheck"
+                  onChange={(e) => allCheckClick(e.currentTarget.checked)}
+                  checked={checkedInputs.length >= 4 ? true : false}
+                />
+                <p>모두 동의합니다.</p>
+              </label>
               <div>
-                <h1>회원가입</h1>
-                <h2>환영합니다! e도서관 서비스 이용약관에 동의 해주세요</h2>
-                <label>
-                  <input
-                    type="checkbox"
-                    id="allCheck"
-                    onChange={(e) => allCheckClick(e.currentTarget.checked)}
-                    checked={checkedInputs.length >= 4 ? true : false}
-                  />
-                  <p>모두 동의합니다.</p>
-                </label>
-                <div>
-                  <CheckBoxRapper>
-                    <div>
-                      <label>
-                        <input
-                          type="checkbox"
-                          id="ageCheck"
-                          onChange={(e) => {
-                            onCheckHandler(e.currentTarget.checked, 'ageCheck');
-                          }}
-                          checked={checkedInputs.includes('ageCheck') ? true : false}
-                        />
-                        <p>[필수] 만 14세 이상입니다.</p>
-                      </label>
-                    </div>
-                    <div>
-                      <label>
-                        <input
-                          type="checkbox"
-                          id="usingListCheck"
-                          onChange={(e) => {
-                            onCheckHandler(e.currentTarget.checked, 'usingListCheck');
-                          }}
-                          checked={checkedInputs.includes('usingListCheck') ? true : false}
-                        />
-                        <p>[필수] e도서관 서비스 이용약관 동의</p>
-                      </label>
-                    </div>
-                    <div>
-                      <label>
-                        <input
-                          type="checkbox"
-                          id="personalInfoCheck"
-                          onChange={(e) => {
-                            onCheckHandler(e.currentTarget.checked, 'personalInfoCheck');
-                          }}
-                          checked={checkedInputs.includes('personalInfoCheck') ? true : false}
-                        />
-                        <p>[필수] 개인정보 수집 및 이용 동의</p>
-                      </label>
-                    </div>
-                    <div>
-                      <label>
-                        <input
-                          type="checkbox"
-                          id="marketingInfoCheck"
-                          onChange={(e) => {
-                            onCheckHandler(e.currentTarget.checked, 'marketingInfoCheck');
-                          }}
-                          checked={checkedInputs.includes('marketingInfoCheck') ? true : false}
-                        />
-                        <p>[선택] 마케팅 정보 수신에 대한 동의</p>
-                      </label>
-                    </div>
-                  </CheckBoxRapper>
-                </div>
-                <Ptag>
-                  <p>만 14세 이상 회원 가입 가능합니다.</p>
-                </Ptag>
-                <button onClick={onClickAgree}>
-                  <span>동의하고 진행하기</span>
-                </button>
-              </div>
-            </Wrapper01>
-          </Box>
-        ) : (
-          <Box>
-            <Wrapper02>
-              <form onSubmit={onSubmit}>
-                <h1>회원가입</h1>
-                <h2>환영합니다! e도서관 서비스 이용약관에 동의 해주세요</h2>
-                <div>
-                  <label htmlFor="user-nickname">닉네임</label>
-                  <br />
-                  <input type="nickname" name="user-nickname" value={nickname} required onChange={onChangeNickname} />
-                </div>
-                <div>
-                  <label htmlFor="user-email">이메일</label>
-                  <br />
-                  <input type="email" name="user-email" value={email} required onChange={onChangeEmail} />
-                </div>
-                <div>
-                  <label htmlFor="user-password">비밀번호</label>
-                  <br />
-                  <input type="password" name="user-password" value={password} required onChange={onChangePassword} />
-                </div>
-                <div>
-                  <label htmlFor="user-password-check">비밀번호 확인</label>
-                  <br />
-                  <input
-                    type="password"
-                    name="user-password-check"
-                    value={passwordCheck}
-                    required
-                    onChange={onChangePasswordCheck}
-                  />
-                  {passwordError && <p>비밀번호가 일치하지 않습니다.</p>}
+                <div id="check-list">
+                  <label>
+                    <input
+                      type="checkbox"
+                      id="ageCheck"
+                      onChange={(e) => {
+                        onCheckHandler(e.currentTarget.checked, 'ageCheck');
+                      }}
+                      checked={checkedInputs.includes('ageCheck') ? true : false}
+                    />
+                    <p>
+                      <span id="required">[필수]</span> 만 14세 이상입니다.
+                    </p>
+                  </label>
                   <div>
-                    <button type="submit" htmltype="submit">
-                      가입하기
-                    </button>
+                    <label>
+                      <input
+                        type="checkbox"
+                        id="usingListCheck"
+                        onChange={(e) => {
+                          onCheckHandler(e.currentTarget.checked, 'usingListCheck');
+                        }}
+                        checked={checkedInputs.includes('usingListCheck') ? true : false}
+                      />
+                      <p>
+                        <span id="required">[필수]</span> e도서관 서비스 이용약관 동의
+                      </p>
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <input
+                        type="checkbox"
+                        id="personalInfoCheck"
+                        onChange={(e) => {
+                          onCheckHandler(e.currentTarget.checked, 'personalInfoCheck');
+                        }}
+                        checked={checkedInputs.includes('personalInfoCheck') ? true : false}
+                      />
+                      <p>
+                        <span id="required">[필수]</span> 개인정보 수집 및 이용 동의
+                      </p>
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <input
+                        type="checkbox"
+                        id="marketingInfoCheck"
+                        onChange={(e) => {
+                          onCheckHandler(e.currentTarget.checked, 'marketingInfoCheck');
+                        }}
+                        checked={checkedInputs.includes('marketingInfoCheck') ? true : false}
+                      />
+                      <p>
+                        <span id="choice">[선택]</span> 마케팅 정보 수신에 대한 동의
+                      </p>
+                    </label>
                   </div>
                 </div>
-              </form>
-            </Wrapper02>
-          </Box>
-        )}
-      </>
+              </div>
+              <div id="age-notice">
+                <p>약관 동의 후 회원가입 가능합니다.</p>
+              </div>
+              <button id="checkBox-btn" onClick={onClickAgree}>
+                <a>동의하고 진행하기</a>
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={onSubmit} id="form-wrapper">
+              <h1>회원가입</h1>
+              <h2>회원가입을 위해 정보를 입력해주세요</h2>
+              <div>
+                <label htmlFor="user-nickname">닉네임</label>
+                <br />
+                <input
+                  type="nickname"
+                  name="user-nickname"
+                  value={nickname}
+                  required
+                  onChange={onChangeNickname}
+                  placeholder="사용할 닉네임을 입력하세요."
+                />
+              </div>
+              <div>
+                <label htmlFor="user-email">이메일</label>
+                <br />
+                <input
+                  type="email"
+                  name="user-email"
+                  value={email}
+                  required
+                  onChange={onChangeEmail}
+                  placeholder="이메일을 입력하세요."
+                />
+              </div>
+              <div>
+                <label htmlFor="user-password">비밀번호</label>
+                <br />
+                <input
+                  type="password"
+                  name="user-password"
+                  value={password}
+                  required
+                  onChange={onChangePassword}
+                  placeholder="비밀번호를 입력하세요."
+                />
+              </div>
+              <div>
+                <label htmlFor="user-password-check">비밀번호 확인</label>
+                <br />
+                <input
+                  type="password"
+                  name="user-password-check"
+                  value={passwordCheck}
+                  required
+                  onChange={onChangePasswordCheck}
+                  placeholder="비밀번호를 다시 입력하세요."
+                />
+                {passwordError && <p id="wrong-pw">비밀번호가 일치하지 않습니다.</p>}
+                <div>
+                  <button type="submit" htmltype="submit">
+                    <a>가입하기</a>
+                  </button>
+                </div>
+              </div>
+            </form>
+          )}
+        </Wrapper01>
+      </SingupWrapper>
     </AppLayout>
   );
 };

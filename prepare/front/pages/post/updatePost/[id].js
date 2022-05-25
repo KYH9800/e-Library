@@ -33,7 +33,6 @@ const Post = () => {
       </Head>
       {singlePost ? (
         <MainWrapper>
-          <h1>커뮤니티</h1>
           <UpdatePostForm post={singlePost} />
         </MainWrapper>
       ) : (

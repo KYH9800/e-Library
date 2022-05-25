@@ -1,132 +1,160 @@
 import styled from 'styled-components';
 
-export const CheckBoxRapper = styled.div`
-  border-top: 1px solid rgb(200 199 196);
-  padding-top: 25px;
-`;
-/* 약관동의 */
-export const Box = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 25px 0px 100px 0px;
-  /* margin: 0px auto; */
-`;
-export const Ptag = styled.div`
-  margin-bottom: 32px;
-  p {
-    font-size: 12px;
-    line-height: 20px;
-    color: rgb(124 124 124);
-  }
-`;
-const NextBox = styled.div`
-  h1 {
-    padding-bottom: 24px;
-    font-size: 30px;
-    line-height: 48px;
-    letter-spacing: -0.5px;
-    /* color: rgb(200 199 196); */
-  }
-  h2 {
-    padding: 32px 0px 48px;
-    font-size: 14px;
-    line-height: 24px;
-    border-top: 1px solid rgb(200 199 196);
-    /* color: rgb(141 141 141); */
-  }
-  label {
-    display: inline-flex;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-    touch-action: manipulation;
-    -webkit-box-align: center;
-    align-items: center;
-    input {
-      margin: -10px 7px 6px 0px;
-      border-radius: 0px px;
-      -moz-appearance: none;
-      width: 24px;
-      height: 24px;
-    }
-  }
-  button {
-    width: 450px;
-    height: 55px;
-    border: 1px solid rgb(50, 108, 249);
-    background: rgb(50, 108, 249);
-    color: rgb(255, 255, 255);
-    span {
-      height: 24px;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 24px;
-    }
-  }
-  button:hover {
-    background: rgb(41 96 229);
-  }
-  @media (max-width: 500px) {
-    padding: 0px;
-    button {
-      width: 100%;
-      height: 36px;
-    }
-  }
-`;
-
-export const Wrapper01 = styled(NextBox)`
-  display: flex;
-  flex-direction: column;
-  margin: 0px auto;
-  padding: 55px 60px;
-  border: 1px solid rgb(200 199 196);
-  padding: 5% 3%;
-  label {
-    padding-bottom: 10px;
-  }
-  @media (max-width: 500px) {
-    width: 97%;
-  }
-`;
-/* 회원가입 정보 입력 칸 */
-export const Wrapper02 = styled(NextBox)`
-  display: flex;
-  flex-direction: column;
-  margin: 0px auto;
-  padding: 55px 60px;
-  border: 1px solid rgb(200 199 196);
-  padding: 5% 3%;
-
-  label {
-    font-weight: 500;
-    margin-top: 10px;
-  }
-  input {
-    background-color: rgb(205 205 204);
-    width: 445px;
-    height: 40px;
-    padding: 7px 14px 5px;
-    color: black;
+// 잔체 박스
+export const SingupWrapper = styled.div`
+  position: absolute;
+  top: 70px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 830px;
+  #home-logo {
+    text-align: center;
+    font-size: 20px;
     font-weight: 600;
-    font-size: 16px;
+    width: 400px;
+    margin: auto;
+    a {
+      color: black;
+    }
   }
-  p {
-    color: red;
-    margin-top: 5px;
-  }
-  button {
-    margin-top: 31px;
+`;
+
+// 약관 동의
+export const Wrapper01 = styled.div`
+  user-select: none;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 10px auto;
+  width: 400px;
+  height: 450px;
+  // 공통
+  h1 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
   }
 
-  @media (max-width: 500px) {
-    width: 97%;
+  // 약관 동의 안내 문구, 정보 입력 전 안내 문구
+  h2 {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
+    color: gray;
+  }
+
+  // 약관 동의 절차
+  #check-box {
+    position: relative;
+    text-align: center;
+    #all-check {
+      display: inline-flex;
+      border-bottom: 1px solid black;
+      width: 300px;
+      margin-top: 10px;
+      margin-bottom: 30px;
+      input {
+        cursor: pointer;
+        width: 15px;
+        height: 15px;
+      }
+      p {
+        user-select: none;
+        line-height: 17px;
+        margin-left: 5px;
+        font-size: 13px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+    }
+
+    #check-list {
+      label {
+        display: inline-flex;
+        margin-bottom: 10px;
+        width: 300px;
+      }
+      input {
+        cursor: pointer;
+        width: 15px;
+        height: 15px;
+      }
+      p {
+        user-select: none;
+        line-height: 17px;
+        margin-left: 5px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+    }
+    #required {
+      font-weight: 700;
+    }
+    #choice {
+      font-weight: 700;
+      color: #5d5d5d;
+    }
+
+    // 약관 동의 후 회원가입 가능합니다.
+    #age-notice {
+      user-select: none;
+      font-size: 13px;
+      font-weight: 500;
+      color: gray;
+    }
+
+    // 동의하고 진행 버튼
+    #checkBox-btn {
+      margin-top: 20px;
+      border: 0;
+      background-color: #fff;
+      a {
+        font-size: 13px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // 회원정보 입력 절차
+  #form-wrapper {
+    position: relative;
+    width: 260px;
+    margin: 0 auto;
+
+    label {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
     input {
-      width: 100%;
-      height: 35px;
-      font-size: 11px;
+      padding: 0 7px;
+      width: 260px;
+      outline: none;
+      font-size: 13px;
+      border: 1px solid black;
+      height: 28px;
+      margin-bottom: 10px;
+    }
+
+    #wrong-pw {
+      position: fixed;
+      font-size: 12px;
+      font-weight: 500;
+      color: red;
+    }
+
+    button {
+      margin-top: 25px;
+      background-color: #fff;
+      border: 0;
+      float: right;
+    }
+    button > a {
+      font-size: 15px;
+      font-weight: 500;
     }
   }
 `;

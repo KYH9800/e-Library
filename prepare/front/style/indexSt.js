@@ -1,95 +1,107 @@
 import styled from 'styled-components';
 
 // 메인페이지 posts list
-export const Wrapper = styled.div`
-  margin-top: 70px;
-  margin-bottom: 125px;
-`;
-
-export const Introduce = styled.div`
-  user-select: none;
-  border: 1px solid rgb(140 130 115);
-  border-radius: 10px;
+export const LoginWrapper = styled.div`
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  width: 830px;
   margin: auto;
-  margin-bottom: 20px;
-  width: 650px;
-  h1 {
+
+  #home-logo {
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: #ffd0d0;
-  }
-  p {
-    text-align: center;
-    margin-bottom: 10px;
-    margin-top: 10px;
     font-size: 20px;
-    color: rgb(112 111 108);
-  }
-  p span {
-    font-family: '궁서체';
-    font-size: 30px;
-    color: rgb(225 221 214);
-    margin-right: 10px;
-    width: 100px;
-  }
-`;
-
-export const BoaderBox = styled.div`
-  border: 1px solid rgb(140 130 115);
-  padding-bottom: 20px;
-  padding-top: 30px;
-  text-align: center;
-  width: 997px;
-  margin: auto;
-  margin-top: 95px;
-  margin-bottom: 10px;
-  h2 {
     font-weight: 600;
-    font-size: 23px;
-    color: rgb(200 199 196);
-    margin-bottom: 10px;
+    width: 400px;
+    margin: auto;
+    a {
+      color: black;
+    }
   }
-  p {
-    color: #8d8282;
-    font-weight: 500;
-    font-size: 17px;
+  form {
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px auto;
+    width: 400px;
+    height: 270px;
   }
-`;
 
-export const BoardListWrapper = styled.div`
-  text-align: center;
   h1 {
+    display: none; // 가림
+    margin-top: 20px;
     text-align: center;
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: rgb(200 199 196);
-  }
-  ul {
-    border: 3px solid rgb(84 91 94);
-    list-style: none;
-    padding: 17px 25px 17px 25px;
-    margin: 10px;
-    height: 360px;
-    width: 320px;
-  }
-  ul li {
-    margin-bottom: 2px;
-    margin-top: 2px;
-  }
-  ul li a {
     font-size: 17px;
-    margin-bottom: 0px;
-    color: rgb(200 199 196);
+    font-weight: 600;
+    color: gray;
   }
-  ul li a:hover {
-    color: rgb(233 70 70);
+
+  h2 {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    color: gray;
+    margin-top: 50px;
+    margin-bottom: 20px;
   }
-  ul li a:active {
-    color: rgb(237 192 210);
+
+  #input-wrapper {
+    width: 220px;
+    margin: 0 auto;
   }
-`;
-export const ListBox = styled.div`
-  user-select: none;
-  display: inline-flex;
+
+  #id-box,
+  #pw-box {
+    width: 220px;
+    margin: 7px auto;
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      display: none;
+    }
+    input {
+      font-size: 13px;
+      padding: 0 7px;
+      width: 220px;
+      height: 30px;
+      outline: none;
+      border: 1px solid black;
+    }
+  }
+
+  .blind {
+    display: none;
+  }
+
+  #btn-box {
+    text-align: center;
+    margin-top: 15px;
+    button {
+      border: 0;
+      background-color: #fff;
+    }
+    .login,
+    .signup {
+      font-size: 13px;
+      font-weight: 500;
+      margin: 0 5px;
+      margin-top: 3px;
+    }
+    .login:hover,
+    .signup:hover {
+      color: black;
+    }
+  }
+
+  #start-none-user {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: gray;
+    padding: 2px 2px;
+  }
+  #start-none-user:hover {
+    color: black;
+  }
 `;

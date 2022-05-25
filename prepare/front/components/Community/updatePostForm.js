@@ -5,18 +5,10 @@ import { wrapper } from '../../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
 
-import {
-  Main,
-  TitleWrapper,
-  CategoryWrapper,
-  ContentWrapper,
-  BtnWrapper,
-  SelectWraper,
-} from '../../style/updatePostSt';
-import { Select } from 'antd';
+import { AddPostWrapper } from '../../style/addPostSt';
 
 import useInput from '../../hooks/useInput';
-import PostImages from './postImage';
+import { backURL } from '../../config/config';
 
 import { UPDATE_POST_REQUEST } from '../../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
@@ -25,12 +17,10 @@ const UpdatePostForm = ({ post }) => {
   const dispatch = useDispatch();
   const { me, updatePostError } = useSelector((state) => state.user);
 
-  const imageInput = useRef(); // 실제 DOM에 접근하기 위해 사용
-
-  const [title, onChangeTitle] = useInput('');
-  const [category, setCategory] = useState();
-  const [changeContent, onChangeContent] = useInput('');
-  // console.log(title, category, changeContent, post.id);
+  const [category, setCategory] = useState(post.category || '');
+  const [title, onChangeTitle] = useInput(post.title || '');
+  const [content, onChangeContent] = useInput(post.content || '');
+  console.log(title, category, post.id);
 
   useEffect(() => {
     if (!me) {
@@ -39,8 +29,8 @@ const UpdatePostForm = ({ post }) => {
   }, [me]);
 
   const handleChange = useCallback(
-    (value) => {
-      setCategory(value);
+    (e) => {
+      setCategory(e.target.value);
     },
     [category],
   );
@@ -61,7 +51,7 @@ const UpdatePostForm = ({ post }) => {
           PostId: post.id,
           title: title,
           category: category,
-          content: changeContent,
+          content: content,
         }, //! error 발생: update 시 보낼 data를 formData.append로 묶어주기
       });
       if (!updatePostError) {
@@ -72,48 +62,57 @@ const UpdatePostForm = ({ post }) => {
 
   return (
     <>
-      <Main>
-        <h2>{post.User.nickname}님의 글을 수정해주세요</h2>
+      <AddPostWrapper>
+        <h1>{post.User.nickname}님의 글을 수정해주세요.</h1>
         <form onSubmit={onSubmit}>
-          <TitleWrapper>
-            <label htmlFor="title">제목 수정</label>
+          <div id="title-wrapper">
+            <label id="title-label" htmlFor="title">
+              글 제목
+            </label>
             <input
+              id="title-input"
               type="text"
-              defaultValue={post.title}
               value={title}
               onChange={onChangeTitle}
-              placeholder={`${post.title}`}
+              placeholder="글의 제목을 작성해주세요"
             />
-          </TitleWrapper>
-          <CategoryWrapper>
-            <SelectWraper defaultValue={post.category} onChange={handleChange}>
-              <Select.Option value="자유게시글">자유게시글</Select.Option>
-              <Select.Option value="모임공지">모임공지</Select.Option>
-              <Select.Option value="독후감">독후감</Select.Option>
-              <Select.Option value="건의게시글">건의게시글</Select.Option>
-            </SelectWraper>
-          </CategoryWrapper>
-
-          <ContentWrapper>
-            <>{post.Images[0] && <PostImages images={post.Images} />}</>
-            <textarea
-              type="text"
-              defaultValue={post.content}
-              placeholder={post.content}
-              value={changeContent}
-              onChange={onChangeContent}
-            />
-          </ContentWrapper>
-
-          <BtnWrapper>
-            <button type="button" onClick={onClickCancle}>
+            <select id="select-list" name="category" onChange={handleChange}>
+              <option value="카테고리">{post.category}</option>
+              <option value="자유게시글">자유게시글</option>
+              <option value="모임공지">모임공지</option>
+              <option value="독후감">독후감</option>
+              <option value="건의게시글">건의게시글</option>
+            </select>
+          </div>
+          <div id="img-textarea-wrapper">
+            <div id="textarea-wrapper">
+              <textarea value={content} onChange={onChangeContent} placeholder="내용을 입력해 주세요." />
+            </div>
+            <div id="img-list-wrapper">
+              {post.Images.length !== 0 ? null : (
+                <div>
+                  <div id="update-post-img">해당 게시글은 업로드된 사진이 없습니다.</div>
+                </div>
+              )}
+              {post.Images.map((v, i) => {
+                return (
+                  <div id="imgWrapper">
+                    <img src={`${backURL}/${v.src}`} alt={v} />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div id="btn-wrapper">
+            <button id="upload-btn" type="submit">
+              완료
+            </button>
+            <button id="cancel-btn" type="button" onClick={onClickCancle}>
               취소
             </button>
-            <input type="file" multiple hidden ref={imageInput} />
-            <button type="submit">수정하기</button>
-          </BtnWrapper>
+          </div>
         </form>
-      </Main>
+      </AddPostWrapper>
     </>
   );
 };

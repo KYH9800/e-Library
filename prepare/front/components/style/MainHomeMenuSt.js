@@ -35,9 +35,11 @@ export const MenuVarWrapper = styled.nav`
   }
 
   ul {
+    width: 830px;
+    margin: auto;
+    /* margin: 0; */
     list-style: none;
     text-align: center;
-    margin: 0;
     a {
       color: #fff;
       font-size: 16px;
@@ -55,27 +57,32 @@ export const MenuVarWrapper = styled.nav`
 
 export const LoginFormWrapper = styled.div`
   height: 30px;
-  margin-right: 25px;
+  /* margin-right: 10px; */
   padding-top: 3px;
-  #loginForm-btn {
+  #loginForm-btn2 {
+    padding: 6px 15px !important;
+  }
+  #loginForm-btn,
+  #loginForm-btn2 {
     color: #fff;
     padding: 6px 10px;
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 400;
   }
-  #loginForm-btn:hover {
+  #loginForm-btn:hover,
+  #loginForm-btn2:hover {
     background-color: #191919;
   }
 `;
 
 export const UserProfileWrapper = styled.div`
   height: 30px;
-  margin-right: 25px;
+  /* margin-right: 25px; */
   padding-top: 3px;
   #loginForm-btn {
     color: #fff;
-    padding: 6px 10px;
-    font-size: 15px;
+    padding: 7px 10px;
+    font-size: 13px;
     font-weight: 400;
   }
   #loginForm-btn:hover {
@@ -83,18 +90,18 @@ export const UserProfileWrapper = styled.div`
   }
   .logout-btn {
     cursor: pointer;
-    padding: 7px 10px;
+    padding: 7px 15px;
     border: 0;
     width: 65px;
     height: 25px;
     color: #0095f6;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 500;
   }
   .user-name {
     user-select: none;
     padding: 7px 10px;
-    font-size: 15px;
+    font-size: 13px;
     color: #fff;
   }
   .logout-btn:hover {

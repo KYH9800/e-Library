@@ -11,8 +11,9 @@ const UserProfile = () => {
   const { me } = useSelector((state) => state.user);
 
   const onLogout = useCallback(() => {
-    console.log('로그아웃');
-    dispatch(logoutAction());
+    if (confirm(`로그아웃을 하시겠습니까?`)) {
+      dispatch(logoutAction());
+    }
   }, []);
 
   return (

@@ -9,6 +9,7 @@ body {
   font-family: '고딕';
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 `;
 

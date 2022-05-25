@@ -80,6 +80,17 @@ export const AddPostWrapper = styled.header`
     overflow-x: hidden;
   }
 
+  // update-post
+  #update-post-img {
+    user-select: none;
+    margin-top: 2px;
+    padding: 5px 7px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    color: gray;
+  }
+
   #imgWrapper > img {
     width: 100%;
     margin-bottom: 1px;

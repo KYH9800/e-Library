@@ -26,21 +26,27 @@ const UserProfilePage = () => {
   const onSubmitClick = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch({
-        type: CHANGE_NICKNAME_REQUEST,
-        data: nickname,
-      });
-      console.log('changeNickname: ', nickname);
+      if (confirm(`닉네임을 변경하시겠습니까?`)) {
+        dispatch({
+          type: CHANGE_NICKNAME_REQUEST,
+          data: nickname,
+        });
+        console.log('changeNickname: ', nickname);
+      }
     },
     [nickname],
   );
 
   const onLogout = useCallback(() => {
-    dispatch(logoutAction());
+    if (confirm(`로그아웃을 하시겠습니까?`)) {
+      dispatch(logoutAction());
+    }
   }, []);
 
   const onClickBtn = useCallback(() => {
-    Router.push('/community');
+    if (confirm(`게시글 목록 페이지로 이동합니다.`)) {
+      Router.push('/community');
+    }
   }, []);
 
   return (

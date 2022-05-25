@@ -4,16 +4,7 @@ import Link from 'next/link';
 
 import { logoutAction } from '../../reducers/user';
 
-import {
-  MenuVarWrapper,
-  LoginSignupMenu,
-  NavWrapper,
-  LayoutHeader,
-  NavTop,
-  MobileLoginWrapper,
-  MobileVarWrapper,
-  MenuWrapper,
-} from '../style/MainHomeMenuSt';
+import { MenuVarWrapper } from '../style/MainHomeMenuSt';
 
 import LoginForm from '../LoginForm';
 import UserProfile from '../UserProfile';
@@ -49,7 +40,7 @@ const MainHomeMenu = () => {
       <div id="nav-bottom">
         <div className="home-logo">
           <Link href="/community">
-            <a>e도서관</a>
+            <a>e-게시판</a>
           </Link>
         </div>
         <ul>

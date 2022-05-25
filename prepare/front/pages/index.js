@@ -7,10 +7,9 @@ import { END } from 'redux-saga';
 import axios from 'axios';
 import { wrapper } from '../store/configureStore';
 
-import { Box, EmailInputTag, PasswordInputTag, CheckSaveId, ButtonRapper, HomeLogo } from '../style/loginSt';
-import { GlobalStyle } from '../components/style/AppLayoutSt';
-// import AppLayout from '../components/AppLayout';
+import { LoginWrapper } from '../style/indexSt';
 import useInput from '../hooks/useInput';
+import AppLayout from '../components/AppLayout';
 
 import { loginAction, LOAD_MY_INFO_REQUEST } from '../reducers/user';
 
@@ -47,51 +46,62 @@ const Login = () => {
   });
 
   return (
-    <>
+    <AppLayout>
       <Head>
-        <title>e도서관 | 로그인</title>
+        <title>e-게시판 | 로그인</title>
       </Head>
-      <GlobalStyle />
-      <HomeLogo>
-        <Link href="/community">
-          <a>e-도서관</a>
-        </Link>
-      </HomeLogo>
-      <Box>
+      <LoginWrapper>
+        <div id="home-logo">
+          <Link href="/community">
+            <a>e-게시판</a>
+          </Link>
+        </div>
         <form onSubmit={onSubmitform}>
           <h1>로그인</h1>
           <h2>e도서관 이용을 위해 로그인을 해주세요</h2>
-          <EmailInputTag>
-            <label htmlFor="user-email">아이디</label>
-            <input type="email" name="user-email" required value={email} onChange={onChangeEmail} />
-          </EmailInputTag>
-          <PasswordInputTag>
-            <label htmlFor="password">비밀번호</label>
-            <input type="password" required value={password} onChange={onChangePassword} />
-          </PasswordInputTag>
-          <CheckSaveId>
-            <label>
+          <div id="input-wrapper">
+            <div id="id-box">
+              <label htmlFor="user-email">아이디</label>
+              <input
+                type="email"
+                name="user-email"
+                required
+                value={email}
+                onChange={onChangeEmail}
+                placeholder="아이디를 입력해주세요"
+              />
+            </div>
+            <div id="pw-box">
+              <label htmlFor="password">비밀번호</label>
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={onChangePassword}
+                placeholder="비밀번호를 입력해주세요"
+              />
+            </div>
+            <label className="blind">
               <input type="checkbox" name="isSaved" />
               <p>아이디 저장</p>
             </label>
-            <div>
+            <div id="btn-box">
+              <button>
+                <a className="login" type="submit" htmltype="submit">
+                  로그인
+                </a>
+              </button>
               <Link href="/signup">
-                <a>회원가입</a>
+                <a className="signup">회원가입</a>
               </Link>
+              <a id="start-none-user" type="button" onClick={onClickUnlogin}>
+                비회원으로 시작하기
+              </a>
             </div>
-          </CheckSaveId>
-          <ButtonRapper>
-            <button type="submit" htmltype="submit">
-              <span>로그인</span>
-            </button>
-            <br />
-            <button type="button" onClick={onClickUnlogin}>
-              <span>비회원으로 시작하기</span>
-            </button>
-          </ButtonRapper>
+          </div>
         </form>
-      </Box>
-    </>
+      </LoginWrapper>
+    </AppLayout>
   );
 };
 
