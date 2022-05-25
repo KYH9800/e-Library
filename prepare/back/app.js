@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
   server.use(helmet());
   server.use(
     cors({
-      origin: 'https://coding-factory.site',
+      origin: 'http://localhost:3060',
       credentials: true,
     })
   );
