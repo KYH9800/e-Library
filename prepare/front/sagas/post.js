@@ -81,7 +81,7 @@ function* loadPosts(action) {
 }
 
 function loadCategoryPostsAPI(data, lastId) {
-  // console.log('category saga data: ', data);
+  console.log('category saga data: ', data, lastId);
   return axios.get(`/posts/${encodeURIComponent(data)}?lastId=${lastId || 0}`);
 }
 

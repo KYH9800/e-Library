@@ -14,7 +14,7 @@ import { LOAD_CATEGORY_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../../reducers
 import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
 
 const Category = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const router = useRouter();
   const { category } = router.query;
   const { mainPosts, hasMorePosts, loadPostsLoading } = useSelector((state) => state.post);
@@ -28,6 +28,7 @@ const Category = () => {
       if (window.pageYOffset + document.documentElement.clientHeight > document.documentElement.scrollHeight - 300) {
         if (hasMorePosts && !loadPostsLoading) {
           // const lastId = mainPosts[mainPosts.length - 1]?.id;
+          console.log('이거 확인하기 이거이거!!!:', mainPosts[mainPosts.length - 1].id);
           dispatch({
             type: LOAD_CATEGORY_POSTS_REQUEST,
             lastId: mainPosts[mainPosts.length - 1] && mainPosts[mainPosts.length - 1].id,

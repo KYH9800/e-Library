@@ -7,16 +7,7 @@ import { wrapper } from '../../store/configureStore';
 import { END } from 'redux-saga';
 import axios from 'axios';
 
-import {
-  MainWrapper,
-  CreactPostBtn,
-  ListWrapper,
-  UpdateBtn,
-  DeleteBtn,
-  ContentListTable,
-  ListLink,
-  List,
-} from '../../style/communitySt';
+import { MainWrapper } from '../../style/communitySt';
 import AppLayout from '../../components/AppLayout';
 
 import { LOAD_USER_POSTS_REQUEST, REMOVE_POST_REQUEST } from '../../reducers/post';
