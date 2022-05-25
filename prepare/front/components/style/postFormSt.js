@@ -75,9 +75,17 @@ export const TextWrapper = styled.div`
 
   #comment-lists .comment-user-name {
     background-color: #f1f1f1;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 600;
     padding-left: 5px;
     padding-top: 5px;
+  }
+
+  #moment-data {
+    font-size: 12px;
+    font-weight: 500;
+    color: #717171;
+    margin-left: 7px;
   }
 
   #content-comments {
@@ -88,6 +96,7 @@ export const TextWrapper = styled.div`
     background-color: #f1f1f1;
     margin: 0;
     height: auto;
+    font-size: 13px;
     line-height: 25px;
     padding-left: 5px;
   }

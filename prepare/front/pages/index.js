@@ -43,7 +43,7 @@ const Login = () => {
 
   const onClickUnlogin = useCallback(() => {
     Router.push('/community');
-  });
+  }, []);
 
   return (
     <AppLayout>

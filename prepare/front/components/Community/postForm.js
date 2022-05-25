@@ -13,18 +13,18 @@ const PostForm = ({ post }) => {
   const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
   const { me } = useSelector((state) => state.user);
-  const { removeCommentError } = useSelector((state) => state.post);
 
-  const onRemoveComment = useCallback((comment) => () => {
-    // console.log('data', comment.id);
-    if (confirm('댓글을 삭제 하시겠습니까? 삭제 후 댓글은 복구되지 않습니다.') == true) {
-      dispatch({
-        type: REMOVE_COMMENT_REQUEST,
-        data: comment.id,
-      });
-      // if (!removeCommentError) { window.location.replace(`/post/${comment.PostId}`); // 삭제 완료 시 해당 페이지로 새로고침 }
-    }
-  });
+  const onRemoveComment = useCallback(
+    (comment) => () => {
+      if (confirm('댓글을 삭제 하시겠습니까? 삭제 후 댓글은 복구되지 않습니다.') == true) {
+        dispatch({
+          type: REMOVE_COMMENT_REQUEST,
+          data: comment.id,
+        });
+      }
+    },
+    [],
+  );
 
   const onClickBack = useCallback(() => {
     Router.back();
@@ -74,7 +74,10 @@ const PostForm = ({ post }) => {
           return (
             <div id="comment-lists" key={v.id}>
               <div id="content-comments">
-                <div className="comment-user-name">{v.User.nickname}</div>
+                <div className="comment-user-name">
+                  {v.User.nickname}
+                  <span id="moment-data">{v.createdAt.substr(0, 10)} 작성됨</span>
+                </div>
                 <p>
                   {v.content.split('\n').map((line, i) => {
                     return <div key={i}>{line}</div>;
