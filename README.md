@@ -20,44 +20,49 @@
 
 ### 약관 동의
 
-![image](https://user-images.githubusercontent.com/61128538/153403470-330a9735-768c-4d75-bab9-c0d8dd233d4a.png)
+![image](https://user-images.githubusercontent.com/61128538/170164159-affde38f-cf24-475a-a21c-dfdd772cfe60.png)
 
 ### 회원 정보 입력
 
-![image](https://user-images.githubusercontent.com/61128538/153403564-4361cc81-7a9b-407d-8ac6-37fc1707e5a5.png)
+![image](https://user-images.githubusercontent.com/61128538/170164197-73b0456a-54d0-4c2e-86b1-d58f6a18af8a.png)
 
 # 2. 로그인
 
 ### 로그인 전
 
-![image](https://user-images.githubusercontent.com/61128538/153403692-95924e83-08a5-4339-ad98-40f32b496c37.png)
+![image](https://user-images.githubusercontent.com/61128538/170164267-614b7408-21d6-4652-a28d-4a9dfa3acce6.png)
 
 ### 로그인 정보 입력
 
-![image](https://user-images.githubusercontent.com/61128538/153403618-bebfeda0-d451-48d5-846a-1a132e478a15.png)
+![image](https://user-images.githubusercontent.com/61128538/170164243-b039eb19-66e4-4893-a356-3e21755d93c2.png)
 
 ### 로그인 후
 
-![image](https://user-images.githubusercontent.com/61128538/153403732-760853f0-af0a-4da0-8499-45cb2d834f96.png)
+![image](https://user-images.githubusercontent.com/61128538/170164291-c5c7291c-224a-4ef5-bdc2-6f93d4d26279.png)
 
 # 3. 커뮤니티 전체 게시글 (무한 스크롤 가능)
 
-![image](https://user-images.githubusercontent.com/61128538/153403861-c78e0889-ba9f-4761-96ce-e695180f1e72.png)
+![image](https://user-images.githubusercontent.com/61128538/170164336-92d55382-241e-4f55-af5c-f83b991d92d8.png)
 
 # 4. 글쓰기
 
-![image](https://user-images.githubusercontent.com/61128538/153404030-f0f3e5d5-62e0-412a-a23a-b8dd4ac13c97.png)
+![image](https://user-images.githubusercontent.com/61128538/170164363-c5cf2b13-acfa-460f-9bea-f1e64c16772b.png)
 
 # 5. 읽기
 
-![image](https://user-images.githubusercontent.com/61128538/153404098-f4403c4a-e9fb-4456-a1bc-6c13e79c0c6e.png)
-![image](https://user-images.githubusercontent.com/61128538/153404136-975e0bad-e5b8-4fc5-aa25-3165a231eb32.png)
+![image](https://user-images.githubusercontent.com/61128538/170164392-178413e3-4e7a-4f4d-93ea-87459102a80a.png)
+
 
 # 6. 수정하기
 
-![image](https://user-images.githubusercontent.com/61128538/153404264-2e1e3475-6166-497d-9d49-9f24514d0fb1.png)
+![image](https://user-images.githubusercontent.com/61128538/170164433-9f08ea55-2159-4bee-9514-03d7ef044979.png)
 
 # 7. 삭제하기
 
-![image](https://user-images.githubusercontent.com/61128538/153404384-3d1fa73e-b8c5-4f40-814f-d52d45e6a5c6.png)
-![image](https://user-images.githubusercontent.com/61128538/153404439-8a3ff4bc-d066-49fa-8c86-92dd0cd78196.png)
+![image](https://user-images.githubusercontent.com/61128538/170164505-ac7a16bb-f8d3-461b-b51d-74f81d7efbd8.png)
+![image](https://user-images.githubusercontent.com/61128538/170164550-28df8625-ad08-4f7a-9a2b-0316c8978405.png)
+
+# 8. 댓글
+
+![image](https://user-images.githubusercontent.com/61128538/170164596-28dfdf43-0a77-4501-855d-3f0fce3ab586.png)
+![image](https://user-images.githubusercontent.com/61128538/170164637-92b10c85-cb58-4b27-822f-5494299ebf2f.png)
