@@ -16,6 +16,7 @@ const PostForm = ({ post }) => {
 
   const onRemoveComment = useCallback(
     (comment) => () => {
+      // submit 기능이 없어서 기본 새로고침 기능이 없다.
       if (confirm('댓글을 삭제 하시겠습니까? 삭제 후 댓글은 복구되지 않습니다.') == true) {
         dispatch({
           type: REMOVE_COMMENT_REQUEST,
