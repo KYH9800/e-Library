@@ -30,10 +30,6 @@ const PostForm = ({ post }) => {
     Router.back();
   });
 
-  const onClickToggle = useCallback(() => {
-    setToggle((state) => !state);
-  }, [toggle]);
-
   return (
     <TextWrapper>
       <table>
